@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-public class BusinessController {
+public class BusinessesController {
 	
 	@Autowired
-	private BusinessRepository businessRepository;
+	private BusinessesRepository businessesRepository;
 	
-	@GetMapping("/business")
-	public List<Business> getBusinesses(){
-		return businessRepository.findAll();
+	@GetMapping("/businesses")
+	public List<Businesses> getBusinesses(){
+		return businessesRepository.findAll();
 	}
 	
-	@PostMapping("/business")
-	public ResponseEntity<Business> addBusiness(@RequestBody Business business){
-		Business addedBusiness = businessRepository.save(business);
+	@PostMapping("/businesses")
+	public ResponseEntity<Businesses> addBusiness(@RequestBody Businesses business){
+		Businesses addedBusiness = businessesRepository.save(business);
 		return ResponseEntity.ok(addedBusiness);
 	}
 

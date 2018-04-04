@@ -12,20 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-public class UserController {
+public class EventsController {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private EventsRepository eventsRepository;
 	
-	@GetMapping("/user")
-	public List<User> getUsers(){
-		return userRepository.findAll();
+	@GetMapping("/events")
+	public List<Events> getEvents(){
+		return eventsRepository.findAll();
 	}
 	
-	@PostMapping("/user")
-	public ResponseEntity<User> addUser(@RequestBody User user){
-		User addedUser = userRepository.save(user);
-		return ResponseEntity.ok(addedUser);
+	@PostMapping("/events")
+	public ResponseEntity<Events> addEvent(@RequestBody Events events){
+		Events addedEvent = eventsRepository.save(events);
+		return ResponseEntity.ok(addedEvent);
 	}
+
+
 
 }
