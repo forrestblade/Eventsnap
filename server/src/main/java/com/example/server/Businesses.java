@@ -4,14 +4,30 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class User {
-
+public class Businesses {
 	@Id
 	private Long id;
+	private String name;
+	private String businessType;
 	private String username;
 	private String password;
 	private String emailAddress;
-	private int budgetId;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBusinessType() {
+		return businessType;
+	}
+
+	public void setBusinessType(String businessType) {
+		this.businessType = businessType;
+	}
 
 	public String getUsername() {
 		return username;
@@ -40,9 +56,4 @@ public class User {
 	public Long getId() {
 		return id;
 	}
-
-	public int getBudgetId() {
-		return budgetId;
-	}
-
 }

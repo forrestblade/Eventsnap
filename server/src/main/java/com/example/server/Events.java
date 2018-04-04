@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Event {
+public class Events {
 	
 	@Id
 	private Long id;
@@ -15,6 +15,8 @@ public class Event {
 	private Date date;
 	private Time time;
 	private int priceId;
+	
+	
 	public String getName() {
 		return name;
 	}
