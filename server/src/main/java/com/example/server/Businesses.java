@@ -8,10 +8,10 @@ public class Businesses {
 	@Id
 	private Long id;
 	private String name;
-	private String businessType;
+	private String business_type;
 	private String username;
 	private String password;
-	private String emailAddress;
+	private String email_address;
 
 	public String getName() {
 		return name;
@@ -21,12 +21,12 @@ public class Businesses {
 		this.name = name;
 	}
 
-	public String getBusinessType() {
-		return businessType;
+	public String getBusiness_type() {
+		return business_type;
 	}
 
-	public void setBusinessType(String businessType) {
-		this.businessType = businessType;
+	public void setBusiness_type(String business_type) {
+		this.business_type = business_type;
 	}
 
 	public String getUsername() {
@@ -45,12 +45,12 @@ public class Businesses {
 		this.password = password;
 	}
 
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getEmail_address() {
+		return email_address;
 	}
 
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setEmail_address(String email_address) {
+		this.email_address = email_address;
 	}
 
 	public Long getId() {

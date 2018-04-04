@@ -1,5 +1,6 @@
 package com.example.server;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -10,8 +11,8 @@ public class Users {
 	private Long id;
 	private String username;
 	private String password;
-	private String emailAddress;
-	private int budgetId;
+	private String email_address;
+	private int budget_id;
 
 	public String getUsername() {
 		return username;
@@ -29,20 +30,20 @@ public class Users {
 		this.password = password;
 	}
 
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getEmail_address() {
+		return email_address;
 	}
 
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setEmail_address(String email_address) {
+		this.email_address = email_address;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public int getBudgetId() {
-		return budgetId;
+	public int getBudget_id() {
+		return budget_id;
 	}
 
 }
