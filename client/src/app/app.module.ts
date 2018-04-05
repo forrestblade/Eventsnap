@@ -5,7 +5,7 @@ import { MatButtonModule, MatIconModule, MatCardModule } from '@angular/material
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { AboutComponent } from './about/about.component';
+import { SearchComponent } from './search/search.component';
 import { AppRoutingModule } from './/app-routing.module';
 
 
@@ -13,7 +13,7 @@ import { AppRoutingModule } from './/app-routing.module';
   declarations: [
     AppComponent,
     NavComponent,
-    AboutComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule,
