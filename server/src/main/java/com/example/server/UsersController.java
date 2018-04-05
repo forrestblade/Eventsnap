@@ -16,16 +16,29 @@ public class UsersController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private BudgetRepository budgetRepository;
 	
-	@GetMapping("/users")
+	@GetMapping({"/users"})
 	public List<Users> getUsers(){
 		return userRepository.findAll();
+	}
+	
+	@GetMapping("/budget")
+	public List<Budget> getBudget(){
+		return budgetRepository.findAll();
 	}
 	
 	@PostMapping("/users")
 	public ResponseEntity<Users> addUser(@RequestBody Users users){
 		Users addedUser = userRepository.save(users);
 		return ResponseEntity.ok(addedUser);
+	}
+	
+	@PostMapping("/budget")
+	public ResponseEntity<Budget> addBudget(@RequestBody Budget budget){
+		Budget addedBudget = budgetRepository.save(budget);
+		return ResponseEntity.ok(addedBudget);
 	}
 
 }
