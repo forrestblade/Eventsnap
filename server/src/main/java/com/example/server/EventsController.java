@@ -16,10 +16,24 @@ public class EventsController {
 	
 	@Autowired
 	private EventsRepository eventsRepository;
+	@Autowired
+	private TagsRepository tagsRepository;
+	@Autowired
+	private LocationRepository locationRepository;
 	
 	@GetMapping("/events")
 	public List<Events> getEvents(){
 		return eventsRepository.findAll();
+	}
+	
+	@GetMapping("/tags")
+	public List<Tags> getTags(){
+		return tagsRepository.findAll();
+	}
+	
+	@GetMapping("/location")
+	public List<Location> getLocation(){
+		return locationRepository.findAll();
 	}
 	
 	@PostMapping("/events")
@@ -27,7 +41,18 @@ public class EventsController {
 		Events addedEvent = eventsRepository.save(events);
 		return ResponseEntity.ok(addedEvent);
 	}
+	
+	@PostMapping("/tags")
+	public ResponseEntity<Tags> addTags(@RequestBody Tags tags){
+		Tags addedTags = tagsRepository.save(tags);
+		return ResponseEntity.ok(addedTags);
+	}
 
+	@PostMapping("/location")
+	public ResponseEntity<Location> addLocation(@RequestBody Location location){
+		Location addedLocation = locationRepository.save(location);
+		return ResponseEntity.ok(addedLocation);
+	}
 
 
 }
