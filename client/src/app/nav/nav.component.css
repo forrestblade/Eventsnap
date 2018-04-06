@@ -1,11 +1,11 @@
-body {
+/* body {
     display: flex;
     margin: 0;
     flex-direction: column;
     min-height: 100vh;
     background: #2c3e50;
     font-family: Helvetica;
-  }
+  } */
   
   a {
     text-decoration: none;
@@ -16,6 +16,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    display: flex;
+    height: 50px;
   }
   
   main > *, header, footer {
