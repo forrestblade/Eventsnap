@@ -29,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatSidenavModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
     FlexLayoutModule,
  
 
