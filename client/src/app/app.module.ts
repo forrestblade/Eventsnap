@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
-// import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -30,8 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     BrowserAnimationsModule,
     HttpClientModule
-    // FlexLayoutModule,
-    // FlexLayoutModule.forRoot(),
+    FlexLayoutModule,
+ 
 
   ],
   providers: [EventService],
