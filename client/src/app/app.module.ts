@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
-import { FlexLayoutModule } from "@angular/flex-layout";
+// import { FlexLayoutModule } from "@angular/flex-layout";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -26,15 +26,13 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatCardModule,
     AppRoutingModule,
-<<<<<<< HEAD
-    HttpClientModule
-=======
     MatToolbarModule,
     MatSidenavModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    HttpClientModule
+    // FlexLayoutModule,
+    // FlexLayoutModule.forRoot(),
 
->>>>>>> fcaf99d639634a523d6cfe974e2e881b5e270aec
   ],
   providers: [EventService],
   bootstrap: [AppComponent]
