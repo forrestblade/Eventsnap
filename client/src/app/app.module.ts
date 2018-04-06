@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
  
 
   ],
