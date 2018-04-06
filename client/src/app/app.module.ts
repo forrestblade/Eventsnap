@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { SearchComponent } from './search/search.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { UserComponent } from './user/user.component';
+import { EventService } from './event.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    SearchComponent
+    SearchComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -25,10 +29,12 @@ import { AppRoutingModule } from './/app-routing.module';
     MatToolbarModule,
     MatSidenavModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    HttpClientModule
+    FlexLayoutModule,
+ 
 
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
