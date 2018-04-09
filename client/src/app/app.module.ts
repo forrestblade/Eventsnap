@@ -13,6 +13,9 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 
+import { UserComponent } from './user/user.component';
+import { EventService } from './event.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,7 +25,8 @@ import { LoginComponent } from './login/login.component';
     SearchComponent,
     LandingpageComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +49,12 @@ import { LoginComponent } from './login/login.component';
     MatCheckboxModule,
     MatMenuModule,
     MatExpansionModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule
+ 
 
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
