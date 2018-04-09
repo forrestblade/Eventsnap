@@ -87,3 +87,9 @@ java.io.FileNotFoundException: C:\Users\mindt\Eventsnap\.metadata\.plugins\org.e
 	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:202) [org.eclipse.osgi_3.12.100.v20180210-1608.jar:na]
 	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:165) [org.eclipse.osgi_3.12.100.v20180210-1608.jar:na]
 	at java.lang.Thread.run(Unknown Source) [na:1.8.0_161]
+2018-04-09 13:48:50,971 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-04-09 13:49:07,761 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-04-09 13:49:07,765 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-04-09 13:49:07,781 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-04-09 13:49:07,785 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-04-09 13:49:07,785 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mindt\Eventsnap\server\src\test\resources

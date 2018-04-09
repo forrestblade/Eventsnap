@@ -5,7 +5,28 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2018-04-09T09:56:00Z</updated>
+  <updated>2018-04-09T18:44:00Z</updated>
+  <entry>
+    <title>CVE-2018-1275: address partial fix for CVE-2018-1270</title>
+    <link rel="alternate" href="https://spring.io/blog/2018/04/09/cve-2018-1275-address-partial-fix-for-cve-2018-1270" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Rossen Stoyanchev</name>
+    </author>
+    <id>tag:spring.io,2018-04-09:3240</id>
+    <updated>2018-04-09T18:44:00Z</updated>
+    <content type="html">&lt;p&gt;CVE-2018-1270 was &lt;a href="https://spring.io/blog/2018/04/05/multiple-cve-reports-published-for-the-spring-framework"&gt;reported last week&lt;/a&gt;, and unfortunately, was not fully addressed in the 4.3.x branch of the Spring Framework.&lt;/p&gt;
+&lt;p&gt;A follow-up 4.3.16 version was created and released to Maven Central, and a new &lt;a href="https://pivotal.io/security/cve-2018-1275"&gt;CVE-2018-1275&lt;/a&gt; report was published. Please upgrade to 4.3.16 immediately!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Spring Boot 1.5.x Instructions:&lt;/strong&gt; if impacted by this issue, please set the Spring Framework version to 4.3.16, while a Spring Boot 1.5.12 release is being prepared. &lt;/p&gt;
+&lt;p&gt;For Spring Boot with Maven, update your pom.xml:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;&amp;lt;properties&amp;gt;&#xD;
+    &amp;lt;spring.version&amp;gt;4.3.16.RELEASE&amp;lt;/spring.version&amp;gt;&#xD;
+&amp;lt;/properties&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For Spring Boot with Gradle, set the Spring Framework version in gradle.properties:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;spring.version=4.3.16.RELEASE
+&lt;/code&gt;&lt;/pre&gt;</content>
+  </entry>
   <entry>
     <title>Spring IO Platform Cairo-RELEASE</title>
     <link rel="alternate" href="https://spring.io/blog/2018/04/09/spring-io-platform-cairo-release" />
@@ -97,14 +118,15 @@
       <name>Rossen Stoyanchev</name>
     </author>
     <id>tag:spring.io,2018-04-04:3228</id>
-    <updated>2018-04-05T15:43:22Z</updated>
-    <content type="html">&lt;p&gt;Spring Framework 5.0.5 and 4.3.15, &lt;a href="https://spring.io/blog/2018/04/03/spring-framework-5-0-5-and-4-3-15-available-now"&gt;released earlier&lt;/a&gt; this week, include fixes for the following vulnerabilities:&lt;/p&gt;
+    <updated>2018-04-05T15:43:00Z</updated>
+    <content type="html">&lt;p&gt;&lt;strong&gt;UPDATE 2018-04-09:&lt;/strong&gt; see follow-up &lt;a href="https://spring.io/blog/2018/04/09/cve-2018-1275-address-partial-fix-for-cve-2018-1270"&gt;announcement&lt;/a&gt; for 4.3.x branch.&lt;/p&gt;
+&lt;p&gt;Spring Framework 5.0.5 and 4.3.15 (superseded by 4.3.16 with CVE-2018-1275), &lt;a href="https://spring.io/blog/2018/04/03/spring-framework-5-0-5-and-4-3-15-available-now"&gt;released earlier&lt;/a&gt; this week, include fixes for the following vulnerabilities:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://pivotal.io/security/cve-2018-1270"&gt;https://pivotal.io/security/cve-2018-1270&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://pivotal.io/security/cve-2018-1271"&gt;https://pivotal.io/security/cve-2018-1271&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://pivotal.io/security/cve-2018-1272"&gt;https://pivotal.io/security/cve-2018-1272&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://pivotal.io/security/cve-2018-1270"&gt;CVE-2018-1270&lt;/a&gt; &amp;ndash;&amp;gt; &lt;a href="https://pivotal.io/security/cve-2018-1275"&gt;CVE-2018-1275&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://pivotal.io/security/cve-2018-1271"&gt;CVE-2018-1271&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://pivotal.io/security/cve-2018-1272"&gt;CVE-2018-1272&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Spring Boot 2.0.1 and 1.5.11, that match the above Spring Framework versions, were &lt;a href="https://spring.io/blog/2018/04/05/spring-boot-2-0-1-available-now"&gt;released today&lt;/a&gt;, and are now also available for use.&lt;/p&gt;
+&lt;p&gt;Spring Boot 2.0.1 and 1.5.11 (superseded by 1.5.12 with CVE-2018-1275), that match the above Spring Framework versions, were &lt;a href="https://spring.io/blog/2018/04/05/spring-boot-2-0-1-available-now"&gt;released today&lt;/a&gt;, and are now also available for use.&lt;/p&gt;
 &lt;p&gt;Please, review the information in the CVE reports and upgrade immediately. &lt;/p&gt;</content>
   </entry>
   <entry>
@@ -769,34 +791,5 @@ dependencies {&#xD;
   &lt;li&gt;The Java Code Geeks have a nice post &lt;a href="https://www.javacodegeeks.com/2017/02/configure-jenkins-continuous-delivery-spring-boot-application.html"&gt;on continuously delivering Spring Boot applications with Jenkins&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;Check out &lt;a href="https://projectriff.io/blog/announcing-riff-0-0-5/"&gt;the 0.0.5 release of Pivotal&amp;rsquo;s function-as-a-service offering, Project Riff&lt;/a&gt;. The new release includes a Go function invoker that provides support for functions built as Go plugins, support for improved Python support, HTTP header whitelisting, and so much more.&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Security SAML DSL 1.0.5.RELEASE</title>
-    <link rel="alternate" href="https://spring.io/blog/2018/03/26/spring-security-saml-dsl-1-0-5-release" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Filip Hanik</name>
-    </author>
-    <id>tag:spring.io,2018-03-26:3217</id>
-    <updated>2018-03-26T10:14:00Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;The Spring Security team is proud to announce our latest 1.0.5.RELEASE of our SAML DSL project. This release works against Spring Security SAML 1.0.4.RELEASE.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This release adds a simple &lt;a href="https://github.com/spring-projects/spring-security-saml-dsl/blob/929b94b349e894f17a7ff89375446b48f1c7f637/samples/spring-security-saml-dsl-sample/src/main/java/com/example/SecurityConfiguration.java#L21-L41"&gt;Java configuration option&lt;/a&gt; to your existing Spring Boot applications&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This release requires an additional &lt;a href="http://repository.mulesoft.org/releases/"&gt;Maven repository&lt;/a&gt; to download the latest version of the not-yet-commons-ssl dependency.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Available on &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22spring-security-saml-dsl-core%22"&gt;Maven Central&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Feedback and contributions are always appreciated. Stay tuned.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security-saml/"&gt;Project Site&lt;/a&gt; |
-&lt;a href="https://docs.spring.io/spring-security-saml/docs/current/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-security"&gt;Help&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>
