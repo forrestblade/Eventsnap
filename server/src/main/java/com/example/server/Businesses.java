@@ -12,6 +12,15 @@ public class Businesses {
 	private String username;
 	private String password;
 	private String email_address;
+	private Long location_id;
+
+	public Long getLocation_id() {
+		return location_id;
+	}
+
+	public void setLocation_id(Long location_id) {
+		this.location_id = location_id;
+	}
 
 	public String getName() {
 		return name;

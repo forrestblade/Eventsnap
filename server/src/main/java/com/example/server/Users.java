@@ -12,7 +12,8 @@ public class Users {
 	private String username;
 	private String password;
 	private String email_address;
-	private int budget_id;
+	private Long budget_id;
+	private Long location_id;
 
 	public String getUsername() {
 		return username;
@@ -42,7 +43,19 @@ public class Users {
 		return id;
 	}
 
-	public int getBudget_id() {
+	public Long getLocation_id() {
+		return location_id;
+	}
+
+	public void setLocation_id(Long location_id) {
+		this.location_id = location_id;
+	}
+
+	public void setBudget_id(Long budget_id) {
+		this.budget_id = budget_id;
+	}
+
+	public Long getBudget_id() {
 		return budget_id;
 	}
 
