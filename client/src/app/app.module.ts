@@ -24,15 +24,10 @@ import { MapsComponent } from './maps/maps.component';
     AppComponent,
     NavComponent,
     SearchComponent,
-<<<<<<< HEAD
-    UserComponent,
-    MapsComponent
-=======
     LandingpageComponent,
     SignupComponent,
     LoginComponent,
     UserComponent
->>>>>>> master
   ],
   imports: [
     BrowserModule,

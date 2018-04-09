@@ -18,11 +18,7 @@ export class UserComponent implements OnInit {
    .subscribe(data => this.users = data);
  }
 
-<<<<<<< HEAD
   
-=======
- 
->>>>>>> master
 
  
 
