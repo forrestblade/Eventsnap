@@ -11,6 +11,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { UserComponent } from './user/user.component';
 import { EventService } from './event.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MapsComponent } from './maps/maps.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     NavComponent,
     SearchComponent,
-    UserComponent
+    UserComponent,
+    MapsComponent
   ],
   imports: [
     BrowserModule,
