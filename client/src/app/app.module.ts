@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { EventService } from './event.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
  
 
   ],
-  providers: [EventService],
+  providers: [EventService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
