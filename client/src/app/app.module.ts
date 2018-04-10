@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { EventService } from './event.service';
 import { HttpClientModule } from '@angular/common/http';
+
 import { AuthService } from './auth.service';
 
 
