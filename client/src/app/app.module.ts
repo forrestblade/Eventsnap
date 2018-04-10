@@ -18,6 +18,8 @@ import { EventService } from './event.service';
 import { HttpClientModule} from '@angular/common/http';
 import { MapsComponent } from './maps/maps.component';
 
+import { AuthService } from './auth.service';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +59,7 @@ import { MapsComponent } from './maps/maps.component';
  
 
   ],
-  providers: [EventService],
+  providers: [EventService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
