@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {  RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Users } from './users';
+import {$} from '../../node_modules/jquery';
+import {ajax} from '../../node_modules/jquery';
 
 @Injectable()
 export class EventService {
+
+  httpClient: any;
+ 
+  constructor( private http: HttpClient) { }
 
  serviceEndpoint = 'http://localhost:8080/users';
 
@@ -21,17 +28,24 @@ export class EventService {
    return this.http.put<Users>(this.serviceEndpoint + '/' + user.id, user);
  }
 
+  private _headers = new HttpHeaders().set('Content-Type', 'application/json');
 
- addUsers(user: Users) {
+ addUser(user: Users) {
+  console.log(user)
   console.log(user)
   let users = {
+    
     username: user.username,
-    email: user.email
+    email: user.email,
+    
   }
-  return this.http.post<Users>(this.serviceEndpoint, users);
-
+  const headers = this._headers;
+  let user1 = JSON.stringify(users);
+ 
+  return this.http.post(this.serviceEndpoint, user1,{ headers : headers } )
+ 
  }
  
  
- constructor( private http: HttpClient) { }
+ 
 }
