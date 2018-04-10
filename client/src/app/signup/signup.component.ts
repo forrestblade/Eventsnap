@@ -10,11 +10,19 @@ import { Users } from '../users';
 export class SignupComponent implements OnInit {
 
   constructor(private eventService: EventService) { }
-  
+  model: any = {};
+    loading = false;
   addUser(user: Users){
     console.log(user)
     this.eventService.addUsers(user).subscribe();
   }
+
+  submitted = false;
+
+onSubmit() {
+  this.loading = true;
+this.eventService.addUsers(this.model)}
+
   ngOnInit() {
   }
 
