@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../event.service';
+import { Users } from '../users';
 
 @Component({
   selector: 'app-signup',
@@ -7,7 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
+  model: any = {};
+    loading = false;
+  addUser(user: Users){
+    console.log(user)
+    this.eventService.addUsers(user).subscribe();
+  }
+
+  submitted = false;
+
+onSubmit() {
+  this.loading = true;
+this.eventService.addUsers(this.model)}
 
   ngOnInit() {
   }

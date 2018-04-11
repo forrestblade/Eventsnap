@@ -4,25 +4,28 @@ import { EventService } from '../event.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+ selector: 'app-user',
+ templateUrl: './user.component.html',
+ styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
 
 
-  users: Array<Users>
+ users: Array<Users>
 
-  getUsers() {
-    this.eventService.getUsers()
-    .subscribe(data => this.users = data);
-  }
+ getUsers() {
+   this.eventService.getUsers()
+   .subscribe(data => this.users = data);
+ }
 
+  
 
-  constructor(private eventService: EventService) { }
+ 
 
-  ngOnInit() {
-    this.getUsers();
-  }
+ constructor(private eventService: EventService) { }
+
+ ngOnInit() {
+   this.getUsers();
+ }
 
 }
