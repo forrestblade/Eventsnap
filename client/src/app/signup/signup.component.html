@@ -1,0 +1,47 @@
+
+ 
+ <form action="/signup" method="post" (ngSubmit)="onSubmit()" >
+
+   <article class="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+     <main class="pa4 black-80">
+       <div class="measure">
+         <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+           <legend class="f1 fw6 ph0 mh0">Register</legend>
+
+           <div class="mt3 form-group">
+             <label class="db fw6 lh-copy f6">Name</label>
+             <input class="pa2 input-reset ba bg-transparent hover-bg-dark-blue hover-white w-100 form-control" type="text" name="username" [(ngModel)]="model.username" #name="ngModel" required />
+           </div>
+           <div class="mt3 form-group">
+             <label class="db fw6 grow lh-copy f6" >Email</label>
+             <!-- Input needs form-control and ngModel in order to input information and post to Database -->
+             <input class="pa2 input-reset ba bg-transparent hover-bg-dark-blue hover-white w-100 form-control" type="email"  name="email_address" [(ngModel)]="model.email_address" #name="ngModel" required
+             />
+           </div>
+         <div class="mv3">
+
+             <label class="db fw6 lh-copy f6" htmlFor="password">Password</label>
+             <input class="b pa2 input-reset ba bg-transparent hover-bg-dark-blue hover-white w-100" type="password" name="password" id="password"
+             />
+           </div>
+         </fieldset>
+         <div class="">
+           <button class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" (ngSubmit)="onSubmit(user)">Register</button>
+
+        
+         </div>
+         <!-- Outputs information being input into the form - can be deleted for final version -->
+         <div>
+              <h3>{{model.username}}</h3> 
+              <h3>{{model.email_address}}</h3>
+              
+         </div>
+       
+       </div>
+     
+    
+   </main>
+ </article>
+</form>
+
+
