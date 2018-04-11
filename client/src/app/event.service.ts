@@ -14,6 +14,7 @@ export class EventService {
 
  serviceEndpoint = 'http://localhost:8080/users';
 
+//  <!-- getUsers function grabs data from the database and displays them - User component shows how to display on Frontend HTML-->
  getUsers(): Observable<Users[]> {
    return this.http.get<Users[]>(this.serviceEndpoint);
  }
@@ -27,6 +28,7 @@ export class EventService {
    return this.http.put<Users>(this.serviceEndpoint + '/' + user.id, user);
  }
 
+ //  <!-- addUsers -->
   private _headers = new HttpHeaders().set('Content-Type', 'application/json');
 
  addUser(user: Users) {
@@ -35,12 +37,15 @@ export class EventService {
   let users = {
     
     username: user.username,
-    email: user.email,
+    email_address: user.email_address,
     
   }
+  
   const headers = this._headers;
   let user1 = JSON.stringify(users);
- 
+  
+  console.log(user1);
+  
   return this.http.post(this.serviceEndpoint, user1,{ headers : headers } )
  
  }
