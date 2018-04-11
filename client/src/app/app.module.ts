@@ -15,8 +15,10 @@ import { LoginComponent } from './login/login.component';
 
 import { UserComponent } from './user/user.component';
 import { EventService } from './event.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { MapsComponent } from './maps/maps.component';
+
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -51,11 +53,13 @@ import { MapsComponent } from './maps/maps.component';
     MatMenuModule,
     MatExpansionModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    // HttpHeaders, 
+    // RequestOptions
  
 
   ],
-  providers: [EventService],
+  providers: [EventService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
