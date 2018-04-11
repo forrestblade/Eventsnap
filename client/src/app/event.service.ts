@@ -3,8 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Users } from './users';
-import {$} from '../../node_modules/jquery';
-import {ajax} from '../../node_modules/jquery';
+
 
 @Injectable()
 export class EventService {
