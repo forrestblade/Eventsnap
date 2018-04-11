@@ -15,7 +15,7 @@ export class EventService {
  serviceEndpoint = 'http://localhost:8080/users';
 
  getUsers(): Observable<Users[]> {
-   return this.http.get<Users[]>(this.serviceEndpoint);
+   return this.http.get<Users[]>("http://localhost:8080/users");
  }
 
  deleteUser(user: Users): Observable<Users> {
@@ -31,11 +31,11 @@ export class EventService {
 
  addUser(user: Users) {
   console.log(user)
-  console.log(user)
   let users = {
     
     username: user.username,
-    email: user.email,
+    email_address: user.email_address,
+    
     
   }
   const headers = this._headers;

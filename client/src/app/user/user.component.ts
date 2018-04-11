@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
    this.eventService.getUsers()
    .subscribe(data => this.users = data);
  }
+//  constructor(private eventService : EventService) {}
 
 
   
