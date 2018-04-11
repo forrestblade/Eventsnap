@@ -37,10 +37,7 @@ export class EventService {
     
     username: user.username,
     email_address: user.email_address,
-<<<<<<< HEAD
-=======
     
->>>>>>> 65f46dee9566d1eceefaeb89692d08b52941e537
     
   }
   

@@ -37,7 +37,7 @@ this.eventService.addUser(this.model).subscribe();
 }
 
   ngOnInit() {
-    this.getUsers();
+   
   }
 
 }
