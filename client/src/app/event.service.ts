@@ -16,7 +16,7 @@ export class EventService {
 
 //  <!-- getUsers function grabs data from the database and displays them - User component shows how to display on Frontend HTML-->
  getUsers(): Observable<Users[]> {
-   return this.http.get<Users[]>(this.serviceEndpoint);
+   return this.http.get<Users[]>("http://localhost:8080/users");
  }
 
  deleteUser(user: Users): Observable<Users> {
@@ -33,11 +33,14 @@ export class EventService {
 
  addUser(user: Users) {
   console.log(user)
-  console.log(user)
   let users = {
     
     username: user.username,
     email_address: user.email_address,
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 65f46dee9566d1eceefaeb89692d08b52941e537
     
   }
   
