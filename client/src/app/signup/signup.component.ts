@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { Users } from '../users';
+import { MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatAutocompleteModule, MatSliderModule, MatCheckboxModule, MatMenuModule, MatExpansionModule, MatRadioModule } from '@angular/material';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +17,11 @@ export class SignupComponent implements OnInit {
 
     loading = false;
 
+    
+
+
+
+//Adding user function
   addUser(user: Users){
     console.log(user)
     
@@ -23,7 +29,7 @@ export class SignupComponent implements OnInit {
   }
 
 
-
+//Submit function connecting from Register button to addUser function
 onSubmit() {
   this.loading = true;
 this.eventService.addUser(this.model).subscribe();
@@ -31,6 +37,7 @@ this.eventService.addUser(this.model).subscribe();
 }
 
   ngOnInit() {
+   
   }
 
 }

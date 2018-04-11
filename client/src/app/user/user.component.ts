@@ -13,10 +13,12 @@ export class UserComponent implements OnInit {
 
  users: Array<Users>
 
+ //get Users retrieves from database using service
  getUsers() {
    this.eventService.getUsers()
    .subscribe(data => this.users = data);
  }
+
 
 
   
@@ -25,6 +27,7 @@ export class UserComponent implements OnInit {
 
  constructor(private eventService: EventService) { }
 
+ //Get users function runs as the page loads
  ngOnInit() {
    this.getUsers();
  }
