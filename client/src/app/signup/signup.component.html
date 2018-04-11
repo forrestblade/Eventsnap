@@ -14,7 +14,7 @@
            </div>
            <div class="mt3 form-group">
              <label class="db fw6 grow lh-copy f6" >Email</label>
-             <!-- Form needs form-control and ngModel in order to input information and post to Database -->
+             <!-- Input needs form-control and ngModel in order to input information and post to Database -->
              <input class="pa2 input-reset ba bg-transparent hover-bg-dark-blue hover-white w-100 form-control" type="email"  name="email_address" [(ngModel)]="model.email_address" #name="ngModel" required
              />
            </div>
@@ -28,7 +28,7 @@
          <div class="">
            <button class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" (ngSubmit)="onSubmit(user)">Register</button>
 
-           <button class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" (ngSubmit)="onSubmit()">Register</button>
+        
          </div>
          <!-- Outputs information being input into the form - can be deleted for final version -->
          <div>
@@ -39,7 +39,7 @@
        
        </div>
      
-     </div>
+    
    </main>
  </article>
 </form>

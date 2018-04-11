@@ -28,7 +28,7 @@ export class EventService {
    return this.http.put<Users>(this.serviceEndpoint + '/' + user.id, user);
  }
 
- //  <!-- addUsers -->
+ //  <!-- addUsers function that inputs into Database - needs a JSON header in order to post to postman-->
   private _headers = new HttpHeaders().set('Content-Type', 'application/json');
 
  addUser(user: Users) {
@@ -42,6 +42,7 @@ export class EventService {
   }
   
   const headers = this._headers;
+  // JSON Stringify is needed to input into postman as well
   let user1 = JSON.stringify(users);
   
   console.log(user1);
