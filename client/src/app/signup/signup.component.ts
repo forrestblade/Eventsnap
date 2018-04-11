@@ -10,18 +10,25 @@ import { Users } from '../users';
 export class SignupComponent implements OnInit {
 
   constructor(private eventService: EventService) { }
+
+  user: Array<Users>
   model: any = {};
+
     loading = false;
+
   addUser(user: Users){
     console.log(user)
-    this.eventService.addUsers(user).subscribe();
+    
+    this.eventService.addUser(user).subscribe();
   }
 
-  submitted = false;
+
 
 onSubmit() {
   this.loading = true;
-this.eventService.addUsers(this.model)}
+this.eventService.addUser(this.model).subscribe();
+
+}
 
   ngOnInit() {
   }

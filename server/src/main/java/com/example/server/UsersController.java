@@ -20,7 +20,7 @@ public class UsersController {
 	private BudgetRepository budgetRepository;
 	
 	@GetMapping({"/users"})
-	public List<Users> getUsers(){
+	public List<Users> getUser(){
 		return userRepository.findAll();
 	}
 	
@@ -30,8 +30,8 @@ public class UsersController {
 	}
 	
 	@PostMapping("/users")
-	public ResponseEntity<Users> addUser(@RequestBody Users users){
-		Users addedUser = userRepository.save(users);
+	public ResponseEntity<Users> addSeries(@RequestBody Users user){
+		Users addedUser = userRepository.save(user);
 		return ResponseEntity.ok(addedUser);
 	}
 	
