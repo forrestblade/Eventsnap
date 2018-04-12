@@ -23,7 +23,7 @@ public class Events {
 	private String name;
 	private Date date;
 	private Time time;
-	private int priceId;
+	private Long price;
 	private int location_id;
 
 	public int getLocation_id() {
@@ -58,12 +58,12 @@ public class Events {
 		this.time = time;
 	}
 
-	public int getPriceId() {
-		return priceId;
+	public Long getPrice() {
+		return price;
 	}
 
-	public void setPriceId(int priceId) {
-		this.priceId = priceId;
+	public void setPrice(Long price) {
+		this.price = price;
 	}
 
 	public Long getId() {
