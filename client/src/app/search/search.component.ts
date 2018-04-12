@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FormControl } from '@angular/forms';
 import { Events } from '../events';
+=======
+>>>>>>> master
 
 @Component({
   selector: 'app-search',
@@ -9,6 +12,7 @@ import { Events } from '../events';
 })
 export class SearchComponent implements OnInit {
 
+<<<<<<< HEAD
   myControl: FormControl = new FormControl();
 
   options = [
@@ -41,6 +45,8 @@ export class SearchComponent implements OnInit {
     this.step--;
   }
 
+=======
+>>>>>>> master
   constructor() { }
 
   ngOnInit() {
