@@ -35,7 +35,7 @@ export class EventService {
     
     username: user.username,
     email_address: user.email_address,
-    
+    password: user.password
     
   }
   const headers = this._headers;

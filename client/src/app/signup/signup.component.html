@@ -20,8 +20,7 @@
          <div class="mv3">
 
              <label class="db fw6 lh-copy f6" htmlFor="password">Password</label>
-             <input class="b pa2 input-reset ba bg-transparent hover-bg-dark-blue hover-white w-100" type="password" name="password" id="password"
-             />
+             <input class="b pa2 input-reset ba bg-transparent hover-bg-dark-blue hover-white w-100" type="password" name="password" id="password" [(ngModel)]="model.password" #name="ngModel" required />
            </div>
          </fieldset>
          <div class="">
