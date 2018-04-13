@@ -1,2 +1,20 @@
-<app-nav></app-nav>
-<router-outlet></router-outlet>
+<nav class="dt w-100 code border-box pa3 ph5-ns">
+  <a class="dtc v-mid mid-gray code link dim w-25" routerLink="/" title="Home">
+    Eventsnap
+  </a>
+  <div class="dtc v-mid w-75 tr">
+    <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" *ngIf="auth.isAuthenticated()"
+    routerLink="/profile">
+      Profile</a>
+    <a class="link dim dark-gray f6 f5-ns dib mr3 mr4-ns" *ngIf="!auth.isAuthenticated()"
+    (click)="auth.login()">
+      Log In</a>
+    <a class="link dim dark-gray f6 f5-ns dib" *ngIf="auth.isAuthenticated()"
+    (click)="auth.logout()">
+      Log Out</a>
+  </div>
+</nav>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
