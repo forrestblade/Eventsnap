@@ -67,6 +67,12 @@ public class Events {
 
 	public Long getBusinessesId() {
 		return businessesId;
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
+		this.price = price;
 	}
 
 	public void setBusinessesId(Long businessesId) {

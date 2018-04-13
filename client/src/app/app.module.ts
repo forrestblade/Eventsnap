@@ -1,60 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
-
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatAutocompleteModule, MatSliderModule, MatCheckboxModule, MatMenuModule, MatExpansionModule, MatRadioModule } from '@angular/material';
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
+import { HomeComponent } from './home/home.component';
+
+import { ROUTES } from './app.routes';
+
+import { AuthService } from './auth/auth.service';
+import { ProfileComponent } from './profile/profile.component';
+import { EventsComponent } from './events/events.component';
 import { SearchComponent } from './search/search.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LandingpageComponent } from './landingpage/landingpage.component';
-import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
-
-import { UserComponent } from './user/user.component';
-import { EventService } from './event.service';
+import {EventService} from './event.service';
 import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
+    HomeComponent,
+    ProfileComponent,
+    EventsComponent,
     SearchComponent,
-    LandingpageComponent,
-    SignupComponent,
-    LoginComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
     FormsModule,
-    MatSliderModule,
-    MatCheckboxModule,
-    MatMenuModule,
-    MatExpansionModule,
-    MatRadioModule,
-    HttpClientModule
- 
-
+    HttpModule,
+    HttpClientModule,
+    RouterModule.forRoot(ROUTES)
   ],
-  providers: [EventService],
+  providers: [EventService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
