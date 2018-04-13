@@ -13,6 +13,8 @@ import { AuthService } from './auth/auth.service';
 import { ProfileComponent } from './profile/profile.component';
 import { EventsComponent } from './events/events.component';
 import { SearchComponent } from './search/search.component';
+import {EventService} from './event.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { SearchComponent } from './search/search.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [AuthService],
+  providers: [EventService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
