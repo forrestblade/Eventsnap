@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Events } from '../events';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-search',
@@ -7,6 +9,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+
+  // constructor(private eventService: EventService) {}
 
   myControl: FormControl = new FormControl();
 
@@ -18,6 +22,15 @@ export class SearchComponent implements OnInit {
    ];
 
    step = 0;
+   events: Array<Events>
+   model: any = {};
+
+   loading = false;
+   
+   addEvent(events: Events){
+     console.log(events)
+    //  this.eventService.addEvent(event).subscribe();
+   }
 
   setStep(index: number) {
     this.step = index;
