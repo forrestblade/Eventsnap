@@ -23,14 +23,17 @@ public class Events {
 	private String name;
 	private Date date;
 	private Time time;
-	private int priceId;
-	private int location_id;
+	private Long businessesId;
+	private Long price;
+	private Long location_id;
+	
+	
 
-	public int getLocation_id() {
+	public Long getLocation_id() {
 		return location_id;
 	}
 
-	public void setLocation_id(int location_id) {
+	public void setLocation_id(Long location_id) {
 		this.location_id = location_id;
 	}
 
@@ -58,16 +61,26 @@ public class Events {
 		this.time = time;
 	}
 
-	public int getPriceId() {
-		return priceId;
-	}
-
-	public void setPriceId(int priceId) {
-		this.priceId = priceId;
-	}
-
 	public Long getId() {
 		return id;
 	}
+
+	public Long getBusinessesId() {
+		return businessesId;
+	}
+
+	public void setBusinessesId(Long businessesId) {
+		this.businessesId = businessesId;
+	}
+
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
+		this.price = price;
+	}
+
+
 
 }
