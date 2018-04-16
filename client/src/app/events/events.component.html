@@ -27,7 +27,7 @@
         </div>
         <div class="mt3 form-group">
               <label class="db fw4 lh-copy f6" for="Location">What time?</label>
-              <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" name="time">
+              <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" name="time" id="time" [(ngModel)]="model.time" #name="ngModel"  required>
         </div>
         <div class="mt3 form-group">
               <label class="db fw4 lh-copy f6" for="Location">Where?</label>
@@ -39,14 +39,19 @@
         </div>
         
       </fieldset>
-      <button type="submit" value="Event" >Event submit</button>
+    
       <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Create Event"></div>
     </form>
   </article>
 
-  <div *ngFor="let events of events">
-    
-      <h3>{{events.name}} <br> {{events.date}}  <br> {{events.price}} <!-- <br> {{events.time}} --></h3>
-    
-    
-  </div>
+  <section *ngFor="let events of events" class="tc pa3 pa5-ns">
+    <article class="hide-child relative ba b--black-20 mw5 center">
+      <img src="https://cataas.com/cat" class="db" alt="Photo of Jesse Grant" />
+      <div class="pa2 bt b--black-20">
+        <a class="f6 db link dark-blue hover-blue" href="#">{{events.name}}</a>
+        <p class="f6 gray mv1">{{events.date | date : 'shortDate'}}<br>{{events.time | date: 'shortTime'}}</p>
+        <a class="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" href="#">${{events.price}}</a>
+      </div>
+      <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#"></a>
+    </article>
+  </section>
