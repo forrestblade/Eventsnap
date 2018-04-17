@@ -51,17 +51,33 @@ export class EventService {
  
   }
 
+//   convertTo24Hour(time) {
+//     var hours = parseInt(time.substr(0, 2));
+//     if(time.indexOf('PM') != -1 && hours == 12) {
+//         time = time.replace('12', '0');
+//     }
+//     if(time.indexOf('PM')  != -1 && hours < 12) {
+//         time = time.replace(hours, (hours + 12));
+//     }
+//     return time.replace(/(AM|PM)/, '');
+// }
+
+  
+
   addEvent(events: Events){
     console.log(events)
+    let seconds = ":00";
     let event = {
       name: events.name,
       date: events.date,
-      // time: events.time,
+      time: (events.date + "T" + events.time),
       price: events.price
     }
 
+    
+
     const headers = this._headers;
-    let eventJson = JSON.stringify(events);
+    let eventJson = JSON.stringify(event);
     console.log(eventJson);
     return this.http.post("http://localhost:8080/events", eventJson, {headers: headers})
   }
