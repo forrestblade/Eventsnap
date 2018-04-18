@@ -22,12 +22,8 @@ public class Events {
 	private Long id;
 	private String name;
 	private Date date;
-<<<<<<< HEAD
 	private Date time;
-=======
-	private Time time;
 	private Long businessesId;
->>>>>>> master
 	private Long price;
 	private Long location_id;
 	
