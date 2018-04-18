@@ -15,6 +15,9 @@ export class EventsComponent implements OnInit {
   model: any = {};
   loading = false;
 
+ 
+
+
   addEvent(events: Events){
     console.log(events)
     this.eventService.addEvent(events).subscribe();
@@ -28,6 +31,7 @@ export class EventsComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     this.eventService.addEvent(this.model).subscribe();
+    
   }
 
   

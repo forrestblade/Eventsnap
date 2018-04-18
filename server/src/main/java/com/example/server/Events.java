@@ -22,7 +22,7 @@ public class Events {
 	private Long id;
 	private String name;
 	private Date date;
-	private Time time;
+	private Date time;
 	private Long businessesId;
 	private Long price;
 	private Long location_id;
@@ -53,11 +53,11 @@ public class Events {
 		this.date = date;
 	}
 
-	public Time getTime() {
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(Time time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 
@@ -67,13 +67,9 @@ public class Events {
 
 	public Long getBusinessesId() {
 		return businessesId;
-	public Long getPrice() {
-		return price;
 	}
-
-	public void setPrice(Long price) {
-		this.price = price;
-	}
+	
+	
 
 	public void setBusinessesId(Long businessesId) {
 		this.businessesId = businessesId;
