@@ -2,7 +2,7 @@ a {
   cursor: pointer;
 }
 
-.ba {
+/* .ba {
   border-style: solid;
   border-width: 1px;
 }
@@ -23,7 +23,7 @@ a {
 .br--top {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
+} */
 
 .lh-copy {
   line-height: 1.5;
@@ -67,6 +67,10 @@ a {
 
 .f4 {
   font-size: 1.25rem;
+}
+
+.b {
+  font-weight: bold;
 }
 
 .f6 {
