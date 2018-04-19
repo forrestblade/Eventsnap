@@ -4,6 +4,7 @@ import { RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Users } from './users';
 import { Events } from './events';
+import { UserPlan } from './userplan';
 
 
 @Injectable()
@@ -21,6 +22,9 @@ export class EventService {
   }
   getEvents(): Observable<Events[]> {
     return this.http.get<Events[]>("http://localhost:8080/events");
+  }
+  getUserPlan(): Observable<UserPlan[]> {
+    return this.http.get<UserPlan[]>("http://localhost:8080/userplan");
   }
 
   deleteUser(user: Users): Observable<Users> {
@@ -50,23 +54,10 @@ export class EventService {
     return this.http.post(this.serviceEndpoint, userJson,{ headers : headers } )
  
   }
-
-//   convertTo24Hour(time) {
-//     var hours = parseInt(time.substr(0, 2));
-//     if(time.indexOf('PM') != -1 && hours == 12) {
-//         time = time.replace('12', '0');
-//     }
-//     if(time.indexOf('PM')  != -1 && hours < 12) {
-//         time = time.replace(hours, (hours + 12));
-//     }
-//     return time.replace(/(AM|PM)/, '');
-// }
-
   
 
   addEvent(events: Events){
     console.log(events)
-    let seconds = ":00";
     let event = {
       name: events.name,
       date: events.date,
@@ -74,12 +65,25 @@ export class EventService {
       price: events.price
     }
 
-    
-
     const headers = this._headers;
     let eventJson = JSON.stringify(event);
     console.log(eventJson);
     return this.http.post("http://localhost:8080/events", eventJson, {headers: headers})
+  }
+
+  addUserPlan(userPlan: UserPlan){
+    console.log(userPlan)
+    let userPlans = {
+      date: userPlan.date,
+      start_time: (userPlan.date + "T" + userPlan.start_time),
+      end_time: (userPlan.date + "T" + userPlan.end_time),
+      budget: userPlan.budget
+    }
+
+    const headers = this._headers;
+    let userPlanJson = JSON.stringify(userPlans);
+    console.log(userPlanJson);
+    return this.http.post("http://localhost:8080/userplan", userPlanJson, {headers: headers})
   }
  
  

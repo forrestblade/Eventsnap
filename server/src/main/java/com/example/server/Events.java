@@ -22,12 +22,8 @@ public class Events {
 	private Long id;
 	private String name;
 	private Date date;
-<<<<<<< HEAD
 	private Date time;
-=======
-	private Time time;
 	private Long businessesId;
->>>>>>> master
 	private Long price;
 	private Long location_id;
 	
@@ -72,13 +68,7 @@ public class Events {
 	public Long getBusinessesId() {
 		return businessesId;
 	}
-	
-	
-
-	public void setBusinessesId(Long businessesId) {
-		this.businessesId = businessesId;
-	}
-
+		
 	public Long getPrice() {
 		return price;
 	}
@@ -86,6 +76,13 @@ public class Events {
 	public void setPrice(Long price) {
 		this.price = price;
 	}
+	
+	
+
+	public void setBusinessesId(Long businessesId) {
+		this.businessesId = businessesId;
+	}
+
 
 
 
