@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { NouisliderModule } from 'ng2-nouislider';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,8 +15,9 @@ import { AuthService } from './auth/auth.service';
 import { ProfileComponent } from './profile/profile.component';
 import { EventsComponent } from './events/events.component';
 import { SearchComponent } from './search/search.component';
-import {EventService} from './event.service';
+import { EventService } from './event.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PlanComponent } from './plan/plan.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,15 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     EventsComponent,
     SearchComponent,
+    PlanComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
+    NouisliderModule,
+    
     RouterModule.forRoot(ROUTES)
   ],
   providers: [EventService, AuthService],
