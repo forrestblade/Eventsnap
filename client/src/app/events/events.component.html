@@ -1,11 +1,13 @@
-<header class="tc avenir ph4">
-    <h1 class="f3 f2-m f1-l fw2 black-90 mv3">
+<div class="vh-100 dt w-100 tc bg-dark-gray white cover" style="background:url(https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat center;">
+
+  <!-- <header class="tc avenir ph4"> -->
+    <!-- <h1 class="f3 f2-m f1-l fw2 black-90 mv3">
       Create an Event
-    </h1>
-    <h2 class="f5 f4-m f3-l fw2 black-50 mt0 lh-copy">
-      This is where users can create events if they are logged in and submit them to the database for community use.
-    </h2>
-  </header>
+    </h1> -->
+    <!-- <h2 class="f5 f4-m f3-l fw2 black-50 mt0 lh-copy"> -->
+      <!-- Create events here. -->
+    <!-- </h2> -->
+  <!-- </header> -->
 
   <!-- private String name;
 	private Date date;
@@ -13,10 +15,39 @@
 	private int priceId;
 	private int location_id; -->
 
-<article class="pa4 tc avenir black-80">
-    <form action="/events" method="post" (ngSubmit)="onSubmit()" accept-charset="utf-8">
-      <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-        <legend class="ph0 mh0 fw6 clip">Create Event</legend>
+  <article class="tc center bg-blue-gray mw5 mw6-ns br3 hidden ba b--black-10 mv4">
+    <h1 class="f2  br3 br--top black-60 mv0 pv2 ph3">Create An Event</h1>
+    <article class="pa4 tc avenir black-80">
+      <form action="/events" method="post" (ngSubmit)="onSubmit()" accept-charset="utf-8">
+        <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+          <legend class="ph0 mh0 fw6 clip">Create Event</legend>
+          <!-- <div class="mt3"> -->
+          <div class="tc mt3 form-group">
+            <label class="db fw4 lh-copy f6" for="Location">Name</label>
+            <input class="pa2 input-reset ba bg-solid-white w-100 measure form-control" type="text" name="name" [(ngModel)]="model.name"
+              #name="ngModel" required>
+          </div>
+          <div class="mt3 form-group">
+            <label class="db fw4 lh-copy f6" for="date">When?</label>
+            <input class="pa2 input-reset ba bg-solid-white w-100 measure form-control" type="date" name="date" [(ngModel)]="model.date"
+              #name="ngModel" required>
+          </div>
+          <div class="mt3 form-group">
+            <label class="db fw4 lh-copy f6" for="Location">What time?</label>
+            <input class="pa2 input-reset ba bg-solid-white w-100 measure form-control" type="time" name="time">
+          </div>
+          <div class="mt3 form-group">
+            <label class="db fw4 lh-copy f6" for="Location">Where?</label>
+            <input class="pa2 input-reset ba bg-solid-white w-100 measure form-control" type="text" name="location">
+          </div>
+          <div class="mt3 form-group">
+            <label class="db fw4 lh-copy f6" for="Location">How much?</label>
+            <input class="pa2 input-reset ba bg-solid-white w-100 measure form-control" type="number" name="price" [(ngModel)]="model.price"
+              #name="ngModel" required>
+          </div>
+
+        </fieldset>
+        <!-- <button type="submit" value="Event">Event submit</button> -->
         <div class="mt3">
             <div class="mt3 form-group">
               <label class="db fw4 lh-copy f6" for="Location">Name</label>
@@ -38,7 +69,7 @@
               <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="number" name="price"  [(ngModel)]="model.price" #name="ngModel"  required>
         </div>
         
-      </fieldset>
+      <!-- </fieldset> -->
     
       <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Create Event"></div>
     </form>
