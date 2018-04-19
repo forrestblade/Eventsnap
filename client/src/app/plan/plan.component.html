@@ -84,14 +84,14 @@
         </div>
         <div class="mt3 form-group">
           <label class="db fw4 lh-copy f6" for="Location">What time?</label>
-          <nouislider [connect]="true" [min]="0" [max]="24" [step]="0.5" [tooltips]="true" type="time" name="time" id="time" [(ngModel)]="someRange" #name="ngModel" required></nouislider>
-          <div class="form-control" type="time" name="start_time"  [(ngModel)]="model.start_time" #name="ngModel"  required><h3>Start Time: {{convertToTimeMin(someRange)}}</h3></div>
-          <div class="form-control" type="time" name="end_time"  [(ngModel)]="model.end_time" #name="ngModel"  required><h3>End Time: {{convertToTimeMax(someRange)}}</h3></div>
+          <nouislider [connect]="true" [min]="0" [max]="24" [step]="0.5" type="time" name="time" id="time" [(ngModel)]="someRange" #name="ngModel" required></nouislider>
+          <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" ng-readonly="checked" name="start_time" value= "{{convertToTimeMin(someRange)}}"  [(ngModel)]="model.start_time" #name="ngModel"  required> -->
+          <h3 type="time">Start Time: {{convertToTimeMin(someRange)}}</h3>
+          <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" ng-readonly="checked" name="end_time" value= "{{convertToTimeMax(someRange)}}" [(ngModel)]="model.end_time" #name="ngModel"  required> -->
+          <h3 type="time">End Time: {{convertToTimeMax(someRange)}}</h3>
           
           <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" name="time" id="time" [(ngModel)]="model.time" #name="ngModel"  required> -->
         </div>
-        <!-- <h3>Start Time: {{timeConstraints())}}</h3> -->
-        <!-- <h3>End Time: {{convertToTimeMax(someRange)}}</h3> -->
 
         
       </fieldset>

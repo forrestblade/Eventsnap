@@ -66,7 +66,7 @@ export class PlanComponent implements OnInit {
     
 
 
-    addUserPlan(userPlan: UserPlan){
+      addUserPlan(userPlan: UserPlan){
         console.log(userPlan)
         this.eventService.addUserPlan(userPlan).subscribe();
       }
@@ -76,18 +76,18 @@ export class PlanComponent implements OnInit {
         .subscribe(data => this.userPlan = data);
       }
 
-      setStartTime(sliderTime_min) {
-        this.model.start_time = moment(this.sliderTime_min, ["HH:mm aa"]).format("HH:mm:ss");
-      }
+      // setStartTime(sliderTime_min) {
+      //   this.model.start_time = moment(this.sliderTime_min, ["hh:mm a"]).format("HH:mm:ss");
+      // }
       
-      setEndTime(sliderTime_max) {
-        this.model.end_time = moment(this.sliderTime_max, ["HH:mm aa"]).format("HH:mm:ss");
-      }
+      // setEndTime(sliderTime_max) {
+      //   this.model.end_time = moment(this.sliderTime_max, ["hh:mm a"]).format("HH:mm:ss");
+      // }
 
       onSubmit() {
         this.loading = true;
-        this.sliderTime_min.setStartTime();
-        this.sliderTime_max.setEndTime();
+        this.model.end_time = moment(this.sliderTime_max, ["hh:mm a"]).format("HH:mm:ss");
+        this.model.start_time = moment(this.sliderTime_min, ["hh:mm a"]).format("HH:mm:ss");        
         this.eventService.addUserPlan(this.model).subscribe();
         
       }
@@ -98,7 +98,6 @@ export class PlanComponent implements OnInit {
 
     ngOnInit() {
         this.getUserPlan();
-        console.log(this.sliderTime_min)
     }
 
 }
