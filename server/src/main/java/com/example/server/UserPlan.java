@@ -20,17 +20,18 @@ public class UserPlan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long budget_id;
+	private Long budget;
 	private Long location_id;
 	private Long users_id;
 	private Date date;
-	private Time time;
+	private Date start_time;
+	private Date end_time;
 	
-	public Long getBudget_id() {
-		return budget_id;
+	public Long getBudget() {
+		return budget;
 	}
-	public void setBudget_id(Long budget_id) {
-		this.budget_id = budget_id;
+	public void setBudget(Long budget) {
+		this.budget = budget;
 	}
 	public Long getLocation_id() {
 		return location_id;
@@ -53,15 +54,19 @@ public class UserPlan {
 		this.date = date;
 	}
 	
-	public Time getTime() {
-		return time;
-	}
-	
 	//time has to be HH:MM:SS to post
-	public void setTime(Time time) {
-		this.time = time;
+	public Date getStart_time() {
+		return start_time;
 	}
-	
+	public void setStart_time(Date start_time) {
+		this.start_time = start_time;
+	}
+	public Date getEnd_time() {
+		return end_time;
+	}
+	public void setEnd_time(Date end_time) {
+		this.end_time = end_time;
+	}
 	public Long getId() {
 		return id;
 	}
