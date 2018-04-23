@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../auth/auth.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +10,10 @@ import { AuthService } from './../auth/auth.service';
 export class HomeComponent implements OnInit {
 
   constructor(public auth: AuthService) { }
+  
 
+  title: String = "happenin'";
+  tagline: String = "find something to do, wherever you are"
   ngOnInit() {
   }
 
