@@ -2,6 +2,7 @@ package com.example.server;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,14 @@ public class UserPlan {
 	private Date date;
 	private Date start_time;
 	private Date end_time;
+	private List tags[];
 	
+	public List[] getTags() {
+		return tags;
+	}
+	public void setTags(List[] tags) {
+		this.tags = tags;
+	}
 	public Long getBudget() {
 		return budget;
 	}

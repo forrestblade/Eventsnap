@@ -6,4 +6,5 @@ export class UserPlan {
     start_time: Time;
     end_time: Time;
     budget: number;
+    tags: Array<string>;
 }

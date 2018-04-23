@@ -77,7 +77,8 @@ export class EventService {
       date: userPlan.date,
       start_time: (userPlan.date + "T" + userPlan.start_time),
       end_time: (userPlan.date + "T" + userPlan.end_time),
-      budget: userPlan.budget
+      budget: userPlan.budget,
+      tags: userPlan.tags
     }
 
     const headers = this._headers;
