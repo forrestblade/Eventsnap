@@ -64,6 +64,8 @@
               <label class="db fw4 lh-copy f6" for="Location">Where?</label>
               <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="text" name="location" >
         </div>
+
+
         <div class="mt3 form-group">
               <label class="db fw4 lh-copy f6" for="Location">How much?</label>
               <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="number" name="price"  [(ngModel)]="model.price" #name="ngModel"  required>
@@ -80,9 +82,9 @@
       <img src="https://cataas.com/cat" class="db" alt="Photo of Jesse Grant" />
       <div class="pa2 bt b--black-20">
         <a class="f6 db link dark-blue hover-blue" href="#">{{events.name}}</a>
-        <p class="f6 gray mv1">{{events.date | date : 'shortDate'}}<br>{{events.time | date: 'shortTime'}}</p>
+        <p class="f6 gray mv1">{{events.date | date : 'shortDate'}}<br>{{events.time | date: 'shortTime'}}<br>{{events.location_id}}</p>
         <a class="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" href="#">${{events.price}}</a>
       </div>
-      <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#"></a>
+        <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#"></a>
     </article>
   </section>

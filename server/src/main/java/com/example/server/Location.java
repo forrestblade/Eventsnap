@@ -20,6 +20,8 @@ public class Location {
 	private String city;
 	private String state;
 	private int zipCode;
+	private float lat;
+	private float lng;
 
 	public String getCity() {
 		return city;
@@ -47,6 +49,22 @@ public class Location {
 
 	public Long getId() {
 		return id;
+	}
+
+	public float getLat() {
+		return lat;
+	}
+
+	public void setLat(float lat) {
+		this.lat = lat;
+	}
+
+	public float getLng() {
+		return lng;
+	}
+
+	public void setLng(float lng) {
+		this.lng = lng;
 	}
 
 }

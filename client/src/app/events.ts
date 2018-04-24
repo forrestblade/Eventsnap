@@ -6,5 +6,6 @@ export class Events {
     date: Date;
     time: Time;
     price: number;
+    location_id:number;
 
 }
