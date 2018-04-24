@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { Events } from '../events';
+import { Locations } from '../location';
 
 @Component({
   selector: 'app-events',
@@ -14,7 +15,7 @@ export class EventsComponent implements OnInit {
   events: Array<Events>
   model: any = {};
   loading = false;
-
+ 
  
 
 
@@ -27,6 +28,7 @@ export class EventsComponent implements OnInit {
     this.eventService.getEvents()
     .subscribe(data => this.events = data);
   }
+  
 
   onSubmit() {
     this.loading = true;
