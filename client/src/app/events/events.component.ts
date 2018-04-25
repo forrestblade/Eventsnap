@@ -15,10 +15,13 @@ export class EventsComponent implements OnInit {
   events: Array<Events>
   model: any = {};
   loading = false;
- 
+ locations:Array<Locations>
  
 
-
+addLocation(locations:Locations){
+  console.log(locations)
+  this.eventService.addLocation(locations).subscribe();
+}
   addEvent(events: Events){
     console.log(events)
     this.eventService.addEvent(events).subscribe();
@@ -33,6 +36,7 @@ export class EventsComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     this.eventService.addEvent(this.model).subscribe();
+    this.eventService.addLocation(this.model).subscribe();
     
   }
 

@@ -15,7 +15,8 @@
           <div class="mt3 form-group">
             <div class="mt3 form-group">
               <label class="db fw4 lh-copy f6" for="Location">Where?</label>
-              <input class="pa2 input-reset dark-green ba w-100 measure form-control" type="text" name="location">
+              <input class="pa2 input-reset dark-green ba w-100 measure form-control" type="text" name="address" [(ngModel)]="model.address"
+              #name="ngModel" required>
             </div>
             <div class="mt3 form-group">
               <label class="db fw4 lh-copy f6" for="Location">How much?</label>
@@ -23,12 +24,13 @@
               #name="ngModel" required>
             </div>
             <label class="db fw4 lh-copy f6" for="date">When?</label>
-            <input class="pa2 input-reset dark-green tc ba w-100 measure form-control" type="date" name="date" [(ngModel)]="model.date"
+            <input class="input-reset dark-green tc ba w-100 measure form-control" type="date" name="date" [(ngModel)]="model.date"
               #name="ngModel" required>
           </div>
           <div class="mt3 form-group">
             <label class="db fw4 lh-copy f6" for="Location">What time?</label>
-            <input class="pa2 input-reset dark-green ba w-100 measure form-control" type="time" name="time">
+            <input class="input-reset dark-green ba w-100 measure form-control" type="time" name="time" [(ngModel)]="model.time"
+            #name="ngModel" required>
           </div>
 
           <div class="mt3"><input class="b ph3 pv2 input-reset ba b--dark-green br3 bg-transparent dark-green grow pointer f6" type="submit" value="Create Event"></div>

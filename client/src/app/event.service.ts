@@ -67,7 +67,7 @@ export class EventService {
       date: events.date,
       time: (events.date + "T" + events.time),
       price: events.price,
-      location_id:events.location_id
+      location_id:events.location_id,
     }
 
     const headers = this._headers;
@@ -96,7 +96,10 @@ export class EventService {
     let location = {
       city: locations.city,
       state: locations.state,
-      zip_code: locations.zip_code
+      zip_code: locations.zip_code,
+      address:locations.address,
+      lat:locations.lat,
+      lng:locations.lng
     }
 
     const headers = this._headers;
