@@ -1,14 +1,11 @@
 import { Component, OnInit, NgModule, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { EventService } from '../event.service';
 import { Events } from '../events';
-<<<<<<< HEAD
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-=======
 import { Locations } from '../location';
->>>>>>> master
 
 @Component({
   selector: 'app-events',
