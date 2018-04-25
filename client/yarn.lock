@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@agm/core@^1.0.0-beta.2":
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@agm/core/-/core-1.0.0-beta.2.tgz#da15c0a5e86fe9e1178f14c36a3e0ffc14f9ad77"
+
 "@angular-devkit/build-optimizer@0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-optimizer/-/build-optimizer-0.3.2.tgz#77d4d1e4fcd09575f0200e2d6d21c1a3f995096f"
@@ -193,6 +197,10 @@
     rxjs "^5.5.6"
     semver "^5.3.0"
     semver-intersect "^1.1.2"
+
+"@types/googlemaps@^3.30.8":
+  version "3.30.8"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.30.8.tgz#cc6ab90f79f3a8b799860ea1d70252a221af702e"
 
 abbrev@1:
   version "1.1.1"

@@ -1,6 +1,6 @@
 <div class="flex-ns flex-column-m vh-100 w-100">
   <div class="f1 w-25-ns ma2 w-100-m mt5-ns mt2-m blue">
-    <form class="pa4">
+    <form class="pa4" action="/search" method="post" (ngSubmit)="onSubmit()">
       <fieldset id="search" class="f6">
         <legend class="fw7 mb2">Search</legend>
         <div class="flex items-center mb2">
@@ -41,7 +41,8 @@
 
         <div class="mt3 form-group">
           <label class="db fw4 lh-copy f6" for="Location">Where?</label>
-          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="text" name="location">
+          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="text" name="location" id="location"  #search >
+          <!-- [formControl]="searchControl" -->
         </div>
         <div class="mt3 form-group">
           <label class="db fw4 lh-copy f6" for="Location">What's your budget?</label>
