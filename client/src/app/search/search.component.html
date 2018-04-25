@@ -1,5 +1,13 @@
 <div class="flex-ns flex-column-m vh-100 w-100">
   <div class="f1 w-25-ns ma2 w-100-m mt5-ns mt2-m blue">
+    <div class="flex pa5">
+      <button (click)="toggleMap()" class="f5 ba br3 br--left " id="mapView">
+        {{buttonName1}}
+      </button>
+      <button (click)="toggleList()" class="f5 ba br3 br--right" id="list">
+        {{buttonName2}}
+      </button>
+    </div>
     <form class="pa4" action="/search" method="post" (ngSubmit)="onSubmit()">
       <fieldset id="search" class="f6">
         <legend class="fw7 mb2">Search</legend>
@@ -68,14 +76,7 @@
     </form>
   </div>
   <div class="f1 w-75-ns w-100-s mt5-ns mt2-m tc gray ">
-    <div class="flex">
-      <button (click)="toggleMap()" class="f5 ba br3 br--left " id="mapView">
-        {{buttonName1}}
-      </button>
-      <button (click)="toggleList()" class="f5 ba br3 br--right" id="list">
-        {{buttonName2}}
-      </button>
-    </div>
+    
 
 
 <div [hidden]='!hide' id="map" class="google-map"></div>
