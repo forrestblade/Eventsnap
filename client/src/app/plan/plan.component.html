@@ -1,109 +1,153 @@
-<header class="tc avenir ph4">
-    <h1 class="f3 f2-m f1-l fw2 black-90 mv3">
-      Create a Plan
-    </h1>
-    <h2 class="f5 f4-m f3-l fw2 black-50 mt0 lh-copy">
-      This is where users can create plans if they are logged in and submit them to the database for community use.
-    </h2>
-  </header>
+<section class="vh-100 dt w-100">
 
-<article class="pa4 tc avenir black-80">
-    <form action="/events" method="post" (ngSubmit)="onSubmit()" accept-charset="utf-8">
-      <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-        <legend class="ph0 mh0 fw6 clip">Create Plan</legend>
-          <div class="mt3">
-            <form class="pa4">
-             <fieldset id="tags" class="bn">
-                    <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="text" name="tags" [(ngModel)]="model.tags" #name="ngModel" required> -->
-                <legend class="fw7 mb2">Pick some tags!</legend>
-                  <div class="mw9 center ph3-ns">
-                    <div class="cf ph2-ns">
-                      <div class="fl w-100 w-third-ns pa2">
-                        <div class="bg-white pv4">
-                               <!--column 1-->
-                          <div class="flex items-center mb2">
-                            <input class="mr2" type="checkbox" id="music" value="music">
-                            <label for="music" class="lh-copy">Music</label>
-                          </div>
-                          <div class="flex items-center mb2">
-                            <input class="mr2" type="checkbox" id="food" value="food">
-                            <label for="food" class="lh-copy">Food</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="fl w-50 w-third-ns pa2">
-                        <div class="bg-white pv4">
-                            <!--column 2-->
-                          <div class="flex items-center mb2">
-                              <input class="mr2" type="checkbox" id="drink" value="drink">                              <label for="drink" class="lh-copy">Drink</label>
-                          </div>
-                          <div class="flex items-center mb2">
-                            <input class="mr2" type="checkbox" id="classes" value="classes">
-                            <label for="classes" class="lh-copy">Classes</label>
+  <header class="tc avenir mt6 ph4">
+      <h1 class="f3 f2-m f1-l fw2 black-90 mv3">
+        Create a Plan
+      </h1>
+      <h2 class="f5 f4-m f3-l fw2 black-50 mt0 lh-copy">
+        This is where users can create plans if they are logged in and submit them to the database for community use.
+      </h2>
+    </header>
+  
+  <article class="pa4 tc avenir black-80">
+      <form action="/events" method="post" (ngSubmit)="onSubmit()" accept-charset="utf-8">
+        <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+          <legend class="ph0 mh0 fw6 clip">Create Plan</legend>
+            <div class="mt3">
+              <form class="pa4">
+               <fieldset id="tags" class="bn">
+                      <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="text" name="tags" [(ngModel)]="model.tags" #name="ngModel" required> -->
+                  <legend class="fw7 mb2">Pick some tags!</legend>
+                    <div class="mw9 center ph3-ns">
+                      <div class="cf ph2-ns">
+                         <div class="fl w-100 w-third-ns pa2">
+                          <div class="bg-white pv4">
+                                 <!--column 1-->
+                            <div class="flex items-center mb2">
+                              <input class="mr2" type="checkbox" id="music" value="music">
+                              <label for="music" class="lh-copy">Music</label>
                             </div>
-                          <div class="flex items-center mb2">
-                            <input class="mr2" type="checkbox" id="art" value="art">
-                            <label for="art" class="lh-copy">Art</label>
+                            <div class="flex items-center mb2">
+                              <input class="mr2" type="checkbox" id="food" value="food">
+                              <label for="food" class="lh-copy">Food</label>
+                            </div>
                           </div>
-                          
                         </div>
-                      </div>
-                      <div class="fl w-50 w-third-ns pa2">
-                        <div class="bg-white pv4">
-                            <!--column 3-->
-                          <div class="flex items-center mb2">                              <input class="mr2" type="checkbox" id="parties" value="parties">
-                            <label for="parties" class="lh-copy">Parties</label>
+                        <div class="fl w-50 w-third-ns pa2">
+                          <div class="bg-white pv4">
+                              <!--column 2-->
+                            <div class="flex items-center mb2">
+                                <input class="mr2" type="checkbox" id="drink" value="drink">                              
+                                <label for="drink" class="lh-copy">Drink</label>
+                            </div>
+                            <div class="flex items-center mb2">
+                              <input class="mr2" type="checkbox" id="classes" value="classes">
+                              <label for="classes" class="lh-copy">Classes</label>
+                              </div>
+                            <div class="flex items-center mb2">
+                              <input class="mr2" type="checkbox" id="art" value="art">
+                              <label for="art" class="lh-copy">Art</label>
+                            </div>
+                            
                           </div>
-                          <div class="flex items-center mb2">
-                            <input class="mr2" type="checkbox" id="sports" value="sports">
-                            <label for="sports" class="lh-copy">Sports</label>
+                        </div>
+                        <div class="fl w-50 w-third-ns pa2">
+                          <div class="bg-white pv4">
+                              <!--column 3-->
+                            <div class="flex items-center mb2">                              
+                              <input class="mr2" type="checkbox" id="parties" value="parties">
+                              <label for="parties" class="lh-copy">Parties</label>
+                            </div>
+                            <div class="flex items-center mb2">
+                              <input class="mr2" type="checkbox" id="sports" value="sports">
+                              <label for="sports" class="lh-copy">Sports</label>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </fieldset>
-              </form>
-              
-              
-              
-            </div>
-
-        <div class="mt3 form-group">
-              <label class="db fw4 lh-copy f6" for="date">When?</label>
-              <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="date" name="date" [(ngModel)]="model.date" #name="ngModel"  required>
-        </div>
-        
-        <div class="mt3 form-group">
-              <label class="db fw4 lh-copy f6" for="Location">Where?</label>
-              <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="text" name="location" >
-        </div>
-        <div class="mt3 form-group">
-              <label class="db fw4 lh-copy f6" for="Location">What's your budget?</label>
-              <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="number" name="budget"  [(ngModel)]="model.budget" #name="ngModel"  required>
-        </div>
-        <div class="mt3 form-group">
-          <label class="db fw4 lh-copy f6" for="Location">What time?</label>
-          <nouislider [connect]="true" [min]="0" [max]="24" [step]="0.5" type="time" name="time" id="time" [(ngModel)]="someRange" #name="ngModel" required></nouislider>
-          <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" ng-readonly="checked" name="start_time" value= "{{convertToTimeMin(someRange)}}"  [(ngModel)]="model.start_time" #name="ngModel"  required> -->
-          <h3 type="time">Start Time: {{convertToTimeMin(someRange)}}</h3>
-          <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" ng-readonly="checked" name="end_time" value= "{{convertToTimeMax(someRange)}}" [(ngModel)]="model.end_time" #name="ngModel"  required> -->
-          <h3 type="time">End Time: {{convertToTimeMax(someRange)}}</h3>
+                  </fieldset>
+                </form>
+                
+                
+                
+              </div>
+  
+          <div class="mt3 form-group">
+                <label class="db fw4 lh-copy f6" for="date">When?</label>
+                <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="date" name="date" [(ngModel)]="model.date" #name="ngModel"  required>
+          </div>
           
-          <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" name="time" id="time" [(ngModel)]="model.time" #name="ngModel"  required> -->
-        </div>
-
+          <div class="mt3 form-group">
+                <label class="db fw4 lh-copy f6" for="Location">Where?</label>
+                <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="text" name="location" >
+          </div>
+          <div class="mt3 form-group">
+                <label class="db fw4 lh-copy f6" for="Location">What's your budget?</label>
+                <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="number" name="budget"  [(ngModel)]="model.budget" #name="ngModel"  required>
+          </div>
+          <div class="mt3 form-group">
+            <label class="db fw4 lh-copy f6" for="Location">What time?</label>
+            <nouislider [connect]="true" [min]="0" [max]="24" [step]="0.5" type="time" name="time" id="time" [(ngModel)]="someRange" #name="ngModel" required></nouislider>
+            <h3 type="time">Start Time: {{convertToTimeMin(someRange)}}</h3>
+            <h3 type="time">End Time: {{convertToTimeMax(someRange)}}</h3>
+          </div>
+  
+          
+        </fieldset>
         
-      </fieldset>
+  
+  
+        <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Let's get planning!"></div>
+        
+        
+      </form>
       
-
-
-      <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Let's get planning!"></div>
-      
-      
-    </form>
+    </article>
     
-  </article>
-  
-
-  
+  <!-- <div class="fl w-third">
+    <section class="tc pa3 pa5-ns">
+      <article class="hide-child relative ba b--black-20 mw5 center">
+        <img src="http://loremflickr.com/320/240/dog" class="db" alt="Photo of Jesse Grant" />
+        <div class="pa2 bt b--black-20">
+          <a class="f6 db link dark-blue hover-blue" href="#">Event Name 1</a>
+          <p class="f6 gray mv1">Location 1</p>
+          <p class="f6 gray mv1">Date:{{events.date}} Time: {{events.time}}</p>          
+          <p class="f6 gray mv1">Price 1</p>
+          <a class="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" href="#">Add to Plan</a>
+       </div>
+      <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
+      </article>
+    </section>
+  </div>
+  <div class="fl w-third"> <section class="tc pa3 pa5-ns">
+      <article class="hide-child relative ba b--black-20 mw5 center">
+        <img src="http://loremflickr.com/320/240/dog,puppy" class="db" alt="Photo of Jesse Grant" />
+        <div class="pa2 bt b--black-20">
+          <a class="f6 db link dark-blue hover-blue" href="#">Event Name 2</a>
+          <p class="f6 gray mv1">Location 2</p>
+          <p class="f6 gray mv1">start time + end time 2</p>                    
+          <p class="f6 gray mv1">Price 2</p>
+          <a class="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" href="#">Add to Plan</a>
+       </div>
+      <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
+      </article>
+    </section>
+  </div>
+  <div class="fl w-third"> <section class="tc pa3 pa5-ns">
+      <article class="hide-child relative ba b--black-20 mw5 center">
+        <img src="http://loremflickr.com/320/240/dog,corgi" class="db" alt="Photo of Jesse Grant" />
+        <div class="pa2 bt b--black-20">
+          <a class="f6 db link dark-blue hover-blue" href="#">Event Name 3</a>
+          <p class="f6 gray mv1">Location 3</p>
+          <p class="f6 gray mv1">start time + end time 3</p>                    
+          <p class="f6 gray mv1">Price 3</p>
+          <a class="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" href="#">Add to Plan</a>
+       </div>
+      <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
+      </article>
+    </section>
+  </div>
+     -->
+    
+</section>

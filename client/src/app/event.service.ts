@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { Users } from './users';
 import { Events } from './events';
 import { UserPlan } from './userplan';
+import { Tags } from './tags';
+
 
 
 @Injectable()
@@ -25,6 +27,9 @@ export class EventService {
   }
   getUserPlan(): Observable<UserPlan[]> {
     return this.http.get<UserPlan[]>("http://localhost:8080/userplan");
+  }
+  getTags(): Observable<Tags[]> {
+    return this.http.get<Tags[]>("http://localhost:8080/tags")
   }
 
   deleteUser(user: Users): Observable<Users> {
@@ -59,10 +64,13 @@ export class EventService {
   addEvent(events: Events){
     console.log(events)
     let event = {
+      // id: events.id,
       name: events.name,
       date: events.date,
-      time: (events.date + "T" + events.time),
-      price: events.price
+      start_time: (events.date + "T" + events.start_time),
+      end_time: (events.date + "T" + events.end_time),      
+      price: events.price,
+      eventstags: events.eventstags
     }
 
     const headers = this._headers;
@@ -78,7 +86,7 @@ export class EventService {
       start_time: (userPlan.date + "T" + userPlan.start_time),
       end_time: (userPlan.date + "T" + userPlan.end_time),
       budget: userPlan.budget,
-      tags: userPlan.tags
+      // tags: userPlan.userPlanTags_id
     }
 
     const headers = this._headers;
@@ -86,6 +94,8 @@ export class EventService {
     console.log(userPlanJson);
     return this.http.post("http://localhost:8080/userplan", userPlanJson, {headers: headers})
   }
+
+ 
  
  
  

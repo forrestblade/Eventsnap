@@ -26,25 +26,28 @@ public class EventsController {
 	private TagsRepository tagsRepository;
 	@Autowired
 	private LocationRepository locationRepository;
+	@Autowired
+	private EventsTagsRepository eventsTagsRepository;
 	
-	@GetMapping("/events")
-	public List<Events> getEvents(){
-		return eventsRepository.findAll();
+	@PostMapping("/events")
+	public ResponseEntity<Events> addEvent(@RequestBody Events events){
+		Events addedEvent = eventsRepository.save(events);
+		return ResponseEntity.ok(addedEvent);
 	}
-	@GetMapping("/events/{id}")
-	public Optional<Events> getEventsById(@PathVariable(value = "id") Long id) {
-		return eventsRepository.findById(id);		
+	@PostMapping("/location")
+	public ResponseEntity<Location> addLocation(@RequestBody Location location){
+		Location addedLocation = locationRepository.save(location);
+		return ResponseEntity.ok(addedLocation);
 	}
-	@PutMapping("/events/{id}")
-	public ResponseEntity<Events> updateEvents(@PathVariable(value = "id") Long id, @Valid @RequestBody Events events) {
-		Optional<Events> event = eventsRepository.findById(id);
-		if(!event.isPresent()) {
-			return ResponseEntity.notFound().build();
-		}
-		Events updatedUser = eventsRepository.save(events);
-		
-		return ResponseEntity.ok(updatedUser);
-
+	@PostMapping("/tags")
+	public ResponseEntity<Tags> addTags(@RequestBody Tags tags){
+		Tags addedTags = tagsRepository.save(tags);
+		return ResponseEntity.ok(addedTags);
+	}
+	@PostMapping("/eventstags")
+	public ResponseEntity<EventsTags> addEventstags(@RequestBody EventsTags eventsTags){
+		EventsTags addedEventsTags = eventsTagsRepository.save(eventsTags);
+		return ResponseEntity.ok(addedEventsTags);
 	}
 	
 	@DeleteMapping("/events/{id}")
@@ -59,68 +62,6 @@ public class EventsController {
 
 	}
 
-	@PostMapping("/events")
-	public ResponseEntity<Events> addEvent(@RequestBody Events events){
-		Events addedEvent = eventsRepository.save(events);
-		return ResponseEntity.ok(addedEvent);
-	}
-	@GetMapping("/tags")
-	public List<Tags> getTags(){
-		return tagsRepository.findAll();
-	}
-	@GetMapping("/tags/{id}")
-	public Optional<Tags> getTagsById(@PathVariable(value = "id") Long id) {
-		return tagsRepository.findById(id);		
-	}
-	@PutMapping("/tags/{id}")
-	public ResponseEntity<Tags> updateTags(@PathVariable(value = "id") Long id, @Valid @RequestBody Tags tags) {
-		Optional<Tags> tag = tagsRepository.findById(id);
-		if(!tag.isPresent()) {
-			return ResponseEntity.notFound().build();
-		}
-		Tags updatedTag = tagsRepository.save(tags);
-		
-		return ResponseEntity.ok(updatedTag);
-
-	}
-	
-	@DeleteMapping("/tags/{id}")
-	public ResponseEntity<Events> deleteTags(@PathVariable(value = "id") Long id, @Valid @RequestBody Tags tags) {
-		Optional<Tags> tag = tagsRepository.findById(id);
-		if(!tag.isPresent()) {
-			return ResponseEntity.notFound().build();
-		}
-		tagsRepository.delete(tags);
-		
-		return ResponseEntity.ok().build();
-
-	}
-	@PostMapping("/tags")
-	public ResponseEntity<Tags> addTags(@RequestBody Tags tags){
-		Tags addedTags = tagsRepository.save(tags);
-		return ResponseEntity.ok(addedTags);
-	}
-
-	@GetMapping("/location")
-	public List<Location> getLocation(){
-		return locationRepository.findAll();
-	}
-	@GetMapping("/location/{id}")
-	public Optional<Location> getLocationById(@PathVariable(value = "id") Long id) {
-		return locationRepository.findById(id);		
-	}
-	@PutMapping("/location/{id}")
-	public ResponseEntity<Location> updateLocation(@PathVariable(value = "id") Long id, @Valid @RequestBody Location location) {
-		Optional<Location> locations = locationRepository.findById(id);
-		if(!locations.isPresent()) {
-			return ResponseEntity.notFound().build();
-		}
-		Location updatedLocation = locationRepository.save(location);
-		
-		return ResponseEntity.ok(updatedLocation);
-
-	}
-	
 	@DeleteMapping("/location/{id}")
 	public ResponseEntity<Location> deleteTags(@PathVariable(value = "id") Long id, @Valid @RequestBody Location location) {
 		Optional<Location> locations = locationRepository.findById(id);
@@ -132,14 +73,84 @@ public class EventsController {
 		return ResponseEntity.ok().build();
 
 	}
+	@DeleteMapping("/tags/{id}")
+	public ResponseEntity<Events> deleteTags(@PathVariable(value = "id") Long id, @Valid @RequestBody Tags tags) {
+		Optional<Tags> tag = tagsRepository.findById(id);
+		if(!tag.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		tagsRepository.delete(tags);
+		
+		return ResponseEntity.ok().build();
+
+	}
+	@GetMapping("/events")
+	public List<Events> getEvents(){
+		return eventsRepository.findAll();
+	}
+	@GetMapping("/events/{id}")
+	public Optional<Events> getEventsById(@PathVariable(value = "id") Long id) {
+		return eventsRepository.findById(id);		
+	}
+	
+	@GetMapping("/location")
+	public List<Location> getLocation(){
+		return locationRepository.findAll();
+	}
+	@GetMapping("/location/{id}")
+	public Optional<Location> getLocationById(@PathVariable(value = "id") Long id) {
+		return locationRepository.findById(id);		
+	}
+	@GetMapping("/eventstags")
+	public List<EventsTags> getEventstags(){
+		return eventsTagsRepository.findAll();
+	}
+
+	@GetMapping("/tags")
+	public List<Tags> getTags(){
+		return tagsRepository.findAll();
+	}
+	@GetMapping("/tags/{id}")
+	public Optional<Tags> getTagsById(@PathVariable(value = "id") Long id) {
+		return tagsRepository.findById(id);		
+	}
+	@PutMapping("/events/{id}")
+	public ResponseEntity<Events> updateEvents(@PathVariable(value = "id") Long id, @Valid @RequestBody Events events) {
+		Optional<Events> event = eventsRepository.findById(id);
+		if(!event.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		Events updatedUser = eventsRepository.save(events);
+		
+		return ResponseEntity.ok(updatedUser);
+
+	}
+	
+	@PutMapping("/location/{id}")
+	public ResponseEntity<Location> updateLocation(@PathVariable(value = "id") Long id, @Valid @RequestBody Location location) {
+		Optional<Location> locations = locationRepository.findById(id);
+		if(!locations.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		Location updatedLocation = locationRepository.save(location);
+		
+		return ResponseEntity.ok(updatedLocation);
+
+	}
 
 	
 
 
-	@PostMapping("/location")
-	public ResponseEntity<Location> addLocation(@RequestBody Location location){
-		Location addedLocation = locationRepository.save(location);
-		return ResponseEntity.ok(addedLocation);
+	@PutMapping("/tags/{id}")
+	public ResponseEntity<Tags> updateTags(@PathVariable(value = "id") Long id, @Valid @RequestBody Tags tags) {
+		Optional<Tags> tag = tagsRepository.findById(id);
+		if(!tag.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		Tags updatedTag = tagsRepository.save(tags);
+		
+		return ResponseEntity.ok(updatedTag);
+
 	}
 
 
