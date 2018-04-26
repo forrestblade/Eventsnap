@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, ElementRef, NgModule } from '@angular/core';
 import { EventService } from '../event.service';
 import { UserPlan } from '../userplan';
 import { Events } from '../events';
 import * as moment from 'moment';
 import { ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
+import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MapsAPILoader, AgmCoreModule } from '@agm/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
-declare const google: any;
+
 
 
 @Component({
@@ -15,7 +19,12 @@ declare const google: any;
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  constructor(public eventService: EventService) { }
+ 
+  public searchControl: FormControl;
+  public zoom: number;
+  
+  @ViewChild("search") public searchElementRef: ElementRef;
+  constructor(public eventService: EventService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
 
   buttonName1: String = "List View"
   buttonName2: String = "Map View"
@@ -172,6 +181,50 @@ export class SearchComponent implements OnInit {
             title: 'Hello World!'
         });
 
+         //create search FormControl
+    this.searchControl = new FormControl();
+    
+    
+    //load Places Autocomplete
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["geocode"]
+      });
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          //get the place result
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+  
+          //verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+          
+          //set latitude, longitude and zoom
+          // this.latitude = place.geometry.location.lat();
+          // this.longitude = place.geometry.location.lng();
+          // this.zoom = 12;
+        });
+      });
+    });
+
   }
 
 }
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule, 
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAxCC0Uet-dbqTGnbvojZ7SgFuQkx4hVcE',
+      libraries: ["places"]
+    }),
+  ],
+  exports: [FormsModule],
+  declarations: [ SearchComponent ],
+  bootstrap: [ SearchComponent ]
+})
+export class AppModule {};
