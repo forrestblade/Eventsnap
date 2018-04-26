@@ -9,6 +9,7 @@ import { Tags } from './tags';
 
 
 
+
 @Injectable()
 export class EventService {
 
@@ -64,7 +65,7 @@ export class EventService {
   addEvent(events: Events){
     console.log(events)
     let event = {
-      // id: events.id,
+      id: events.id,
       name: events.name,
       date: events.date,
       start_time: (events.date + "T" + events.start_time),
@@ -94,6 +95,19 @@ export class EventService {
     console.log(userPlanJson);
     return this.http.post("http://localhost:8080/userplan", userPlanJson, {headers: headers})
   }
+
+  // addEventsTags(eventsTags: EventsTags){
+  //   console.log(eventsTags)
+  //   let eventsTag = {
+  //     events_id: eventsTags.events_id,
+  //     tags_id: eventsTags.tags_id
+  //   }
+
+  //   const headers = this._headers;
+  //   let eventsTagsJson = JSON.stringify(eventsTag);
+  //   console.log(eventsTagsJson);
+  //   return this.http.post("http://localhost:8080/eventstags", eventsTagsJson, {headers: headers})
+  // }
 
  
  

@@ -3,6 +3,8 @@ import { EventService } from '../event.service';
 import { Events } from '../events';
 import * as moment from 'moment';
 import { Tags } from '../tags';
+import { EventsTags } from '../eventsTags';
+
 
 @Component({
   selector: 'app-events',
@@ -16,21 +18,21 @@ export class EventsComponent implements OnInit {
 
   events: Array<Events>;
   tags: Array<Tags>;
+  eventsTags: Array<EventsTags>;
   model: any = {};
   loading = false;
-  checked: boolean;
-  eventstags: any;
 
 
-  addEventsTags(tags: Events){
-    if (this.checked == true) {
-      this.model.eventstags.push(this.tags)
-    }
-  }
   
   addEvent(events: Events){
     console.log(events)
     this.eventService.addEvent(events).subscribe();
+  }
+
+  getCheckedTags() {
+    let checkedTags = [];
+    checkedTags = this.tags.filter(tags => tags.checked).map(tags => tags.id);
+    return checkedTags;
   }
 
   getEvents() {
@@ -45,8 +47,11 @@ export class EventsComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
+    this.model.eventstags = this.getCheckedTags();
     this.model.start_time= moment(this.model.start_time, ["hh:mm a"]).format("HH:mm:ss")
+    this.model.end_time= moment(this.model.end_time, ["hh:mm a"]).format("HH:mm:ss")
     this.eventService.addEvent(this.model).subscribe();
+  
     
   }
 

@@ -24,7 +24,6 @@ public class Events {
 	private Date date;
 	private Date start_time;
 	private Date end_time;
-	private Long businessesId;
 	private Long price;
 	private Long location_id;
 	
@@ -74,9 +73,7 @@ public class Events {
 		return id;
 	}
 
-	public Long getBusinessesId() {
-		return businessesId;
-	}
+
 		
 	public Long getPrice() {
 		return price;
@@ -87,10 +84,6 @@ public class Events {
 	}
 	
 	
-
-	public void setBusinessesId(Long businessesId) {
-		this.businessesId = businessesId;
-	}
 
 
 

@@ -7,14 +7,15 @@
         <form class="pa4">
             <fieldset id="tags" class="bn">
                    
-               <legend class="fw7 mb2">Pick some tags!</legend>
+               <label class="fw7 mb2">Pick some tags!</label>
                
                 <form (ngSubmit)="onSubmit()">
                   <div *ngFor="let tags of tags">
                     <label>
-                      <input type="checkbox" value="{{tags.id}}" 
-                       [checked]="tags.checked" 
-                       (change)="tags.checked = !tags.checked" 
+                      <input type="checkbox" 
+                              name="tags"
+                              value="{{tags.id}}" 
+                              [(ngModel)]="tags.checked"
                        />
                       <span innerHTML="{{tags.name}}"></span>
                     </label>
