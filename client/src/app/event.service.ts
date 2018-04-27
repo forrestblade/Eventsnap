@@ -5,7 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { Users } from './users';
 import { Events } from './events';
 import { UserPlan } from './userplan';
-import { Locations } from './location';
+import { Tags } from './tags';
+import { EventsTags } from './eventsTags';
+
 
 
 @Injectable()
@@ -27,8 +29,8 @@ export class EventService {
   getUserPlan(): Observable<UserPlan[]> {
     return this.http.get<UserPlan[]>("http://localhost:8080/userplan");
   }
-  getLocations(): Observable<Locations[]> {
-    return this.http.get<Locations[]>("http://localhost:8080/location");
+  getTags(): Observable<Tags[]> {
+    return this.http.get<Tags[]>("http://localhost:8080/tags")
   }
 
   deleteUser(user: Users): Observable<Users> {
@@ -63,17 +65,19 @@ export class EventService {
   addEvent(events: Events){
     console.log(events)
     let event = {
+      // id: events.id,
       name: events.name,
       date: events.date,
-      time: (events.date + "T" + events.time),
+      start_time: (events.date + "T" + events.start_time),
+      end_time: (events.date + "T" + events.end_time),      
       price: events.price,
-      location_id:events.location_id,
+      eventstags: events.eventstags
     }
 
     const headers = this._headers;
     let eventJson = JSON.stringify(event);
     console.log(eventJson);
-    return this.http.post("http://localhost:8080/events", eventJson, {headers: headers})
+    return this.http.post("http://localhost:8080/eventstagstransfer", eventJson, {headers: headers})
   }
 
   addUserPlan(userPlan: UserPlan){
@@ -82,7 +86,8 @@ export class EventService {
       date: userPlan.date,
       start_time: (userPlan.date + "T" + userPlan.start_time),
       end_time: (userPlan.date + "T" + userPlan.end_time),
-      budget: userPlan.budget
+      budget: userPlan.budget,
+      // tags: userPlan.userPlanTags_id
     }
 
     const headers = this._headers;
@@ -90,22 +95,23 @@ export class EventService {
     console.log(userPlanJson);
     return this.http.post("http://localhost:8080/userplan", userPlanJson, {headers: headers})
   }
- 
-  addLocation(locations: Locations){
-    console.log(locations)
-    let location = {
-      city: locations.city,
-      state: locations.state,
-      zip_code: locations.zip_code,
-      address:locations.address,
-      lat:locations.lat,
-      lng:locations.lng
+
+  addEventsTags(eventsTags: EventsTags){
+    console.log(eventsTags)
+    let eventsTag = {
+      // id: events.id,
+      events_id: eventsTags.events_id,
+      tags_id: eventsTags.tags_id
     }
 
     const headers = this._headers;
-    let locationJson = JSON.stringify(locations);
-    console.log(locationJson);
-    return this.http.post("http://localhost:8080/location", locationJson, {headers: headers})
+    let eventJson = JSON.stringify(eventsTag);
+    console.log(eventJson);
+    return this.http.post("http://localhost:8080/eventstags", eventJson, {headers: headers})
   }
+
+ 
+ 
+ 
  
 }
