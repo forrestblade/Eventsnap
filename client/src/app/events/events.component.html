@@ -48,7 +48,8 @@
             </div>
           <div class="mt3 form-group">
             <label class="db fw4 lh-copy f6" for="Location">Where?</label>
-            <input class="pa2 input-reset ba bg-solid-white w-100 measure form-control" type="text" name="location">
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+            
           </div>
           <div class="mt3 form-group">
             <label class="db fw4 lh-copy f6" for="Location">How much?</label>
@@ -58,3 +59,11 @@
           <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Create Event"></div>
 
         </fieldset>
+<div class="container">
+  <h1>Angular 2 + Google Maps Places Autocomplete</h1>
+  <div class="form-group">
+
+    {{placeResult.city}}
+  </div>
+  
+</div>
