@@ -1,5 +1,6 @@
 package com.example.server;
 
+import java.sql.Array;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,11 +30,6 @@ public class EventsController {
 	@Autowired
 	private EventsTagsRepository eventsTagsRepository;
 	
-	@PostMapping("/events")
-	public ResponseEntity<Events> addEvent(@RequestBody Events events){
-		Events addedEvent = eventsRepository.save(events);
-		return ResponseEntity.ok(addedEvent);
-	}
 	@PostMapping("/location")
 	public ResponseEntity<Location> addLocation(@RequestBody Location location){
 		Location addedLocation = locationRepository.save(location);
@@ -44,6 +40,20 @@ public class EventsController {
 		Tags addedTags = tagsRepository.save(tags);
 		return ResponseEntity.ok(addedTags);
 	}
+	@PostMapping("/eventstagstransfer")
+	public ResponseEntity<Events> addEventstagstransfer(@RequestBody Events events){
+		Events addedEvent = eventsRepository.save(events);
+		return ResponseEntity.ok(addedEvent);
+	}
+	
+
+	
+//	@PostMapping("/eventstagstransfer/{eventstags}")
+//	public ResponseEntity<EventsTags> addEventstagstransfer(@PathVariable(value="eventsTags") Array eventsTags, @RequestBody EventsTags eventstags){
+//		EventsTags addedEventsTag = eventsTagsRepository.save(eventstags);
+//		return ResponseEntity.ok(addedEventstags);
+//	}
+	
 	@PostMapping("/eventstags")
 	public ResponseEntity<EventsTags> addEventstags(@RequestBody EventsTags eventsTags){
 		EventsTags addedEventsTags = eventsTagsRepository.save(eventsTags);

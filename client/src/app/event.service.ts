@@ -77,7 +77,7 @@ export class EventService {
     const headers = this._headers;
     let eventJson = JSON.stringify(event);
     console.log(eventJson);
-    return this.http.post("http://localhost:8080/events", eventJson, {headers: headers})
+    return this.http.post("http://localhost:8080/eventstagstransfer", eventJson, {headers: headers})
   }
 
   addUserPlan(userPlan: UserPlan){
