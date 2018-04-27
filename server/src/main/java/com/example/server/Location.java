@@ -20,7 +20,7 @@ public class Location {
 	private String city;
 	private String state;
 	private String address;
-	private int zipCode;
+	private String zip_code;
 	private float lat;
 	private float lng;
 
@@ -48,12 +48,12 @@ public class Location {
 		this.address = address;
 	}
 
-	public int getZipCode() {
-		return zipCode;
+	public String getZip_code() {
+		return zip_code;
 	}
 
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
+	public void setZip_code(String zip_code) {
+		this.zip_code = zip_code;
 	}
 
 	public Long getId() {
