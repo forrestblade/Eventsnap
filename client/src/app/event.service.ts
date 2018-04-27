@@ -7,19 +7,20 @@ import { Events } from './events';
 import { UserPlan } from './userplan';
 import { Tags } from './tags';
 import { EventsTags } from './eventsTags';
+import { Locations } from './location';
 
 
 
 @Injectable()
 export class EventService {
 
-    httpClient: any;
- 
-    constructor(private http: HttpClient) { }
+  httpClient: any;
 
-    serviceEndpoint = 'http://localhost:8080';
+  constructor(private http: HttpClient) { }
 
-//  <!-- getUsers function grabs data from the database and displays them - User component shows how to display on Frontend HTML-->
+  serviceEndpoint = 'http://localhost:8080';
+
+  //  <!-- getUsers function grabs data from the database and displays them - User component shows how to display on Frontend HTML-->
   getUsers(): Observable<Users[]> {
     return this.http.get<Users[]>("http://localhost:8080/users");
   }
@@ -41,7 +42,7 @@ export class EventService {
     return this.http.put<Users>(this.serviceEndpoint + '/' + user.id, user);
   }
 
- //  <!-- addUsers function that inputs into Database - needs a JSON header in order to post to postman-->
+  //  <!-- addUsers function that inputs into Database - needs a JSON header in order to post to postman-->
   private _headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   addUser(users: Users) {
@@ -50,26 +51,26 @@ export class EventService {
       username: users.username,
       email_address: users.email_address,
       password: users.password
-    
+
     }
-  
+
     const headers = this._headers;
     // JSON Stringify is needed to input into postman as well
     let userJson = JSON.stringify(user);
     console.log(userJson);
-    return this.http.post(this.serviceEndpoint, userJson,{ headers : headers } )
- 
-  }
-  
+    return this.http.post(this.serviceEndpoint, userJson, { headers: headers })
 
-  addEvent(events: Events){
+  }
+
+
+  addEvent(events: Events) {
     console.log(events)
     let event = {
       // id: events.id,
       name: events.name,
       date: events.date,
       start_time: (events.date + "T" + events.start_time),
-      end_time: (events.date + "T" + events.end_time),      
+      end_time: (events.date + "T" + events.end_time),
       price: events.price,
       eventstags: events.eventstags
     }
@@ -77,10 +78,24 @@ export class EventService {
     const headers = this._headers;
     let eventJson = JSON.stringify(event);
     console.log(eventJson);
-    return this.http.post("http://localhost:8080/eventstagstransfer", eventJson, {headers: headers})
+    return this.http.post("http://localhost:8080/eventstagstransfer", eventJson, { headers: headers })
   }
 
-  addUserPlan(userPlan: UserPlan){
+  addLocation(location: Locations) {
+    let eventLocation: Locations = {
+      city: location.city,
+      state: location.state,
+      address: location.address,
+      zip_code: location.zip_code
+    }
+
+    const headers = this._headers;
+    let eventLocationJson = JSON.stringify(eventLocation);
+    return this.http.post("http://localhost:8080/location", eventLocationJson, {headers: headers})
+  }
+
+
+  addUserPlan(userPlan: UserPlan) {
     console.log(userPlan)
     let userPlans = {
       date: userPlan.date,
@@ -93,10 +108,10 @@ export class EventService {
     const headers = this._headers;
     let userPlanJson = JSON.stringify(userPlans);
     console.log(userPlanJson);
-    return this.http.post("http://localhost:8080/userplan", userPlanJson, {headers: headers})
+    return this.http.post("http://localhost:8080/userplan", userPlanJson, { headers: headers })
   }
 
-  addEventsTags(eventsTags: EventsTags){
+  addEventsTags(eventsTags: EventsTags) {
     console.log(eventsTags)
     let eventsTag = {
       // id: events.id,
@@ -107,11 +122,11 @@ export class EventService {
     const headers = this._headers;
     let eventJson = JSON.stringify(eventsTag);
     console.log(eventJson);
-    return this.http.post("http://localhost:8080/eventstags", eventJson, {headers: headers})
+    return this.http.post("http://localhost:8080/eventstags", eventJson, { headers: headers })
   }
 
- 
- 
- 
- 
+
+
+
+
 }

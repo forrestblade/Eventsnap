@@ -7,7 +7,7 @@ import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild } from '@ang
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-
+import { Locations } from "../location";
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -20,6 +20,7 @@ export class EventsComponent implements OnInit {
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
+  public placeResult: Locations;
   
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -65,69 +66,52 @@ export class EventsComponent implements OnInit {
     this.model.start_time= moment(this.model.start_time, ["hh:mm a"]).format("HH:mm:ss")
     this.model.end_time= moment(this.model.end_time, ["hh:mm a"]).format("HH:mm:ss")
     this.eventService.addEvent(this.model).subscribe();
-  
+    // this.eventService.addLocation().subscribe();
+    this.eventService.addLocation(this.placeResult).subscribe();
     
   }
 
+  loadAuto(){
+ //create search FormControl
+ this.searchControl = new FormControl();
   
+ //load Places Autocomplete
+ this.mapsAPILoader.load().then(() => {
+   let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+     types: ["address"]
+   });
+   autocomplete.addListener("place_changed", () => {
+     this.ngZone.run(() => {
+       //get the place result
+       let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+       console.log(place)
+
+       let eventLoc = {
+         city: place.address_components[2].long_name,
+         state:place.address_components[4].short_name,
+         
+         address:place.address_components[0].long_name + " " + place.address_components[1].long_name,
+         zip_code:place.address_components[6].long_name
+       }
+       console.log(eventLoc)
+       this.placeResult = eventLoc;
+       
+     });
+   });
+ });
+  }
+
 
   
   ngOnInit() {
     this.getEvents();
     this.getTags();
-    //set google maps defaults
-    this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
-    
-    //create search FormControl
-    this.searchControl = new FormControl();
-    
-    //set current position
-    this.setCurrentPosition();
-    
-    //load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+    this.loadAuto();
+   
+  }
   
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-          
-          //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
-          console.log(place)
 
-          let eventLoc = {
-            city: place.address_components[2].long_name,
-            state:place.address_components[4].short_name,
-            address:place.address_components[1].long_name,
-            zip_code:place.address_components[6].long_name
-          }
-          console.log(eventLoc)
-        });
-      });
-    });
-  }
-  
-  private setCurrentPosition() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
-  }
 }
 
 
