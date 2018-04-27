@@ -13,20 +13,20 @@ import { ROUTES } from './app.routes';
 
 import { AuthService } from './auth/auth.service';
 import { ProfileComponent } from './profile/profile.component';
-import { EventsComponent } from './events/events.component';
 import { SearchComponent } from './search/search.component';
 import { EventService } from './event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PlanComponent } from './plan/plan.component';
+import { EventsComponent } from './events/events.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProfileComponent,
-    EventsComponent,
     SearchComponent,
-    PlanComponent
+    PlanComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
