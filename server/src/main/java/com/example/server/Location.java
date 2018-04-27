@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -13,13 +12,17 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property="id")
 public class Location {
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String city;
 	private String state;
+	private String address;
 	private int zipCode;
+	private float lat;
+	private float lng;
 
 	public String getCity() {
 		return city;
@@ -37,6 +40,14 @@ public class Location {
 		this.state = state;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public int getZipCode() {
 		return zipCode;
 	}
@@ -48,5 +59,22 @@ public class Location {
 	public Long getId() {
 		return id;
 	}
+
+	public float getLat() {
+		return lat;
+	}
+
+	public void setLat(float lat) {
+		this.lat = lat;
+	}
+
+	public float getLng() {
+		return lng;
+	}
+
+	public void setLng(float lng) {
+		this.lng = lng;
+	}
+
 
 }

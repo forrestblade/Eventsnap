@@ -9,4 +9,6 @@ export class Events {
     end_time: Time;
     price: number;
     eventstags: Array<Tags>[]
+
+
 }

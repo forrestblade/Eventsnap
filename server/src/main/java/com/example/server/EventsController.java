@@ -72,10 +72,24 @@ public class EventsController {
 
 	}
 
-	@DeleteMapping("/location/{id}")
-	public ResponseEntity<Location> deleteTags(@PathVariable(value = "id") Long id, @Valid @RequestBody Location location) {
-		Optional<Location> locations = locationRepository.findById(id);
-		if(!locations.isPresent()) {
+	@PostMapping("/events")
+	public ResponseEntity<Events> addEvent(@RequestBody Events events){
+		
+		Events addedEvent = eventsRepository.save(events);
+		return ResponseEntity.ok(addedEvent);
+	}
+	@GetMapping("/tags")
+	public List<Tags> getTags(){
+		return tagsRepository.findAll();
+	}
+	@GetMapping("/tags/{id}")
+	public Optional<Tags> getTagsById(@PathVariable(value = "id") Long id) {
+		return tagsRepository.findById(id);		
+	}
+	@PutMapping("/tags/{id}")
+	public ResponseEntity<Tags> updateTags(@PathVariable(value = "id") Long id, @Valid @RequestBody Tags tags) {
+		Optional<Tags> tag = tagsRepository.findById(id);
+		if(!tag.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		locationRepository.delete(location);

@@ -6,7 +6,7 @@ import { Users } from './users';
 import { Events } from './events';
 import { UserPlan } from './userplan';
 import { Tags } from './tags';
-
+import { EventsTags } from './eventsTags';
 
 
 
@@ -65,7 +65,7 @@ export class EventService {
   addEvent(events: Events){
     console.log(events)
     let event = {
-      id: events.id,
+      // id: events.id,
       name: events.name,
       date: events.date,
       start_time: (events.date + "T" + events.start_time),
@@ -96,18 +96,19 @@ export class EventService {
     return this.http.post("http://localhost:8080/userplan", userPlanJson, {headers: headers})
   }
 
-  // addEventsTags(eventsTags: EventsTags){
-  //   console.log(eventsTags)
-  //   let eventsTag = {
-  //     events_id: eventsTags.events_id,
-  //     tags_id: eventsTags.tags_id
-  //   }
+  addEventsTags(eventsTags: EventsTags){
+    console.log(eventsTags)
+    let eventsTag = {
+      // id: events.id,
+      events_id: eventsTags.events_id,
+      tags_id: eventsTags.tags_id
+    }
 
-  //   const headers = this._headers;
-  //   let eventsTagsJson = JSON.stringify(eventsTag);
-  //   console.log(eventsTagsJson);
-  //   return this.http.post("http://localhost:8080/eventstags", eventsTagsJson, {headers: headers})
-  // }
+    const headers = this._headers;
+    let eventJson = JSON.stringify(eventsTag);
+    console.log(eventJson);
+    return this.http.post("http://localhost:8080/eventstags", eventJson, {headers: headers})
+  }
 
  
  
