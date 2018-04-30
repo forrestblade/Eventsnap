@@ -40,25 +40,36 @@ public class EventsController {
 		Tags addedTags = tagsRepository.save(tags);
 		return ResponseEntity.ok(addedTags);
 	}
+	
+	
 	@PostMapping("/eventstagstransfer")
-	public ResponseEntity<Events> addEventstagstransfer(@RequestBody Events events){
+	public ResponseEntity<EventsTagsTransfer> addEventstagstransfer(@RequestBody Events events, EventsTags eventstags){
 		Events addedEvent = eventsRepository.save(events);
+		for (int i=0; i <= this.EventsTagsTransfer.getEventstags().length; i++) {
+			EventsTags newtag = new EventsTags();
+			newtag.setTagsId(EventsTagsTransfer.getEventstags()[i]);
+			newtag.setEventsId(EventsTagsTransfer.getId()); 
+			System.out.println(getEventstags()[i]);
+		}
+		EventsTags addedEventstags = eventsTagsRepository.save(eventstags);
+//		return this.eventstags = setEventstags(eventstags, id);
 		return ResponseEntity.ok(addedEvent);
+	
 	}
 	
 
-	
-//	@PostMapping("/eventstagstransfer/{eventstags}")
-//	public ResponseEntity<EventsTags> addEventstagstransfer(@PathVariable(value="eventsTags") Array eventsTags, @RequestBody EventsTags eventstags){
-//		EventsTags addedEventsTag = eventsTagsRepository.save(eventstags);
-//		return ResponseEntity.ok(addedEventstags);
-//	}
-	
-	@PostMapping("/eventstags")
-	public ResponseEntity<EventsTags> addEventstags(@RequestBody EventsTags eventsTags){
-		EventsTags addedEventsTags = eventsTagsRepository.save(eventsTags);
+	@PostMapping("/eventstagstransfer/{eventstags[]}")
+	public ResponseEntity<EventsTags> addEventstagstransfer(@RequestBody EventsTags eventstags){
+		EventsTags addedEventsTags = eventsTagsRepository.save(eventstags);
 		return ResponseEntity.ok(addedEventsTags);
 	}
+	
+	
+//	@PostMapping("/eventstags")
+//	public ResponseEntity<EventsTags> addEventstags(@RequestBody EventsTags eventsTags){
+//		EventsTags addedEventsTags = eventsTagsRepository.save(eventsTags);
+//		return ResponseEntity.ok(addedEventsTags);
+//	}
 	
 	@DeleteMapping("/events/{id}")
 	public ResponseEntity<Events> deleteEvents(@PathVariable(value = "id") Long id, @Valid @RequestBody Events events) {
