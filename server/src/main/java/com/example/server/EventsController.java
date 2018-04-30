@@ -43,17 +43,17 @@ public class EventsController {
 	
 	
 	@PostMapping("/eventstagstransfer")
-	public ResponseEntity<EventsTagsTransfer> addEventstagstransfer(@RequestBody Events events, EventsTags eventstags){
-		Events addedEvent = eventsRepository.save(events);
-		for (int i=0; i <= this.EventsTagsTransfer.getEventstags().length; i++) {
+	public ResponseEntity<EventsTagsTransfer> addEventstagstransfer(@RequestBody EventsTagsTransfer eventstagstransfer){
+		EventsTagsTransfer addedEventsTagsTransfer = eventsRepository.save(eventstagstransfer);
+		Events addedEvent = eventsRepository.save(eventstagstransfer);
+		for (long i: eventstagstransfer.getEventstags()) {
 			EventsTags newtag = new EventsTags();
-			newtag.setTagsId(EventsTagsTransfer.getEventstags()[i]);
-			newtag.setEventsId(EventsTagsTransfer.getId()); 
-			System.out.println(getEventstags()[i]);
+			newtag.setTagsId(i);
+			newtag.setEventsId(eventstagstransfer.getId()); 
+			System.out.println(newtag.getTagsId());
+			EventsTags addedEventstags = eventsTagsRepository.save(newtag);
 		}
-		EventsTags addedEventstags = eventsTagsRepository.save(eventstags);
-//		return this.eventstags = setEventstags(eventstags, id);
-		return ResponseEntity.ok(addedEvent);
+		return ResponseEntity.ok(addedEventsTagsTransfer);
 	
 	}
 	

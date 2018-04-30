@@ -1,5 +1,6 @@
 package com.example.server;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -32,7 +33,7 @@ public class EventsTagsTransfer extends Events {
 	private Date start_time;
 	private Date end_time;
 	private Long price;
-	private Array[] eventstags;
+	private ArrayList<Long> eventstags;
 	
 	
 //	public static void sortEventsTags(long eventsid, Array eventsTags[]) {
@@ -113,14 +114,16 @@ public class EventsTagsTransfer extends Events {
 		this.price = price;
 	}
 
-
-	public Array[] getEventstags() {
+	public ArrayList<Long> getEventstags() {
 		return eventstags;
 	}
 
-	public void setEventstags(Array[] eventstags) {
+	public void setEventstags(ArrayList<Long> eventstags) {
 		this.eventstags = eventstags;
 	}
+
+
+
 
 //
 //	public Array[] setEventstags(Array[] eventstags, Long id) {
