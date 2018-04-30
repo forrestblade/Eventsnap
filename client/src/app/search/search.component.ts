@@ -9,9 +9,8 @@ import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MapsAPILoader, AgmCoreModule } from '@agm/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-
-
-
+import { EventsTags } from '../eventsTags';
+import { Tags } from '../tags';
 
 @Component({
   selector: 'app-search',
@@ -22,6 +21,7 @@ export class SearchComponent implements OnInit {
  
   public searchControl: FormControl;
   public zoom: number;
+  
   
   @ViewChild("search") public searchElementRef: ElementRef;
   constructor(public eventService: EventService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
@@ -42,6 +42,9 @@ export class SearchComponent implements OnInit {
 
 
   events: Array<Events>
+  eventsTags: Array<EventsTags>;
+  tags: Array<Tags>;
+  
 
   toggleList() {
     if (!this.hide) {
@@ -56,6 +59,12 @@ export class SearchComponent implements OnInit {
 
     // CHANGE THE NAME OF THE BUTTON.
   }
+
+  getTags() {
+    this.eventService.getTags()
+      .subscribe(data => this.tags = data);
+  }
+
   
   toggleMap() {
     if (!this.show) {
@@ -163,6 +172,7 @@ export class SearchComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getTags();
     this.getUserPlan();
     this.getEvents();
     this.buttons()

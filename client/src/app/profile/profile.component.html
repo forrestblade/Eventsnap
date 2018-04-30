@@ -1,73 +1,38 @@
-<div class="vh-100 dt w-100 tc bg-dark-gray white cover" style="background:url(https://images.pexels.com/photos/867483/pexels-photo-867483.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350) no-repeat center;">
-  <article class="mw5 left bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
-    <div class="panel panel-default profile-area">
-      <div class="panel-heading">
-        <h3 class="f2  br3 br--top black-60 mv0 pv2 ph3">My Eventsnap</h3>
+<!-- <article class="cf ph7 pt5 bg-washed-yellow min-vh-100 w-100 ">
+    <h1>Profile</h1>
+    <div class="tc f1 w-third pa4 ph4 br3 shadow-5 bg-near-white">
+        
       </div>
-      <div class="panel-body">
-        <img src="{{profile?.picture}}" class="avatar" alt="avatar">
-        <div>
-          <label>
-            <i class="glyphicon glyphicon-user"></i> Nickname</label>
-          <h3 class="f8 br3 br--top black-60 mv0 pv2 ph3 nickname">{{ profile?.nickname }}</h3>
-        </div>
-        <!-- <pre class="full-profile">{{ profile | json }}</pre> -->
-      </div>
+    <div id="two" class="f1 w-two-thirds">
+        
     </div>
-  </article>
-<span></span>
-<article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
-  <h1 class="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">Title of card</h1>
-  <div class="pa3 bt b--black-10">
-    <p class="f6 f5-ns lh-copy measure">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-      tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-      vero eos et accusam et justo duo dolores et ea rebum.
-    </p>
-  </div>
-</article>
+   
+</article> -->
+<div class="cf ph7 pt4">
+    <div class="fl w-third-ns w-100 tc pa4 br3 shadow-5 bg-near-white">
+        <img src="{{profile.picture}}" class=" h-50 w-50 br3" title="">
+        <h1 class="f4">{{profile.nickname}}</h1>
+        <hr class="mw3 bb bw1 b--black-10">
+        <p class="lh-copy measure center f6 black-70">
 
-  <!-- 
-<mat-card *ngFor="let users of users">
-    <mat-card-header>
-      <mat-card-title>{{users.username}}</mat-card-title>
-    
-    </mat-card-header>
-  </mat-card>
+            {{profile | json}}
 
-  import { Users } from '../users';
-import { EventService } from '../event.service';
+        </p>
+    </div>
+    <div class="fl w-100 br3 w-two-thirds-ns shadow-5 tc pv3 bg-black-10">
+        <ul id="list" class="">
+            <li class="mh3 br3">
+                <a class="pointer">Plans</a>
+            </li>
+            <li class="mh3 br3">
+                <a class="pointer">Settings</a>
+            </li>
+        </ul>
 
-import { Component, OnInit } from '@angular/core';
+    </div>
+<div class="fl w-100 br3 w-two-thirds-ns shadow-5 tc pv3 bg-black-10">
+   
 
-@Component({
- selector: 'app-user',
- templateUrl: './user.component.html',
- styleUrls: ['./user.component.css']
-})
-export class UserComponent implements OnInit {
+</div>
 
-
- users: Array<Users>
-
- //get Users retrieves from database using service
- getUsers() {
-   this.eventService.getUsers()
-   .subscribe(data => this.users = data);
- }
-
-
-
-  
-
- 
-
- constructor(private eventService: EventService) { }
-
- //Get users function runs as the page loads
- ngOnInit() {
-   this.getUsers();
- }
-
-}
- -->
+</div>
