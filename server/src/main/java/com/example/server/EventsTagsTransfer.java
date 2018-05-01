@@ -1,11 +1,14 @@
 package com.example.server;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
 
 import org.springframework.beans.BeansException;
 
@@ -18,7 +21,9 @@ import com.mysql.fabric.xmlrpc.base.Array;
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property="id")
-public class EventsTagsTransfer {
+@Table(name="events")
+//@SecondaryTable(name="events_tags", pkJoinColumns= {@PrimaryKeyJoinColumn(name="events_tags"))
+public class EventsTagsTransfer extends Events {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +33,7 @@ public class EventsTagsTransfer {
 	private Date start_time;
 	private Date end_time;
 	private Long price;
-	private Array eventsTags[];
+	private ArrayList<Long> eventstags;
 	
 	
 //	public static void sortEventsTags(long eventsid, Array eventsTags[]) {
@@ -109,21 +114,25 @@ public class EventsTagsTransfer {
 		this.price = price;
 	}
 
+	public ArrayList<Long> getEventstags() {
+		return eventstags;
+	}
 
-	public Array[] getEventsTags() {
-		return eventsTags;
+	public void setEventstags(ArrayList<Long> eventstags) {
+		this.eventstags = eventstags;
 	}
 
 
-	public void setEventsTags(Array[] eventsTags, Long id) {
-		for (int i=0; i <= eventsTags.length; i++) {
-			i++;
-			System.out.println(id + "" +eventsTags[i]);
-			
-		}
-		this.eventsTags = eventsTags;
-	}
-	
-	
-	
+
+
+//
+//	public Array[] setEventstags(Array[] eventstags, Long id) {
+//		for (int i=0; i <= eventstags.length; i++) {
+//			i++;
+//		}
+//		return this.eventstags = setEventstags(eventstags, id);
+//	}
+//	
+//	
+//	
 }

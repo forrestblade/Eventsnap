@@ -40,25 +40,36 @@ public class EventsController {
 		Tags addedTags = tagsRepository.save(tags);
 		return ResponseEntity.ok(addedTags);
 	}
+	
+	
 	@PostMapping("/eventstagstransfer")
-	public ResponseEntity<Events> addEventstagstransfer(@RequestBody Events events){
-		Events addedEvent = eventsRepository.save(events);
-		return ResponseEntity.ok(addedEvent);
+	public ResponseEntity<EventsTagsTransfer> addEventstagstransfer(@RequestBody EventsTagsTransfer eventstagstransfer){
+		EventsTagsTransfer addedEventsTagsTransfer = eventsRepository.save(eventstagstransfer);
+		Events addedEvent = eventsRepository.save(eventstagstransfer);
+		for (long i: eventstagstransfer.getEventstags()) {
+			EventsTags newtag = new EventsTags();
+			newtag.setTagsId(i);
+			newtag.setEventsId(eventstagstransfer.getId()); 
+			System.out.println(newtag.getTagsId());
+			EventsTags addedEventstags = eventsTagsRepository.save(newtag);
+		}
+		return ResponseEntity.ok(addedEventsTagsTransfer);
+	
 	}
 	
 
-	
-//	@PostMapping("/eventstagstransfer/{eventstags}")
-//	public ResponseEntity<EventsTags> addEventstagstransfer(@PathVariable(value="eventsTags") Array eventsTags, @RequestBody EventsTags eventstags){
-//		EventsTags addedEventsTag = eventsTagsRepository.save(eventstags);
-//		return ResponseEntity.ok(addedEventstags);
-//	}
-	
-	@PostMapping("/eventstags")
-	public ResponseEntity<EventsTags> addEventstags(@RequestBody EventsTags eventsTags){
-		EventsTags addedEventsTags = eventsTagsRepository.save(eventsTags);
+	@PostMapping("/eventstagstransfer/{eventstags[]}")
+	public ResponseEntity<EventsTags> addEventstagstransfer(@RequestBody EventsTags eventstags){
+		EventsTags addedEventsTags = eventsTagsRepository.save(eventstags);
 		return ResponseEntity.ok(addedEventsTags);
 	}
+	
+	
+//	@PostMapping("/eventstags")
+//	public ResponseEntity<EventsTags> addEventstags(@RequestBody EventsTags eventsTags){
+//		EventsTags addedEventsTags = eventsTagsRepository.save(eventsTags);
+//		return ResponseEntity.ok(addedEventsTags);
+//	}
 	
 	@DeleteMapping("/events/{id}")
 	public ResponseEntity<Events> deleteEvents(@PathVariable(value = "id") Long id, @Valid @RequestBody Events events) {

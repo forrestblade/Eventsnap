@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EventsTagsRepository extends JpaRepository<EventsTags, Long> {
 
+
+
+
 }
