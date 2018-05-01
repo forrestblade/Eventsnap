@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { UserPlan } from '../userplan';
 import * as moment from 'moment';
+import { UserPlanTags } from '../UserPlantags';
+
 
 @Component({
     selector: 'app-plan',
@@ -13,12 +15,18 @@ export class PlanComponent implements OnInit {
     constructor(public eventService: EventService) {}
 
     userPlan: Array<UserPlan>
+    userPlanTags: Array<UserPlanTags>
     model: any = {};
     loading = false;
     public someRange: number[] = [3, 7];
     public tooltipSlider = document.getElementById('slider-tooltips')
     public sliderTime_min;
     public sliderTime_max;
+    public music;
+    public food;
+    public drink;
+   
+
 
     convertToTimeMin(someRange){
       if (someRange[0] == 0 || someRange[0] == 24){
@@ -76,13 +84,7 @@ export class PlanComponent implements OnInit {
         .subscribe(data => this.userPlan = data);
       }
 
-      // setStartTime(sliderTime_min) {
-      //   this.model.start_time = moment(this.sliderTime_min, ["hh:mm a"]).format("HH:mm:ss");
-      // }
-      
-      // setEndTime(sliderTime_max) {
-      //   this.model.end_time = moment(this.sliderTime_max, ["hh:mm a"]).format("HH:mm:ss");
-      // }
+  
 
       onSubmit() {
         this.loading = true;

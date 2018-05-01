@@ -1,12 +1,13 @@
-import { Component, OnInit, NgModule, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { EventService } from '../event.service';
 import { Events } from '../events';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import * as moment from 'moment';
+import { Tags } from '../tags';
+import { EventsTags } from '../eventsTags';
+import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { Locations } from '../location';
-
+import { Locations } from "../location";
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -15,49 +16,58 @@ import { Locations } from '../location';
 export class EventsComponent implements OnInit {
 
 
-
+  public latitude: number;
+  public longitude: number;
   public searchControl: FormControl;
-  
-  
-  @ViewChild("search") public searchElementRef: ElementRef;
-  constructor(public eventService: EventService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  public zoom: number;
+  public placeResult: Locations;
 
-  events: Array<Events>
+  @ViewChild("search")
+  public searchElementRef: ElementRef;
+
+  constructor(
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
+    private eventService: EventService
+  ) { }
+
+  events: Array<Events>;
+  tags: Array<Tags>;
+  eventsTags: Array<EventsTags>;
   model: any = {};
   loading = false;
- locations:Array<Locations>
- 
 
-addLocation(locations:Locations){
-  console.log(locations)
-  this.eventService.addLocation(locations).subscribe();
-}
-  addEvent(events: Events){
+  addEvent(events: Events) {
     console.log(events)
     this.eventService.addEvent(events).subscribe();
   }
 
-  getEvents() {
-    this.eventService.getEvents()
-    .subscribe(data => this.events = data);
+  getCheckedTags() {
+    let checkedTags = [];
+    checkedTags = this.tags.filter(tags => tags.checked).map(tags => tags.id);
+    return checkedTags;
   }
-  
+
+  getTags() {
+    this.eventService.getTags()
+      .subscribe(data => this.tags = data);
+  }
 
   onSubmit() {
     this.loading = true;
+    this.model.eventstags = this.getCheckedTags();
+    this.model.start_time = moment(this.model.start_time, ["hh:mm a"]).format("HH:mm:ss")
+    this.model.end_time = moment(this.model.end_time, ["hh:mm a"]).format("HH:mm:ss")
     this.eventService.addEvent(this.model).subscribe();
-    this.eventService.addLocation(this.model).subscribe();
-    
+    // this.eventService.addLocation().subscribe();
+    this.eventService.addLocation(this.placeResult).subscribe();
+
   }
 
-  
-  ngOnInit() {
-    this.getEvents();
-
-
+  loadAuto() {
+    //create search FormControl
     this.searchControl = new FormControl();
-    
-    
+
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
@@ -67,38 +77,43 @@ addLocation(locations:Locations){
         this.ngZone.run(() => {
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-  
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
+
+          console.log(place)
+
+          let eventLoc = {
+            city: place.address_components[2].long_name,
+            state: place.address_components[4].short_name,
+
+            address: place.address_components[0].long_name + " " + place.address_components[1].long_name,
+            zip_code: place.address_components[6].long_name
           }
-          
-          //set latitude, longitude and zoom
-          // this.latitude = place.geometry.location.lat();
-          // this.longitude = place.geometry.location.lng();
-          // this.zoom = 12;
+          console.log(eventLoc)
+          this.placeResult = eventLoc;
+
         });
       });
     });
+  }
+
+  ngOnInit() {
+    this.getTags();
+    this.loadAuto();
 
   }
+
+
 }
 
-  @NgModule({
-    imports: [
-      BrowserModule,
-      CommonModule,
-      FormsModule,
-      ReactiveFormsModule, 
-      AgmCoreModule.forRoot({
-        apiKey: 'AIzaSyAxCC0Uet-dbqTGnbvojZ7SgFuQkx4hVcE',
-        libraries: ["places"]
-      }),
-    ],
-    exports: [FormsModule],
-    declarations: [ EventsComponent ],
-    bootstrap: [ EventsComponent ]
-  })
-  export class AppModule {};
-
-
+@NgModule({
+  imports: [
+    AgmCoreModule.forRoot({
+      libraries: ["places"]
+    }),
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  declarations: [EventsComponent],
+  bootstrap: [EventsComponent]
+})
+export class AppModule { }

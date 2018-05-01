@@ -1,6 +1,6 @@
-<div class="flex-ns flex-column-m vh-100 w-100">
+<div class="flex-ns flex-column-m vh-100 ph7 w-100">
   <div class="f1 w-25-ns ma2 w-100-m mt5-ns mt2-m blue">
-    <div class="flex pa5">
+    <div class="flex pv2">
       <button (click)="toggleMap()" class="f5 ba br3 br--left " id="mapView">
         {{buttonName1}}
       </button>
@@ -8,38 +8,20 @@
         {{buttonName2}}
       </button>
     </div>
-    <form class="pa4" action="/search" method="post" (ngSubmit)="onSubmit()">
+    <form class="pv4" action="/search" method="post" (ngSubmit)="onSubmit()">
       <fieldset id="search" class="f6">
         <legend class="fw7 mb2">Search</legend>
-        <div class="flex items-center mb2">
-          <input class="mr2" type="checkbox" id="music" value="music">
-          <label for="music" class="lh-copy">Music</label>
+        <div *ngFor="let tags of tags">
+          <label>
+            <input type="checkbox" 
+                    name="tags"
+                    value="{{tags.id}}" 
+                    [(ngModel)]="tags.checked"
+             />
+            <span innerHTML="{{tags.name}}"></span>
+          </label>
         </div>
-        <div class="flex items-center mb2">
-          <input class="mr2" type="checkbox" id="drink" value="drink">
-          <label for="drink" class="lh-copy">Drink</label>
-        </div>
-        <div class="flex items-center mb2">
-          <input class="mr2" type="checkbox" id="social" value="social">
-          <label for="social" class="lh-copy">Social</label>
-        </div>
-        <div class="flex items-center mb2">
-          <input class="mr2" type="checkbox" id="grub" value="grub">
-          <label for="grub" class="lh-copy">Grub</label>
-        </div>
-        <div class="flex items-center mb2">
-          <input class="mr2" type="checkbox" id="classes" value="classes">
-          <label for="classes" class="lh-copy">Classes</label>
-        </div>
-        <div class="flex items-center mb2">
-          <input class="mr2" type="checkbox" id="sports" value="sports">
-          <label for="sports" class="lh-copy">Sports</label>
-        </div>
-        <div class="flex items-center mb2">
-          <input class="mr2" type="checkbox" id="art" value="art">
-          <label for="art" class="lh-copy">Art & Culture</label>
-        </div>
-
+        
 
         <div class="mt3 w-90 form-group">
           <label class="db fw4 lh-copy f6" for="date">When?</label>

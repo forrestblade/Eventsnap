@@ -1,11 +1,14 @@
 import { Time } from "@angular/common";
+import { Tags } from "./tags";
 
 export class Events {
     id: number;
     name: String;
     date: Date;
-    time: Time;
+    start_time: Time;
+    end_time: Time;
     price: number;
-    location_id:number;
+    eventstags: Array<Tags>[]
+
 
 }

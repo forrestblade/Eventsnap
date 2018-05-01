@@ -1,4 +1,4 @@
-<section class="vh-100 dt w-100">
+<section class="vh-100 dt ph7 w-100">
 
   <header class="tc avenir mt6 ph4">
       <h1 class="f3 f2-m f1-l fw2 black-90 mv3">
@@ -37,7 +37,8 @@
                           <div class="bg-white pv4">
                               <!--column 2-->
                             <div class="flex items-center mb2">
-                                <input class="mr2" type="checkbox" id="drink" value="drink">                              <label for="drink" class="lh-copy">Drink</label>
+                                <input class="mr2" type="checkbox" id="drink" value="drink">                              
+                                <label for="drink" class="lh-copy">Drink</label>
                             </div>
                             <div class="flex items-center mb2">
                               <input class="mr2" type="checkbox" id="classes" value="classes">
@@ -53,7 +54,8 @@
                         <div class="fl w-50 w-third-ns pa2">
                           <div class="bg-white pv4">
                               <!--column 3-->
-                            <div class="flex items-center mb2">                              <input class="mr2" type="checkbox" id="parties" value="parties">
+                            <div class="flex items-center mb2">                              
+                              <input class="mr2" type="checkbox" id="parties" value="parties">
                               <label for="parties" class="lh-copy">Parties</label>
                             </div>
                             <div class="flex items-center mb2">
@@ -87,12 +89,8 @@
           <div class="mt3 form-group">
             <label class="db fw4 lh-copy f6" for="Location">What time?</label>
             <nouislider [connect]="true" [min]="0" [max]="24" [step]="0.5" type="time" name="time" id="time" [(ngModel)]="someRange" #name="ngModel" required></nouislider>
-            <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" ng-readonly="checked" name="start_time" value= "{{convertToTimeMin(someRange)}}"  [(ngModel)]="model.start_time" #name="ngModel"  required> -->
             <h3 type="time">Start Time: {{convertToTimeMin(someRange)}}</h3>
-            <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" ng-readonly="checked" name="end_time" value= "{{convertToTimeMax(someRange)}}" [(ngModel)]="model.end_time" #name="ngModel"  required> -->
             <h3 type="time">End Time: {{convertToTimeMax(someRange)}}</h3>
-            
-            <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" name="time" id="time" [(ngModel)]="model.time" #name="ngModel"  required> -->
           </div>
   
           
@@ -107,6 +105,49 @@
       
     </article>
     
-  
+  <!-- <div class="fl w-third">
+    <section class="tc pa3 pa5-ns">
+      <article class="hide-child relative ba b--black-20 mw5 center">
+        <img src="http://loremflickr.com/320/240/dog" class="db" alt="Photo of Jesse Grant" />
+        <div class="pa2 bt b--black-20">
+          <a class="f6 db link dark-blue hover-blue" href="#">Event Name 1</a>
+          <p class="f6 gray mv1">Location 1</p>
+          <p class="f6 gray mv1">Date:{{events.date}} Time: {{events.time}}</p>          
+          <p class="f6 gray mv1">Price 1</p>
+          <a class="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" href="#">Add to Plan</a>
+       </div>
+      <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
+      </article>
+    </section>
+  </div>
+  <div class="fl w-third"> <section class="tc pa3 pa5-ns">
+      <article class="hide-child relative ba b--black-20 mw5 center">
+        <img src="http://loremflickr.com/320/240/dog,puppy" class="db" alt="Photo of Jesse Grant" />
+        <div class="pa2 bt b--black-20">
+          <a class="f6 db link dark-blue hover-blue" href="#">Event Name 2</a>
+          <p class="f6 gray mv1">Location 2</p>
+          <p class="f6 gray mv1">start time + end time 2</p>                    
+          <p class="f6 gray mv1">Price 2</p>
+          <a class="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" href="#">Add to Plan</a>
+       </div>
+      <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
+      </article>
+    </section>
+  </div>
+  <div class="fl w-third"> <section class="tc pa3 pa5-ns">
+      <article class="hide-child relative ba b--black-20 mw5 center">
+        <img src="http://loremflickr.com/320/240/dog,corgi" class="db" alt="Photo of Jesse Grant" />
+        <div class="pa2 bt b--black-20">
+          <a class="f6 db link dark-blue hover-blue" href="#">Event Name 3</a>
+          <p class="f6 gray mv1">Location 3</p>
+          <p class="f6 gray mv1">start time + end time 3</p>                    
+          <p class="f6 gray mv1">Price 3</p>
+          <a class="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" href="#">Add to Plan</a>
+       </div>
+      <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
+      </article>
+    </section>
+  </div>
+     -->
     
 </section>
