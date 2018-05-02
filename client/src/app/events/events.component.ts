@@ -58,9 +58,9 @@ export class EventsComponent implements OnInit {
     this.model.eventstags = this.getCheckedTags();
     this.model.start_time = moment(this.model.start_time, ["hh:mm a"]).format("HH:mm:ss")
     this.model.end_time = moment(this.model.end_time, ["hh:mm a"]).format("HH:mm:ss")
-    this.eventService.addEvent(this.model).subscribe();
-    // this.eventService.addLocation().subscribe();
     this.eventService.addLocation(this.placeResult).subscribe();
+    this.eventService.addEvent(this.model).subscribe();
+ 
 
   }
 
