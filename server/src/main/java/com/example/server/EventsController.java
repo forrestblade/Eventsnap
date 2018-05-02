@@ -58,18 +58,7 @@ public class EventsController {
 	}
 	
 
-	@PostMapping("/eventstagstransfer/{eventstags[]}")
-	public ResponseEntity<EventsTags> addEventstagstransfer(@RequestBody EventsTags eventstags){
-		EventsTags addedEventsTags = eventsTagsRepository.save(eventstags);
-		return ResponseEntity.ok(addedEventsTags);
-	}
-	
-	
-//	@PostMapping("/eventstags")
-//	public ResponseEntity<EventsTags> addEventstags(@RequestBody EventsTags eventsTags){
-//		EventsTags addedEventsTags = eventsTagsRepository.save(eventsTags);
-//		return ResponseEntity.ok(addedEventsTags);
-//	}
+
 	
 	@DeleteMapping("/events/{id}")
 	public ResponseEntity<Events> deleteEvents(@PathVariable(value = "id") Long id, @Valid @RequestBody Events events) {

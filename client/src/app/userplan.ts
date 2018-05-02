@@ -1,4 +1,5 @@
 import { Time } from "@angular/common";
+import { Tags } from "./tags";
 
 export class UserPlan {
     id: number;
@@ -6,5 +7,5 @@ export class UserPlan {
     start_time: Time;
     end_time: Time;
     budget: number;
-    userPlanTags_id: number
+    userplantags: Array<Tags>[]
 }
