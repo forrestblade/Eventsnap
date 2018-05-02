@@ -18,6 +18,8 @@ import { EventService } from './event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PlanComponent } from './plan/plan.component';
 import { EventsComponent } from './events/events.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from './admin.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { EventsComponent } from './events/events.component';
     ProfileComponent,
     SearchComponent,
     PlanComponent,
-    EventsComponent
+    EventsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { EventsComponent } from './events/events.component';
     
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [EventService, AuthService],
+  providers: [EventService, AuthService, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,13 @@ import * as auth0 from 'auth0-js';
 @Injectable()
 export class AuthService {
 
+  admin: boolean = false;
+
+  public getProfile2(){
+    this.getProfile(null);
+    console.log(this.userProfile['http://localhost:4200/'])
+    return this.userProfile;
+  }
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
     domain: AUTH_CONFIG.domain,
@@ -17,11 +24,11 @@ export class AuthService {
   });
 
   userProfile: any;
-
   constructor(public router: Router) {}
 
   public login(): void {
     this.auth0.authorize();
+    
   }
 
   public handleAuthentication(): void {
@@ -47,10 +54,22 @@ export class AuthService {
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
         self.userProfile = profile;
+       
       }
       cb(err, profile);
     });
+    
   }
+
+  public isAdmin(): boolean{
+ 
+  console.log(this.userProfile['http://localhost:4200/'])
+        if (this.userProfile['http://localhost:4200/'] == "admin"){
+          this.admin = true;
+          return this.admin;
+        }
+  }
+
 
   private setSession(authResult): void {
     // Set the time that the access token will expire at
