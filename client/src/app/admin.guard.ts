@@ -16,13 +16,20 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       // this.auth.getProfile(null);
       // console.log(this.auth.getProfile['http://localhost:4200/'])
-      this.auth.isAdmin();
-      console.log(this.auth.admin)
-    if (this.auth.admin) {
-      return true;
-    }
-    this.router.navigate(['/']);
-    return false;
+      let activateResult: Promise<boolean> = new Promise((resolve: (boolean)=>void, reject:()=>void)=>{
+        this.auth.getProfile(() => {
+          // we have the profile now
+          this.auth.isAdmin();
+          console.log(this.auth.admin)
+          if (this.auth.admin) {
+            resolve(true);
+            return;
+          }
+          this.router.navigate(['/']);
+          resolve(false);
+        })
+      })
+      return activateResult;
 
   }
 }
