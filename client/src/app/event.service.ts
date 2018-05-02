@@ -8,6 +8,7 @@ import { UserPlan } from './userplan';
 import { Tags } from './tags';
 import { EventsTags } from './eventsTags';
 import { Locations } from './location';
+import { EventListener } from '@angular/core/src/debug/debug_node';
 
 
 
@@ -59,7 +60,12 @@ export class EventService {
     return this.http.post(this.serviceEndpoint, userJson, { headers: headers })
 
   }
-
+  
+  deleteEvent(event: Events) {
+      const headers = this._headers;    
+      return this.http.delete(this.serviceEndpoint + '/events/' + event.id,  { headers: headers});
+    
+  }
 
   addEvent(events: Events) {
     console.log(events)
