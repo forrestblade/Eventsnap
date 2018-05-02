@@ -9,11 +9,7 @@ export class AuthService {
 
   admin: boolean = false;
 
-  public getProfile2(){
-    this.getProfile(null);
-    console.log(this.userProfile['http://localhost:4200/'])
-    return this.userProfile;
-  }
+
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
     domain: AUTH_CONFIG.domain,
