@@ -35,14 +35,7 @@ public class EventsTagsTransfer extends Events {
 	private Long price;
 	private ArrayList<Long> eventstags;
 	
-	
-//	public static void sortEventsTags(long eventsid, Array eventsTags[]) {
-//		for (int i=0; i <= eventsTags.length; i++) {
-//			i++;
-//			System.out.println(eventsid + "" +eventsTags[i]);
-//			
-//		}
-//	}
+
 	
 	public static void copyProperties(com.example.server.EventsTagsTransfer source,
 			com.example.server.Events target) 
