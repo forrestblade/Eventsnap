@@ -18,6 +18,7 @@
     <a class="db f6 washed-yellow bg-animate bg-dark-green hover-bg-dark-gray no-underline pv3 ph4 br4" *ngIf="!auth.isAuthenticated()"
       (click)="auth.login()">
       Log In</a>
+      <!-- <a class="db f6 washed-yellow bg-animate bg-dark-green hover-bg-dark-gray no-underline pv3 ph4 br4" routerlink='/admin' *ngIf="auth.isAdmin()">Admin</a> -->
     <a class="db f6 washed-yellow bg-animate bg-dark-green hover-bg-dark-gray no-underline pv3 ph4 br4" *ngIf="auth.isAuthenticated()"
       (click)="auth.logout()">
       Log Out</a>

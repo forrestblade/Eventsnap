@@ -72,13 +72,17 @@ public class EventsController {
 //	}
 	
 	@DeleteMapping("/events/{id}")
-	public ResponseEntity<Events> deleteEvents(@PathVariable(value = "id") Long id, @Valid @RequestBody Events events) {
-		Optional<Events> event = eventsRepository.findById(id);
+	public ResponseEntity<Events> deleteEvents(@PathVariable(value = "id") String id) {
+		Long newID = Long.parseLong(id);
+		System.out.println(newID);
+		Optional<Events> event = eventsRepository.findById(newID);
+		
 		if(!event.isPresent()) {
+//			System.out.printf("if", events);
 			return ResponseEntity.notFound().build();
 		}
-		eventsRepository.delete(events);
-		
+		eventsRepository.deleteById(newID);
+//		System.out.printf("response entitty else",  events);
 		return ResponseEntity.ok().build();
 
 	}
