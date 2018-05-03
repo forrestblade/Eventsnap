@@ -11,7 +11,8 @@ import { HttpHeaders } from '@angular/common/http';
   templateUrl: `./admin.component.html`,
   styles: [`.shadow-sm {box-shadow:0px 0px 2px 1px rgba( 0, 0, 0, 0.2 )}
   .bg-ez-light-black { background-color: rgba(46,50,56,1)}
-  .bg-ez-dark-black { background-color: rgba(33,35,39,1)}`]
+  .bg-ez-dark-black { background-color: rgba(33,35,39,1)}
+  h1{ max-width: 100px; min-width:100px;}`]
 })
 export class AdminComponent implements OnInit {
 
@@ -33,13 +34,10 @@ export class AdminComponent implements OnInit {
       .subscribe(data => this.events = data);
   }
 
- deleteEvent(event: Events): void{
+ deleteEvent(events: Events): void{
    console.log(this.events)
-    event.active = !event.active;
-    console.log(event.active)
-    this.events = this.events.filter(event => event.id !== event.id);
-    this.eventService.deleteEvent(event).subscribe(()=> {
-      
+    this.eventService.deleteEvent(events).subscribe(()=> {
+      this.getEvents();
     });
  }
 
