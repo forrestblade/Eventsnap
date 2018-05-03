@@ -1,14 +1,14 @@
 <div class="cf w-100 w-100-ns vh-100 ph7">
-    <section class="fl p2 w-20-ns w-10-m w-20 bg-dark-green pa0 ma0 h-100 white-80">
-      <div class="db w-100 bg-ez-dark-black mv-2">
-        <h3 class="f3 ma0 washed-yellow bg-washed-red pa2">happenin'</h3>
+    <section class="fl p2 w-20-ns w-10-m w-20 bg-washed-green pa1 ma0 h-100 white-80">
+      <div class="db w-100 br3 bg-ez-dark-black mv-2">
+        <h3 class="f3 ma0 br2 bg-navy shadow-5 bg-hover-moon=gray washed-green pa2">happenin'</h3>
       </div>
       <ul class="list pa1 center">
-        <li class="tc-m hover-bg-light-red pa3 pointer"><i class="material-icons v-mid">home</i><a class="link pa2 pointer white dn-m v-mid" href="#">Events</a></li>
+        <li class="tc-m bg-navy br2 shadow-5 hover-bg-moon-gray pa3 pointer"><i class="material-icons v-mid">home</i><a class="link pa2 pointer white dn-m v-mid" href="#">Events</a></li>
         </ul>
     </section>
-    <section class="fl w-80-ns w-80 bg-light-gray vh-100">
-      <div class="db w-100 bg-washed-yellow shadow-5 mv-2">
+    <section class="fl w-80-ns w-80 bg-light-moon-gray vh-100">
+      <div class="db w-100 bg-moon-gray br2 shadow-5 mv1">
         <h3 class="f4 tr ma0 pa2 black-60"><img src="{{profile.picture}}" class="br-100 dib mr2 v-mid" alt="" />Admin</h3>
       </div>
       <article class="ph4" *ngFor="let event of events">
@@ -26,7 +26,7 @@
             </dl>
         </div>
                 <a>
-                    <i (click)='deleteEvent(event)' class="material-icons gray pointer">delete</i>
+                    <i (click)='deleteEvent(event)' class="material-icons moon-gray pointer">delete</i>
                 </a>
         </div>
       </article>

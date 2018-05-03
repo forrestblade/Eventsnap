@@ -4,8 +4,8 @@ article{
 
 }
 
-article h1, h2, span{
-  text-shadow: 3px 3px dimgray;
+article h1{
+  text-shadow: 1px 1.5px #E8FDF5;
   
 }
 
