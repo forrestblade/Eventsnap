@@ -48,8 +48,8 @@ export class SearchComponent implements OnInit {
 
   toggleList() {
     if (!this.hide) {
-      document.getElementById('list').classList.toggle('bg-light-red')
-      document.getElementById('mapView').classList.toggle('bg-light-red');
+      document.getElementById('list').classList.toggle('bg-moon-gray')
+      document.getElementById('mapView').classList.toggle('bg-moon-gray');
       
       this.hide = !this.hide;
       this.show = !this.show;
@@ -68,8 +68,8 @@ export class SearchComponent implements OnInit {
   
   toggleMap() {
     if (!this.show) {
-      document.getElementById('mapView').classList.toggle('bg-light-red');
-      document.getElementById('list').classList.toggle('bg-light-red')
+      document.getElementById('mapView').classList.toggle('bg-moon-gray');
+      document.getElementById('list').classList.toggle('bg-moon-gray')
       this.hide = !this.hide;
       this.show = !this.show;
     }
@@ -161,9 +161,9 @@ export class SearchComponent implements OnInit {
 
   buttons(){
     if (this.show) {
-      document.getElementById('mapView').classList.toggle('bg-light-red')
+      document.getElementById('mapView').classList.toggle('bg-moon-gray')
     } else if (this.hide) {
-      document.getElementById('list').classList.toggle('bg-light-red')
+      document.getElementById('list').classList.toggle('bg-moon-gray')
     }
   }
 
