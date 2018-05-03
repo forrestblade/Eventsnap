@@ -11,6 +11,16 @@
     <form class="pv4" action="/search" method="post" (ngSubmit)="onSubmit()">
       <fieldset id="search" class="f6">
         <legend class="fw7 mb2">Search</legend>
+        
+        
+        <div class="mt3 w-90 form-group">
+          <label class="db fw4 lh-copy f6" for="Name">Event Name</label>
+          <input class="input-reset ba bg-solid-white w-100 measure form-control" type="text" name="name" [(ngModel)]="model.name"
+            #name="ngModel" required>
+        </div>
+        <br>
+
+        <label class="db fw4 lh-copy f6" for="tags">Tags</label>
         <div *ngFor="let tags of tags">
           <label>
             <input type="checkbox" 
@@ -43,12 +53,10 @@
           <label class="db fw4 lh-copy f6" for="Location">What time?</label>
           <nouislider [connect]="true" [min]="0" [max]="24" [step]="0.5" type="time" name="time" id="time" [(ngModel)]="someRange"
             #name="ngModel" required></nouislider>
-          <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" ng-readonly="checked" name="start_time" value= "{{convertToTimeMin(someRange)}}"  [(ngModel)]="model.start_time" #name="ngModel"  required> -->
+          
           <h3 type="time">Start Time: {{convertToTimeMin(someRange)}}</h3>
-          <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" ng-readonly="checked" name="end_time" value= "{{convertToTimeMax(someRange)}}" [(ngModel)]="model.end_time" #name="ngModel"  required> -->
           <h3 type="time">End Time: {{convertToTimeMax(someRange)}}</h3>
 
-          <!-- <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="time" name="time" id="time" [(ngModel)]="model.time" #name="ngModel"  required> -->
         </div>
       </fieldset>
       <div class="mt3">
