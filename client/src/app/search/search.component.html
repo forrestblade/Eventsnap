@@ -1,15 +1,15 @@
-<div class="flex-ns flex-column-m h-100 ph7 bg-washed-green w-100">
-  <div class="f1 w-25-ns ma2 w-100-m mt5-ns  mt2-m blue">
+<div class="flex-ns flex-column-m vh-100 ph7 w-100">
+  <div class="f1 w-25-ns ma2 w-100-m mt5-ns mt2-m blue">
     <div class="flex pv2">
-      <button (click)="toggleMap()" class="f5 ba br3 br--left " id="mapView">
+      <button (click)="toggleMap()" class="f5 ba shadow-5 br3 br--left " id="mapView">
         {{buttonName1}}
       </button>
-      <button (click)="toggleList()" class="f5 ba br3 br--right" id="list">
+      <button (click)="toggleList()" class="f5 ba shadow-5 br3 br--right" id="list">
         {{buttonName2}}
       </button>
     </div>
     <form class="pv4" action="/search" method="post" (ngSubmit)="onSubmit()">
-      <fieldset id="search" class="f6">
+      <fieldset id="search" class="f6 br2 shadow-5 bg-near-white b--black-10">
         <legend class="fw7 mb2">Search</legend>
         <div *ngFor="let tags of tags">
           <label>
@@ -45,20 +45,20 @@
             #name="ngModel" required></nouislider>
           </div>
       </fieldset>
-      <div class="mt3">
-        <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Submit!">
+      <div class="mt3 tc">
+        <input class="b shadow-5 ph3 pv2 input-reset br2 ba b--black bg-transparent grow pointer f6" type="submit" value="Submit!">
       </div>
 
     </form>
   </div>
-  <div class="f1 w-75-ns w-100-s mt5-ns mt2-m tc moon-gray ">
+  <div class="f1 w-75-ns w-100-s mt5-ns mt2-m tc gray ">
     
 
 
 <div [hidden]='!hide' id="map" class="google-map"></div>
 
     
-    <main [hidden]="!show" class="mw6 center">
+    <main [hidden]="!show" class="mw6 center br2 shadow-5 ba pa2 b--black-05 bg-near-white">
       <article *ngFor="let event of events">
         <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
           <div class="dtc w3">
