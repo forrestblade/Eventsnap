@@ -11,15 +11,15 @@
     <a class="db mb3 mb0-l pa0-l mb f6 link navy dim mr3 mr4-ns" routerLink="/search">Search</a>
     <a class="db mb3 mb0-l pa0-l mb f6  link navy dim mr3 mr4-ns" routerLink="/events">
       Create Event</a>
-    <a class="db mb3 mb0-l pa0-l mb f6 link navy dim mr3 mr4-ns" *ngIf="auth.isAuthenticated()" routerLink="/profile">
-      Profile</a>
-    <a class="db mb3 mb0-l pa0-l mb f6 link navy dim mr3 mr4-ns" routerLink="/plan" *ngIf="auth.isAuthenticated()">
-      Make a plan</a>
-    <a class="db f6 navy bg-animate bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4" *ngIf="!auth.isAuthenticated()"
+      <a class="db mb3 mb0-l pa0-l mb f6 link navy dim mr3 mr4-ns" routerLink="/plan" *ngIf="auth.isAuthenticated()">
+        Make a plan</a>
+        <a class="db mb3 mb0-l pa0-l mb f6 link navy dim mr3 mr4-ns" *ngIf="auth.isAuthenticated()" routerLink="/profile">
+          Profile</a>
+        <a class="db f6 navy bg-animate bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4" *ngIf="!auth.isAuthenticated()"
       (click)="auth.login()">
       Log In</a>
       <!-- <a class="db f6 moon-gray bg-animate bg-washed-green hover-bg-dark-moon-gray no-underline pv3 ph4 br4" routerlink='/admin' *ngIf="auth.isAdmin()">Admin</a> -->
-    <a class="db f6 navy bg-animate bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4" *ngIf="auth.isAuthenticated()"
+    <a class="db f6 navy bg-animate shadow-5 bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4" *ngIf="auth.isAuthenticated()"
       (click)="auth.logout()">
       Log Out</a>
   </div>
