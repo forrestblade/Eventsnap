@@ -54,10 +54,10 @@ public class UserPlanController {
 		return ResponseEntity.ok(addedUserPlanTagsTransfer);
 	
 	}
-	@GetMapping("/userplantags")
-	public List<UserPlanTags> getUserPlanTags(){
-		return userPlanTagsRepository.findAll();
-	}
+//	@GetMapping("/userplantags")
+//	public List<UserPlanTags> getUserPlanTags(){
+//		return userPlanTagsRepository.findAll();
+//	}
 
 
 

@@ -34,6 +34,14 @@ public class EventsTagsTransfer extends Events {
 	private Date end_time;
 	private Long price;
 	private String city;
+	private String state;
+	private String address;
+	private String zip_code;
+	private float lat;
+	private float lng;
+	private ArrayList<Long> eventstags;
+	
+	
 	public String getCity() {
 		return city;
 	}
@@ -74,8 +82,7 @@ public class EventsTagsTransfer extends Events {
 		this.lng = lng;
 	}
 
-	private String state;
-	private String address;
+	
 	public String getAddress() {
 		return address;
 	}
@@ -83,13 +90,6 @@ public class EventsTagsTransfer extends Events {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	private String zip_code;
-	private float lat;
-	private float lng;
-	private ArrayList<Long> eventstags;
-	
-
 	
 	public static void copyProperties(com.example.server.EventsTagsTransfer source,
 			com.example.server.Events target) 
