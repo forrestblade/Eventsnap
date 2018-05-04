@@ -10,7 +10,12 @@ export class Events {
     price: number;
     eventstags: Array<Tags>[]
     active: boolean;
-
+    city:string;
+    state:string;
+    address:string;
+    zip_code:string;
+    lat: number;
+    lng: number;
 
 
 }
