@@ -1,29 +1,30 @@
-<nav class="flex justify-between z-5 sticky w-100 ph7 h3 bg-light-red">
-  <a class="link washed-yellow hover-dark-gray no-underline flex items-center pa3" routerLink="">
+<nav class="flex justify-between br3 z-5 sticky w-100 ph7 h3 bg-moon-gray">
+  <a class="link f6 navy hover-dark-moon-gray no-underline flex items-center pa3" routerLink="">
     {{title}} </a>
 
   <div class="flex pa3 items-center transition-transform dn-l" id="hamburger">
-    <a class="f4 link dib dark-green hover-dark-grey dim mr3 mr4-ns rotate-90" href="#">|||</a>
+    <a class="f4 link dib navy hover-dark-grey dim mr3 mr4-ns rotate-90" href="#">|||</a>
   </div>
 
-  <div class=" pt4 pb4 pl4 pa3-l flex-l items-center h-100 h-inherit-l fixed relative-l top-0 right-0 transition-transform transform-off bb b--washed-yellow bg-light-red bn-l"
+  <div class=" pt4 pb4 pl4 pa3-l flex-l items-center h-100 h-inherit-l fixed relative-l top-0 right-0 transition-transform transform-off bb b--moon-gray bg-moon-gray bn-l"
     id="sidebar">
-    <a class="db mb3 mb0-l pa0-l mb f6 link washed-yellow dim mr3 mr4-ns" routerLink="/search">Search</a>
-    <a class="db mb3 mb0-l pa0-l mb f6  link washed-yellow dim mr3 mr4-ns" routerLink="/events">
+    <a class="db mb3 mb0-l pa0-l mb f6 link navy dim mr3 mr4-ns" routerLink="/search">Search</a>
+    <a class="db mb3 mb0-l pa0-l mb f6  link navy dim mr3 mr4-ns" routerLink="/events">
       Create Event</a>
-    <a class="db mb3 mb0-l pa0-l mb f6 link washed-yellow dim mr3 mr4-ns" *ngIf="auth.isAuthenticated()" routerLink="/profile">
-      Profile</a>
-    <a class="db mb3 mb0-l pa0-l mb f6 link washed-yellow dim mr3 mr4-ns" routerLink="/plan" *ngIf="auth.isAuthenticated()">
-      Make a plan</a>
-    <a class="db f6 washed-yellow bg-animate bg-dark-green hover-bg-dark-gray no-underline pv3 ph4 br4" *ngIf="!auth.isAuthenticated()"
+      <a class="db mb3 mb0-l pa0-l mb f6 link navy dim mr3 mr4-ns" routerLink="/plan" *ngIf="auth.isAuthenticated()">
+        Make a plan</a>
+        <a class="db mb3 mb0-l pa0-l mb f6 link navy dim mr3 mr4-ns" *ngIf="auth.isAuthenticated()" routerLink="/profile">
+          Profile</a>
+        <a class="db f6 navy bg-animate bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4" *ngIf="!auth.isAuthenticated()"
       (click)="auth.login()">
       Log In</a>
-    <a class="db f6 washed-yellow bg-animate bg-dark-green hover-bg-dark-gray no-underline pv3 ph4 br4" *ngIf="auth.isAuthenticated()"
+      <!-- <a class="db f6 moon-gray bg-animate bg-washed-green hover-bg-dark-moon-gray no-underline pv3 ph4 br4" routerlink='/admin' *ngIf="auth.isAdmin()">Admin</a> -->
+    <a class="db f6 navy bg-animate shadow-5 bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4" *ngIf="auth.isAuthenticated()"
       (click)="auth.logout()">
       Log Out</a>
   </div>
 </nav>
 
-<main class="principles">
+<main class="principles vh-100 w-100 bg-washed-green">
   <router-outlet id="principles"></router-outlet>
 </main>

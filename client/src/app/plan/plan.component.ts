@@ -3,6 +3,7 @@ import { EventService } from '../event.service';
 import { UserPlan } from '../userplan';
 import * as moment from 'moment';
 import { UserPlanTags } from '../UserPlantags';
+import { Tags } from '../tags';
 
 
 @Component({
@@ -14,17 +15,16 @@ export class PlanComponent implements OnInit {
 
     constructor(public eventService: EventService) {}
 
-    userPlan: Array<UserPlan>
-    userPlanTags: Array<UserPlanTags>
+    userPlan: Array<UserPlan>;
+    userPlanTags: Array<UserPlanTags>;
+    tags: Array<Tags>;
     model: any = {};
     loading = false;
     public someRange: number[] = [3, 7];
     public tooltipSlider = document.getElementById('slider-tooltips')
     public sliderTime_min;
     public sliderTime_max;
-    public music;
-    public food;
-    public drink;
+  
    
 
 
@@ -84,22 +84,38 @@ export class PlanComponent implements OnInit {
         .subscribe(data => this.userPlan = data);
       }
 
+      getCheckedTags() {
+        let checkedTags = [];
+        checkedTags = this.tags.filter(tags => tags.checked).map(tags => tags.id);
+        return checkedTags;
+      }
+    
   
+      getTags() {
+        this.eventService.getTags()
+          .subscribe(data => this.tags = data);
+      }
 
       onSubmit() {
         this.loading = true;
+        this.model.userplantags = this.getCheckedTags();
         this.model.end_time = moment(this.sliderTime_max, ["hh:mm a"]).format("HH:mm:ss");
         this.model.start_time = moment(this.sliderTime_min, ["hh:mm a"]).format("HH:mm:ss");        
         this.eventService.addUserPlan(this.model).subscribe();
         
+        
       }
+
+    
+    
       
       
       
     
 
     ngOnInit() {
-        this.getUserPlan();
+      this.getTags();
+      // this.getUserPlan();
     }
 
 }

@@ -1,0 +1,34 @@
+<div class="cf w-100 w-100-ns vh-100 ph7">
+    <section class="fl p2 w-20-ns w-10-m w-20 bg-washed-green pa1 ma0 h-100 white-80">
+      <div class="db w-100 br3 bg-ez-dark-black mv-2">
+        <h3 class="f3 ma0 br2 bg-navy shadow-5 bg-hover-moon=gray washed-green pa2">happenin'</h3>
+      </div>
+      <ul class="list pa1 center">
+        <li class="tc-m bg-navy br2 shadow-5 hover-bg-moon-gray pa3 pointer"><i class="material-icons v-mid">home</i><a class="link pa2 pointer white dn-m v-mid" href="#">Events</a></li>
+        </ul>
+    </section>
+    <section class="fl w-80-ns w-80 bg-light-moon-gray vh-100">
+      <div class="db w-100 bg-moon-gray br2 shadow-5 mv1">
+        <h3 class="f4 tr ma0 pa2 black-60"><img src="{{profile.picture}}" class="br-100 dib mr2 v-mid" alt="" />Admin</h3>
+      </div>
+      <article class="ph4" *ngFor="let event of events">
+        <div class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
+          <div class="dtc w3">
+            <img src="http://mrmrs.github.io/images/0010.jpg" class="db w-100" />
+          </div>
+          <div class="dtc v-top pl2">
+            <h1 class="f6 f5-ns fw6 lh-title black mv0">{{event.name}}</h1>
+            <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'shortDate' }}
+              <br> {{event.time | date: 'shortTime'}} </h2>
+            <dl class="mt2 f6">
+              <dt class="clip">Price</dt>
+              <dd class="ml0">{{event.price}}</dd>
+            </dl>
+        </div>
+                <a>
+                    <i (click)='deleteEvent(event)' class="material-icons moon-gray pointer">delete</i>
+                </a>
+        </div>
+      </article>
+    </section>
+  </div>

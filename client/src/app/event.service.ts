@@ -8,6 +8,7 @@ import { UserPlan } from './userplan';
 import { Tags } from './tags';
 import { EventsTags } from './eventsTags';
 import { Locations } from './location';
+import { EventListener } from '@angular/core/src/debug/debug_node';
 
 
 
@@ -51,9 +52,7 @@ export class EventService {
       username: users.username,
       email_address: users.email_address,
       password: users.password
-
     }
-
     const headers = this._headers;
     // JSON Stringify is needed to input into postman as well
     let userJson = JSON.stringify(user);
@@ -61,12 +60,16 @@ export class EventService {
     return this.http.post(this.serviceEndpoint, userJson, { headers: headers })
 
   }
-
+  
+  deleteEvent(event: Events) {
+      const headers = this._headers;    
+      return this.http.delete(this.serviceEndpoint + '/events/' + event.id,  { headers: headers});
+    
+  }
 
   addEvent(events: Events) {
     console.log(events)
     let event = {
-      // id: events.id,
       name: events.name,
       date: events.date,
       start_time: (events.date + "T" + events.start_time),
@@ -74,7 +77,6 @@ export class EventService {
       price: events.price,
       eventstags: events.eventstags
     }
-
     const headers = this._headers;
     let eventJson = JSON.stringify(event);
     console.log(eventJson);
@@ -102,27 +104,13 @@ export class EventService {
       start_time: (userPlan.date + "T" + userPlan.start_time),
       end_time: (userPlan.date + "T" + userPlan.end_time),
       budget: userPlan.budget,
-      // tags: userPlan.userPlanTags_id
+      userplantags: userPlan.userplantags
     }
 
     const headers = this._headers;
     let userPlanJson = JSON.stringify(userPlans);
     console.log(userPlanJson);
-    return this.http.post("http://localhost:8080/userplan", userPlanJson, { headers: headers })
-  }
-
-  addEventsTags(eventsTags: EventsTags) {
-    console.log(eventsTags)
-    let eventsTag = {
-      // id: events.id,
-      events_id: eventsTags.events_id,
-      tags_id: eventsTags.tags_id
-    }
-
-    const headers = this._headers;
-    let eventJson = JSON.stringify(eventsTag);
-    console.log(eventJson);
-    return this.http.post("http://localhost:8080/eventstags", eventJson, { headers: headers })
+    return this.http.post("http://localhost:8080/userplantagstransfer", userPlanJson, { headers: headers })
   }
 
 

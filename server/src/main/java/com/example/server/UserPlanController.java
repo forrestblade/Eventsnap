@@ -21,21 +21,39 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserPlanController {
 	
 	@Autowired
+	private TagsRepository tagsRepository;
+	@Autowired
+	private LocationRepository locationRepository;
+	@Autowired
 	private UserPlanRepository userPlanRepository;
 	@Autowired
-	private TagsRepository userPlanTagsRepository;
+	private UserPlanTagsRepository userPlanTagsRepository;
 	
 	@GetMapping("/userplan")
 	public List<UserPlan> getUserPlan(){
 		return userPlanRepository.findAll();
 	}
 	
-	@PostMapping("/userplan")
-	public ResponseEntity<UserPlan> addUserPlan(@RequestBody UserPlan userPlan) {
-		UserPlan addedUserPlan = userPlanRepository.save(userPlan);
-		return ResponseEntity.ok(addedUserPlan);
-	}
+//	@PostMapping("/userplan")
+//	public ResponseEntity<UserPlan> addUserPlan(@RequestBody UserPlan userPlan) {
+//		UserPlan addedUserPlan = userPlanRepository.save(userPlan);
+//		return ResponseEntity.ok(addedUserPlan);
+//	}
 	
+	@PostMapping("/userplantagstransfer")
+	public ResponseEntity<UserPlanTagsTransfer> addUserPlanTagsTransfer(@RequestBody UserPlanTagsTransfer userplantagstransfer){
+		UserPlanTagsTransfer addedUserPlanTagsTransfer = userPlanRepository.save(userplantagstransfer);
+		UserPlan addedUserPlan = userPlanRepository.save(userplantagstransfer);
+		for (long i: userplantagstransfer.getUserplantags()) {
+			UserPlanTags newtag = new UserPlanTags();
+			newtag.setTags_id(i);
+			newtag.setUserplan_id(userplantagstransfer.getId()); 
+			System.out.println(newtag.getTags_id());
+			UserPlanTags addedUserPlanTags = userPlanTagsRepository.save(newtag);
+		}
+		return ResponseEntity.ok(addedUserPlanTagsTransfer);
+	
+	}
 //	@GetMapping("/userplantags")
 //	public List<UserPlanTags> getUserPlanTags(){
 //		return userPlanTagsRepository.findAll();
