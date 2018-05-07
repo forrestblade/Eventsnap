@@ -1,5 +1,7 @@
 <div class="flex-ns flex-column-m vh-100 ph7 w-100">
-  <div class="f1 w-25-ns ma2 w-100-m mt5-ns mt2-m blue">
+  <div class="f1 w-25-ns ma2 w-100-l mt5-ns mt2-m blue">
+    <div class="fixed-ns static-m">
+
     <div class="flex pv2">
       <button (click)="toggleMap()" class="f5 ba shadow-5 br3 br--left " id="mapView">
         {{buttonName1}}
@@ -9,41 +11,20 @@
       </button>
     </div>
     <form class="pv4" action="/search" method="post" (ngSubmit)="onSubmit()">
-      <fieldset id="search" class="f6 br2 shadow-5 bg-near-white b--black-10">
+      <fieldset id="search" class="f6 flex-m justify-between-m br2 shadow-5 bg-near-white b--black-10">
         <legend class="fw7 mb2">Search</legend>
         <div *ngFor="let tags of tags">
-          <label>
-            <input type="checkbox" 
-                    name="tags"
-                    value="{{tags.id}}" 
-                    [(ngModel)]="tags.checked"
-             />
+          <label id="tagBox">
+            <input type="checkbox" name="tags" value="{{tags.id}}" [(ngModel)]="tags.checked" />
             <span innerHTML="{{tags.name}}"></span>
           </label>
         </div>
-        
-
         <div class="mt3 w-90 form-group">
-          <label class="db fw4 lh-copy f6" for="date">When?</label>
-          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="date" name="date" [(ngModel)]="model.date"
-            #name="ngModel" required>
+          <label class="db fw4 lh-copy f6" for="date">Where would you like to go?</label>
+          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" placeholder="Search by name, date, price, or location" type="text" name="date" [(ngModel)]="term || item">
         </div>
 
-        <div class="mt3 form-group">
-          <label class="db fw4 lh-copy f6" for="Location">Where?</label>
-          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="text" name="location" id="location"  #search >
-          <!-- [formControl]="searchControl" -->
-        </div>
-        <div class="mt3 form-group">
-          <label class="db fw4 lh-copy f6" for="Location">What's your budget?</label>
-          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="number" name="budget" [(ngModel)]="model.budget"
-            #name="ngModel" required>
-        </div>
-        <div class="mt3 form-group">
-          <label class="db fw4 lh-copy f6" for="Location">What time?</label>
-          <nouislider [connect]="true" [min]="0" [max]="24" [step]="0.5" type="time" name="time" id="time" [(ngModel)]="someRange"
-            #name="ngModel" required></nouislider>
-          </div>
+       
       </fieldset>
       <div class="mt3 tc">
         <input class="b shadow-5 ph3 pv2 input-reset br2 ba b--black bg-transparent grow pointer f6" type="submit" value="Submit!">
@@ -51,15 +32,17 @@
 
     </form>
   </div>
+    
+  </div>
   <div class="f1 w-75-ns w-100-s mt5-ns mt2-m tc gray ">
-    
 
 
-<div [hidden]='!hide' id="map" class="google-map"></div>
 
-    
+    <div [hidden]='!hide' id="map" class="google-map"></div>
+
+
     <main [hidden]="!show" class="mw6 center br2 shadow-5 ba pa2 b--black-05 bg-near-white">
-      <article *ngFor="let event of events">
+      <article *ngFor="let event of events |filter:term||item">
         <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
           <div class="dtc w3">
             <img src="http://mrmrs.github.io/images/0010.jpg" class="db w-100" />
@@ -67,10 +50,12 @@
           <div class="dtc v-top pl2">
             <h1 class="f6 f5-ns fw6 lh-title black mv0">{{event.name}}</h1>
             <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'shortDate' }}
-              <br> {{event.time | date: 'shortTime'}} </h2>
+              <br> {{event.start_time | date: 'shortTime'}} to {{event.end_time | date: 'shortTime'}} </h2>
             <dl class="mt2 f6">
               <dt class="clip">Price</dt>
-              <dd class="ml0">{{event.price}}</dd>
+              <dd *ngIf="event.price != 0" class="ml0">${{event.price}}</dd>
+              <dd *ngIf="event.price === 0" class="ml0">Free</dd>
+              
             </dl>
           </div>
         </a>

@@ -1,4 +1,4 @@
-<nav class="flex justify-between br3 z-5 sticky w-100 ph7 h3 bg-moon-gray">
+<nav class="flex justify-between pb-2 br3 z-5 sticky w-100 ph7 h3 bg-moon-gray">
   <a class="link f6 navy hover-dark-moon-gray no-underline flex items-center pa3" routerLink="">
     {{title}} </a>
 
@@ -15,7 +15,7 @@
         Make a plan</a>
         <a class="db mb3 mb0-l pa0-l mb f6 link navy dim mr3 mr4-ns" *ngIf="auth.isAuthenticated()" routerLink="/profile">
           Profile</a>
-        <a class="db f6 navy bg-animate bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4" *ngIf="!auth.isAuthenticated()"
+        <a class="db f6 navy shadow-5 bg-animate bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4" *ngIf="!auth.isAuthenticated()"
       (click)="auth.login()">
       Log In</a>
       <!-- <a class="db f6 moon-gray bg-animate bg-washed-green hover-bg-dark-moon-gray no-underline pv3 ph4 br4" routerlink='/admin' *ngIf="auth.isAdmin()">Admin</a> -->
@@ -25,6 +25,6 @@
   </div>
 </nav>
 
-<main class="principles vh-100 w-100 bg-washed-green">
-  <router-outlet id="principles"></router-outlet>
+<main class="principles vh-100 dt w-100">
+  <router-outlet></router-outlet>
 </main>

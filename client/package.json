@@ -27,6 +27,7 @@
     "core-js": "^2.4.1",
     "moment": "^2.22.1",
     "ng2-nouislider": "^1.7.7",
+    "ng2-search-filter": "^0.4.7",
     "nouislider": "^11.1.0",
     "rxjs": "^5.5.6",
     "tachyons-background-size": "^5.0.5",

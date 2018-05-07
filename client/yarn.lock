@@ -3304,6 +3304,10 @@ ng2-nouislider@^1.7.7:
   version "1.7.7"
   resolved "https://registry.yarnpkg.com/ng2-nouislider/-/ng2-nouislider-1.7.7.tgz#b841f4b313c8c9c8a763c80f3a59d5aa4c3a70c8"
 
+ng2-search-filter@^0.4.7:
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/ng2-search-filter/-/ng2-search-filter-0.4.7.tgz#1a12d741c9e784296684b7743c3063d5331701fa"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"

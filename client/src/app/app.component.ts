@@ -33,6 +33,7 @@ export class AppComponent {
     }
   }
   ngOnInit() {
+    this.auth.userProfile();
     this.auth.isAdmin();
   }
 }
