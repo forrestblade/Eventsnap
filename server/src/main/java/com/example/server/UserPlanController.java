@@ -34,11 +34,11 @@ public class UserPlanController {
 		return userPlanRepository.findAll();
 	}
 	
-//	@PostMapping("/userplan")
-//	public ResponseEntity<UserPlan> addUserPlan(@RequestBody UserPlan userPlan) {
-//		UserPlan addedUserPlan = userPlanRepository.save(userPlan);
-//		return ResponseEntity.ok(addedUserPlan);
-//	}
+	@PostMapping("/userplan")
+	public ResponseEntity<UserPlan> addUserPlan(@RequestBody UserPlan userPlan) {
+		UserPlan addedUserPlan = userPlanRepository.save(userPlan);
+		return ResponseEntity.ok(addedUserPlan);
+	}
 	
 	@PostMapping("/userplantagstransfer")
 	public ResponseEntity<UserPlanTagsTransfer> addUserPlanTagsTransfer(@RequestBody UserPlanTagsTransfer userplantagstransfer){
@@ -58,10 +58,10 @@ public class UserPlanController {
 //	public List<UserPlanTags> getUserPlanTags(){
 //		return userPlanTagsRepository.findAll();
 //	}
-//
-//
-//
-//	}
+
+
+
+	
 //	@PostMapping("/userplantags")
 //	public ResponseEntity<UserPlanTags> addUserPlanTags(@RequestBody Tags tags){
 //		Tags addedTags = userPlanTagsRepository.save(userPlanTags);

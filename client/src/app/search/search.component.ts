@@ -172,8 +172,8 @@ export class SearchComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getTags();
-    this.getUserPlan();
+    // this.getTags();
+    // this.getUserPlan();
     this.getEvents();
     this.buttons()
     let map;

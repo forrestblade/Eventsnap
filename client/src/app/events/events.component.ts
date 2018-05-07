@@ -7,7 +7,7 @@ import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild } from '@ang
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { Locations } from "../location";
+// import { Locations } from "../location";
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -20,7 +20,7 @@ export class EventsComponent implements OnInit {
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
-  public placeResult: Locations;
+  public placeResult: Events;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -55,11 +55,11 @@ export class EventsComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
+    
     this.model.eventstags = this.getCheckedTags();
     this.model.start_time = moment(this.model.start_time, ["hh:mm a"]).format("HH:mm:ss")
     this.model.end_time = moment(this.model.end_time, ["hh:mm a"]).format("HH:mm:ss")
-    this.eventService.addLocation(this.placeResult).subscribe();
-    this.eventService.addEvent(this.model).subscribe();
+    this.eventService.addEvent(this.placeResult).subscribe();
  
 
   }
@@ -80,12 +80,34 @@ export class EventsComponent implements OnInit {
 
           console.log(place)
 
-          let eventLoc = {
-            city: place.address_components[2].long_name,
-            state: place.address_components[4].short_name,
 
-            address: place.address_components[0].long_name + " " + place.address_components[1].long_name,
-            zip_code: place.address_components[6].long_name
+          let address1= place.formatted_address.split(",");
+          console.log(address1[0]);
+          console.log(address1[1]);
+          console.log(address1[2]);
+          let address2 = address1[1].split(" ");
+          let address3 = address1[2].split(" ");
+          console.log(address2[1]);
+          console.log(address3[0]);
+          console.log(address3[1]);
+          console.log(address3[2]);          
+
+          let eventLoc = {
+            id: this.model.id,
+            name: this.model.name,
+            date: this.model.date,
+            start_time: this.model.start_time,
+            end_time: this.model.end_time,
+            price: this.model.price,
+            eventstags: this.getCheckedTags(),
+            active: this.model.active,
+            city: address2[1],
+            state: address3[1],
+
+            address: address1[0] + ", " + address2[1] + ", " + address3[1],
+            zip_code: address3[2],
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
           }
           console.log(eventLoc)
           this.placeResult = eventLoc;
