@@ -26,17 +26,66 @@ public class Events {
 	private Date start_time;
 	private Date end_time;
 	private Long price;
-	private Long location_id;
+	private String city;
+	private String state;
+	private String address;
+	private String zip_code;
+	private float lat;
+	private float lng;
+
 	
 	
-
-	public Long getLocation_id() {
-		return location_id;
+	
+	public String getCity() {
+		return city;
 	}
 
-	public void setLocation_id(Long location_id) {
-		this.location_id = location_id;
+	public void setCity(String city) {
+		this.city = city;
 	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getZip_code() {
+		return zip_code;
+	}
+
+	public void setZip_code(String zip_code) {
+		this.zip_code = zip_code;
+	}
+
+
+	public float getLat() {
+		return lat;
+	}
+
+	public void setLat(float lat) {
+		this.lat = lat;
+	}
+
+	public float getLng() {
+		return lng;
+	}
+
+	public void setLng(float lng) {
+		this.lng = lng;
+	}
+
+
 
 	public String getName() {
 		return name;
