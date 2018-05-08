@@ -1,4 +1,4 @@
-<div class="flex-ns flex-column-m vh-100 ph7 w-100">
+<div class="flex-ns flex-column-m bg-washed-blue cover ph7 w-100" style="background:url(https://images.pexels.com/photos/207589/pexels-photo-207589.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350) fixed;">
   <div class="f1 w-25-ns ma2 w-100-m mt5-ns mt2-m blue">
     <div class="flex pv2">
       <button (click)="toggleMap()" class="f5 ba shadow-5 br3 br--left " id="mapView">
@@ -10,7 +10,8 @@
     </div>
     <form class="pv4" action="/search" method="post" (ngSubmit)="onSubmit()">
       <fieldset id="search" class="f6 br2 shadow-5 bg-near-white b--black-10">
-        <legend class="fw7 mb2">Search</legend>
+        <!-- <legend class="fw7 mb2">Search</legend> -->
+        <h2>Search</h2>
         <div *ngFor="let tags of tags">
           <label>
             <input type="checkbox" 
