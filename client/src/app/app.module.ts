@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NouisliderModule } from 'ng2-nouislider';
 import { AgmCoreModule } from '@agm/core';
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -38,6 +39,7 @@ import { AdminGuard } from './admin.guard';
     HttpClientModule,
     NouisliderModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAxCC0Uet-dbqTGnbvojZ7SgFuQkx4hVcE',
       libraries: ['places']
