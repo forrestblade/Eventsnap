@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { UserPlan } from '../userplan';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import { UserPlanTags } from '../UserPlantags';
 import { Tags } from '../tags';
 import { Events } from '../events';
@@ -27,7 +27,9 @@ export class PlanComponent implements OnInit {
     public tooltipSlider = document.getElementById('slider-tooltips')
     public sliderTime_min;
     public sliderTime_max;
-    eventPlan: Array<Events>;
+   public eventPlan1: Array<Events>;
+    eventPlan2: Array<Events>;
+    eventPlan3: Array<Events>;
    
 
 
@@ -106,18 +108,70 @@ export class PlanComponent implements OnInit {
       
 
       // this.eventService.getUserPlan()
-      createEventPlan() {
-        var eventPlan1 = [];
+      createEventPlan1() {
+        var eventPlan0 = [];
        Object.entries(this.events).map(([event, val])=>{
-        //  console.log(val.price)
-         if (val.price <= this.model.budget) {
-           eventPlan1.push(val);
+      
+        var startTimePhx = moment.tz(val.start_time.toString(), "America/Phoenix").format();
+
+        var formattedTime = this.model.date + "T07:00:00.000+0000T" + startTimePhx;
+        var stringEventTime =(val.date+"T"+ startTimePhx.toString());
+         if (((val.price <= this.model.budget )) && (stringEventTime == formattedTime)) {
            
+        //  
+        //  
+           eventPlan0.push(val);
+           console.log(stringEventTime)
+           console.log(formattedTime)
             // console.log(eventPlan[Object.keys(eventPlan)[0]][0]);
          }
        })
-        this.eventPlan = eventPlan1[0];
-       console.log(this.eventPlan)
+        this.eventPlan1 = eventPlan0[0];
+       console.log(this.eventPlan1)
+       
+      }
+
+      createEventPlan2() {
+        var eventPlan00  = [];
+        console.log(eventPlan00);
+        for (var i in this.eventPlan1) {
+          console.log(eventPlan1[0].price)
+         }
+       Object.entries(this.events).map(([event1, val1])=>{
+         
+        console.log(this.eventPlan1[0].id);
+        console.log(val1.id);
+         if (((this.eventPlan1[0].id != val1.id) && (val1.price <= this.model.budget)))  {
+           
+         //&& (this.eventPlan1[0].end_time == val.start_time))
+        //  
+           eventPlan00.push(val1);
+          console.log(this.eventPlan1[0].end_time)
+          console.log(val1.start_time)
+            // console.log(eventPlan[Object.keys(eventPlan)[0]][0]);
+         }
+       })
+        this.eventPlan2 = eventPlan00[0];
+       console.log(this.eventPlan2)
+       
+      }
+      createEventPlan3() {
+        var eventPlan1 = [];
+       Object.entries(this.events).map(([event, val])=>{
+        var formattedTime = this.model.date + "T07:00:00.000+0000T1970-01-01T" + this.model.start_time;
+        var stringEventTime =(val.date+"T"+ val.start_time).toString();
+         if ((val.price <= this.model.budget))  {
+        //  && (stringEventTime == formattedTime))
+        //  
+           eventPlan1.push(val);
+           console.log(stringEventTime)
+           console.log(formattedTime)
+            // console.log(eventPlan[Object.keys(eventPlan)[0]][0]);
+         }
+       })
+        this.eventPlan1 = eventPlan1[0];
+       console.log(this.eventPlan1)
+       
       }
       
     
@@ -129,7 +183,9 @@ export class PlanComponent implements OnInit {
         this.model.start_time = moment(this.sliderTime_min, ["hh:mm a"]).format("HH:mm:ss");        
         this.eventService.addUserPlan(this.model).subscribe();
         this.getUserPlan();
-        this.createEventPlan();
+        this.createEventPlan1();
+        this.createEventPlan2();
+        
         
       }
 
