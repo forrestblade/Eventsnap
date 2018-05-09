@@ -32,6 +32,7 @@ public class Events {
 	private String zip_code;
 	private float lat;
 	private float lng;
+	private String description;
 
 	
 	
@@ -131,6 +132,14 @@ public class Events {
 
 	public void setPrice(Long price) {
 		this.price = price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	
