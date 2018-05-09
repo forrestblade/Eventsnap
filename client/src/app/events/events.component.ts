@@ -57,8 +57,8 @@ export class EventsComponent implements OnInit {
     this.loading = true;
     
     this.model.eventstags = this.getCheckedTags();
-    this.model.start_time = moment(this.model.start_time, ["hh:mm a"]).format("HH:mm:ss")
-    this.model.end_time = moment(this.model.end_time, ["hh:mm a"]).format("HH:mm:ss")
+    this.model.start_time = moment(this.model.start_time, ["hh:mm a"]).format("HH:mm:ss");
+    this.model.end_time = moment(this.model.end_time, ["hh:mm a"]).format("HH:mm:ss");
     this.eventService.addEvent(this.placeResult).subscribe();
  
 
@@ -101,12 +101,14 @@ export class EventsComponent implements OnInit {
             price: this.model.price,
             eventstags: this.getCheckedTags(),
             active: this.model.active,
+            description:this.model.description,
             city: address2[1],
             state: address3[1],
             address: address1[0] + ", " + address2[1] + ", " + address3[1],
             zip_code: address3[2],
             lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng(),
+            lng: place.geometry.location.lng()
+            
           }
           console.log(eventLoc)
           this.placeResult = eventLoc;

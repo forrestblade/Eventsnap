@@ -2,12 +2,11 @@ package com.example.server;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -32,6 +31,8 @@ public class Events {
 	private String zip_code;
 	private float lat;
 	private float lng;
+	@Column(columnDefinition="TEXT")
+	private String description;
 
 	
 	
@@ -131,6 +132,14 @@ public class Events {
 
 	public void setPrice(Long price) {
 		this.price = price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	
