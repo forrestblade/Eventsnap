@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.PropertyAccessorFactory;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -32,6 +34,8 @@ public class UserPlanTagsTransfer extends UserPlan{
 	private Date start_time;
 	private Date end_time;
 	private ArrayList<Long> userplantags;
+	
+	
 	
 	public static void copyProperties(com.example.server.UserPlanTagsTransfer source,
 			com.example.server.UserPlan target) 

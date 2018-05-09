@@ -22,8 +22,6 @@ export class AdminComponent implements OnInit {
 
   constructor(private auth: AuthService, private eventService: EventService) { }
 
-  
-
   addEvent(events: Events) {
     console.log(events)
     this.eventService.addEvent(events).subscribe();

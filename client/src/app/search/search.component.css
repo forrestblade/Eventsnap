@@ -2,3 +2,8 @@
     margin: 18px auto;
  height: 500px;
     }
+
+#tagBox{
+    display: flex;
+    flex-direction: row;
+}

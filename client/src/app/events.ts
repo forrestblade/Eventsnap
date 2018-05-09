@@ -19,4 +19,6 @@ export class Events {
     description:string;
 
 
+    eventStart: String;
+    eventEnd: String;
 }
