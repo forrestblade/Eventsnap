@@ -16,6 +16,7 @@ export class Events {
     zip_code:string;
     lat: number;
     lng: number;
+    description:string;
 
 
 }

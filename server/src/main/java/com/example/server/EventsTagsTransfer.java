@@ -3,6 +3,7 @@ package com.example.server;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,6 +41,8 @@ public class EventsTagsTransfer extends Events {
 	private float lat;
 	private float lng;
 	private ArrayList<Long> eventstags;
+	@Column(columnDefinition="TEXT")
+	private String description;
 	
 	
 	public String getCity() {
@@ -167,6 +170,14 @@ public class EventsTagsTransfer extends Events {
 
 	public void setEventstags(ArrayList<Long> eventstags) {
 		this.eventstags = eventstags;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 

@@ -55,6 +55,12 @@
               autocapitalize="off" spellcheck="off" type="text" #search [formControl]="searchControl">
 
           </div>
+          <div class="tc mt3 form-group">
+            <label class="db fw4 lh-copy f6" for="Location">Comment</label>
+            <textarea class="input-reset ba bg-solid-white w-100 measure form-control" type ="textarea" name="description" [(ngModel)]="model.description"
+              #name="ngModel" required>
+              </textarea>
+              </div>
           
           <div class="mt3">
             <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Create Event">

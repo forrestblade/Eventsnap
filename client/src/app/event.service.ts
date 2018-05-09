@@ -82,7 +82,8 @@ export class EventService {
       state: events.state,
       zip_code: events.zip_code,
       lat: events.lat,
-      lng: events.lng
+      lng: events.lng,
+      description:events.description
     }
     const headers = this._headers;
     let eventJson = JSON.stringify(event);
