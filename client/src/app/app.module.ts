@@ -47,7 +47,7 @@ import { AdminGuard } from './admin.guard';
     HttpClientModule,
     NouisliderModule,
     ReactiveFormsModule,
-    AgmMap, 
+    // AgmMap, 
     // GoogleMapsAPIWrapper, 
     Ng2SearchPipeModule,
     AgmCoreModule.forRoot({

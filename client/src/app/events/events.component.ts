@@ -103,7 +103,6 @@ export class EventsComponent implements OnInit {
             active: this.model.active,
             city: address2[1],
             state: address3[1],
-
             address: address1[0] + ", " + address2[1] + ", " + address3[1],
             zip_code: address3[2],
             lat: place.geometry.location.lat(),
