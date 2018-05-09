@@ -1,6 +1,6 @@
 import { EventService } from '../event.service';
 import { Events } from '../events';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import { Tags } from '../tags';
 import { EventsTags } from '../eventsTags';
 import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild } from '@angular/core';

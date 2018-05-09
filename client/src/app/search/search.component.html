@@ -1,4 +1,6 @@
-<div class="flex-ns flex-column-m vh-100 ph7 w-100">
+<div  class="mh7">
+
+<div style="height: 1000px;" class="flex-ns flex-column-m bg-near-white shadow-5 ph2 w-100">
   <div class="f1 w-25-ns ma2 w-100-l mt5-ns mt2-m blue">
     <div class="fixed-ns static-m">
 
@@ -21,13 +23,12 @@
         </div>
         <div class="mt3 w-90 form-group">
           <label class="db fw4 lh-copy f6" for="date">Where would you like to go?</label>
-          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" placeholder="Search by name, date, price, or location" type="text" name="date" [(ngModel)]="term || item">
+          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" placeholder="Search by name, date, price, or location" type="text" name="date" [(ngModel)]="term">
         </div>
 
        
       </fieldset>
       <div class="mt3 tc">
-        <input class="b shadow-5 ph3 pv2 input-reset br2 ba b--black bg-transparent grow pointer f6" type="submit" value="Submit!">
       </div>
 
     </form>
@@ -42,18 +43,18 @@
 
 
     <main [hidden]="!show" class="mw6 center br2 shadow-5 ba pa2 b--black-05 bg-near-white">
-      <article *ngFor="let event of events |filter:term||item">
+      <article *ngFor="let event of events |filter:term">
         <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
           <div class="dtc w3">
             <img src="http://mrmrs.github.io/images/0010.jpg" class="db w-100" />
           </div>
           <div class="dtc v-top pl2">
             <h1 class="f6 f5-ns fw6 lh-title black mv0">{{event.name}}</h1>
-            <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'shortDate' }}
-              <br> {{event.start_time | date: 'shortTime'}} to {{event.end_time | date: 'shortTime'}} </h2>
+            <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'M.d.y' }}
+              <br> {{event.eventStart}} to {{event.eventEnd}} </h2>
             <dl class="mt2 f6">
               <dt class="clip">Price</dt>
-              <dd *ngIf="event.price != 0" class="ml0">${{event.price}}</dd>
+              <dd *ngIf="event.price != 0" class="ml0">{{event.price | currency}}</dd>
               <dd *ngIf="event.price === 0" class="ml0">Free</dd>
               
             </dl>
@@ -62,5 +63,6 @@
       </article>
     </main>
 
+  </div>
 
   </div>
