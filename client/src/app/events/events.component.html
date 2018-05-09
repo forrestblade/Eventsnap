@@ -49,6 +49,12 @@
             <input class="input-reset ba bg-solid-white w-100 measure form-control" type="number" name="price" [(ngModel)]="model.price"
               #name="ngModel" required>
           </div>
+          <div class="tc mt3 form-group">
+            <label class="db fw4 lh-copy f6" for="Location">Comment</label>
+            <textarea class="input-reset ba bg-solid-white w-100 measure form-control" type="textarea" name="description" [(ngModel)]="model.description"
+              #name="ngModel" required>
+              </textarea>
+          </div>
           <div class="mt3 form-group">
             <label class="db fw4 lh-copy f6" for="Location">Where?</label>
             <input placeholder="search for location" class="input-reset tc ba bg-solid-white w-100 measure form-control" autocorrect="off"
