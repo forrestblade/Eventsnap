@@ -13,21 +13,14 @@
         <!-- <legend class="fw7 mb2">Search</legend> -->
         <h2>Search</h2>
         <div *ngFor="let tags of tags">
-          <label>
-            <input type="checkbox" 
-                    name="tags"
-                    value="{{tags.id}}" 
-                    [(ngModel)]="tags.checked"
-             />
+          <label id="tagBox">
+            <input type="checkbox" name="tags" value="{{tags.id}}" [(ngModel)]="tags.checked" />
             <span innerHTML="{{tags.name}}"></span>
           </label>
         </div>
-        
-
         <div class="mt3 w-90 form-group">
-          <label class="db fw4 lh-copy f6" for="date">When?</label>
-          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" type="date" name="date" [(ngModel)]="model.date"
-            #name="ngModel" required>
+          <label class="db fw4 lh-copy f6" for="date">Where would you like to go?</label>
+          <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" placeholder="Search by name, date, price, or location" type="text" name="date" [(ngModel)]="term">
         </div>
 
         <div class="mt3 form-group">
@@ -51,36 +44,38 @@
         </div>
       </fieldset>
       <div class="mt3 tc">
-        <input class="b shadow-5 ph3 pv2 input-reset br2 ba b--black bg-transparent grow pointer f6" type="submit" value="Submit!">
       </div>
 
     </form>
   </div>
+    
+  </div>
   <div class="f1 w-75-ns w-100-s mt5-ns mt2-m tc gray ">
-    
 
 
-<div [hidden]='!hide' id="map" class="google-map"></div>
 
-    
+    <div [hidden]='!hide' id="map" class="google-map"></div>
+
+
     <main [hidden]="!show" class="mw6 center br2 shadow-5 ba pa2 b--black-05 bg-near-white">
-      <article *ngFor="let event of events">
+      <article *ngFor="let event of events |filter:term">
         <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
           <div class="dtc w3">
             <img src="http://mrmrs.github.io/images/0010.jpg" class="db w-100" />
           </div>
           <div class="dtc v-top pl2">
             <h1 class="f6 f5-ns fw6 lh-title black mv0">{{event.name}}</h1>
-            <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'shortDate' }}
-              <br> {{event.time | date: 'shortTime'}} </h2>
+            <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'M.d.y' }}
+              <br> {{event.eventStart}} to {{event.eventEnd}} </h2>
             <dl class="mt2 f6">
               <dt class="clip">Price</dt>
-              <dd class="ml0">{{event.price}}</dd>
+              <dd *ngIf="event.price != 0" class="ml0">{{event.price | currency}}</dd>
+              <dd *ngIf="event.price === 0" class="ml0">Free</dd>
+              
             </dl>
           </div>
         </a>
       </article>
     </main>
-
 
   </div>
