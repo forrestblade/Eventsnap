@@ -4,6 +4,7 @@ import { UserPlan } from '../userplan';
 import * as moment from 'moment';
 import { UserPlanTags } from '../UserPlantags';
 import { Tags } from '../tags';
+import { Events } from '../events';
 
 
 @Component({
@@ -16,15 +17,17 @@ export class PlanComponent implements OnInit {
     constructor(public eventService: EventService) {}
 
     userPlan: Array<UserPlan>;
+    events: Array<Events>;
     userPlanTags: Array<UserPlanTags>;
     tags: Array<Tags>;
+    
     model: any = {};
     loading = false;
     public someRange: number[] = [3, 7];
     public tooltipSlider = document.getElementById('slider-tooltips')
     public sliderTime_min;
     public sliderTime_max;
-  
+    eventPlan: Array<Events>;
    
 
 
@@ -84,6 +87,11 @@ export class PlanComponent implements OnInit {
         .subscribe(data => this.userPlan = data);
       }
 
+      getEvents() {
+        this.eventService.getEvents()
+        .subscribe(data => this.events = data);
+      }
+
       getCheckedTags() {
         let checkedTags = [];
         checkedTags = this.tags.filter(tags => tags.checked).map(tags => tags.id);
@@ -95,6 +103,24 @@ export class PlanComponent implements OnInit {
         this.eventService.getTags()
           .subscribe(data => this.tags = data);
       }
+      
+
+      // this.eventService.getUserPlan()
+      createEventPlan() {
+        var eventPlan1 = [];
+       Object.entries(this.events).map(([event, val])=>{
+        //  console.log(val.price)
+         if (val.price <= this.model.budget) {
+           eventPlan1.push(val);
+           
+            // console.log(eventPlan[Object.keys(eventPlan)[0]][0]);
+         }
+       })
+        this.eventPlan = eventPlan1[0];
+       console.log(this.eventPlan)
+      }
+      
+    
 
       onSubmit() {
         this.loading = true;
@@ -102,7 +128,8 @@ export class PlanComponent implements OnInit {
         this.model.end_time = moment(this.sliderTime_max, ["hh:mm a"]).format("HH:mm:ss");
         this.model.start_time = moment(this.sliderTime_min, ["hh:mm a"]).format("HH:mm:ss");        
         this.eventService.addUserPlan(this.model).subscribe();
-        
+        this.getUserPlan();
+        this.createEventPlan();
         
       }
 
@@ -115,7 +142,8 @@ export class PlanComponent implements OnInit {
 
     ngOnInit() {
       this.getTags();
-      // this.getUserPlan();
+      this.getUserPlan();
+      this.getEvents();
     }
 
 }

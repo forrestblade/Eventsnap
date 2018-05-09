@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ElementRef, NgModule } from '@angular/core';
+import { Component, OnInit, NgZone, ElementRef, NgModule, HostListener } from '@angular/core';
 import { EventService } from '../event.service';
 import { UserPlan } from '../userplan';
 import { Events } from '../events';
@@ -6,11 +6,12 @@ import * as moment from 'moment';
 import { ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
 import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MapsAPILoader, AgmCoreModule } from '@agm/core';
+import { MapsAPILoader, AgmCoreModule, AgmMap } from '@agm/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { EventsTags } from '../eventsTags';
 import { Tags } from '../tags';
+
 
 @Component({
   selector: 'app-search',
@@ -19,15 +20,18 @@ import { Tags } from '../tags';
 })
 export class SearchComponent implements OnInit {
  
+
+  
   public searchControl: FormControl;
   public zoom: number;
-  
-  
+  public lat: number = 33.971417;
+  public lng: number = -113.046298;
+  // @ViewChild(AgmMap) private agmMap: AgmMap;
   @ViewChild("search") public searchElementRef: ElementRef;
   constructor(public eventService: EventService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
 
-  buttonName1: String = "List View"
-  buttonName2: String = "Map View"
+  buttonName1: String = "Map View"
+  buttonName2: String = "List View"
 
 
   userPlan: Array<UserPlan>
@@ -40,8 +44,11 @@ export class SearchComponent implements OnInit {
   public show: boolean = true;
   public hide: boolean = false;
 
+ 
 
-  events: Array<Events>
+
+
+  public events: Array<Events>;
   eventsTags: Array<EventsTags>;
   tags: Array<Tags>;
   
@@ -83,9 +90,10 @@ export class SearchComponent implements OnInit {
   getEvents() {
     this.eventService.getEvents()
       .subscribe(data => this.events = data);
+     
   }
 
-
+ 
 
   convertToTimeMin(someRange) {
     if (someRange[0] == 0 || someRange[0] == 24) {
@@ -170,56 +178,69 @@ export class SearchComponent implements OnInit {
 
 
 
-
   ngOnInit() {
-    // this.getTags();
+    this.getTags();
     // this.getUserPlan();
     this.getEvents();
-    this.buttons()
-    let map;
-      let marker;
-      const DALLAS = {lat: 32.7767, lng: -96.7970};
+    this.buttons() 
+  
+    // let map;
+    //   let marker;
+    //   let events = [];
+    //   // events = [
+    //   //   title: this.eventService.event.name,
 
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: DALLAS,
-            zoom: 7
-        });
+    //   // ]
+    //   const DALLAS = {lat: 32.7767, lng: -96.7970};
 
-        marker = new google.maps.Marker({
-            position: DALLAS,
-            map: map,
-            title: 'Hello World!'
-        });
-
+    //     map = new google.maps.Map(document.getElementById('map'), {
+    //         center: DALLAS,
+    //         zoom: 4
+    //     });
+    //     var locations = {lat: 55.0000, lng: 79.7800};
+    //                       // [title: 'Second', lat: 82.9667, lng: 77.5667],
+    //                       // [title: 'Third', lat: 78.4700, lng: 77.0300]}
+    //     var title = { title: "USA"};
+    //     // for (let i = 0; i < locations.length; i++) {
+    //     let markers = new google.maps.Marker({
+    //         position: (locations), 
+    //      title: 'USA', map: map 
+    //         //position: DALLAS,
+    //         // map: map,
+    //         //title: 'Hello World!'
+    //     });
+      // }
          //create search FormControl
     this.searchControl = new FormControl();
+   
     
     
     //load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["geocode"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+    // this.mapsAPILoader.load().then(() => {
+    //   let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+    //     types: ["geocode"]
+    //   });
+    //   autocomplete.addListener("place_changed", () => {
+    //     this.ngZone.run(() => {
+    //       //get the place result
+    //       let place: google.maps.places.PlaceResult = autocomplete.getPlace();
   
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
+    //       //verify result
+    //       if (place.geometry === undefined || place.geometry === null) {
+    //         return;
+    //       }
           
-          //set latitude, longitude and zoom
-          // this.latitude = place.geometry.location.lat();
-          // this.longitude = place.geometry.location.lng();
-          // this.zoom = 12;
-        });
-      });
-    });
+    //       //set latitude, longitude and zoom
+    //       // this.latitude = place.geometry.location.lat();
+    //       // this.longitude = place.geometry.location.lng();
+    //       // this.zoom = 12;
+    //     });
+    //   });
+    // });
 
-  }
-
+  } 
+  
+  
 }
 
 @NgModule({
