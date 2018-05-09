@@ -48,17 +48,26 @@
 
     </form>
   </div>
-    
-  </div>
+
   <div class="f1 w-75-ns w-100-s mt5-ns mt2-m tc gray ">
-
-
-
-    <div [hidden]='!hide' id="map" class="google-map"></div>
-
-
-    <main [hidden]="!show" class="mw6 center br2 shadow-5 ba pa2 b--black-05 bg-near-white">
-      <article *ngFor="let event of events |filter:term">
+  <agm-map   #agmMap [disableDefaultUI]="false"  [latitude]="lat" [longitude]="lng" [zoom]="7" [hidden]="!show"  id="map" class="google-map">
+    <!-- -->
+    <agm-marker *ngFor="let event of events;" [latitude]="event.lat" [longitude]="event.lng">
+            <agm-info-window>
+              <strong>{{event.name}}</strong>
+              <br>
+              <br><strong>Address</strong>
+              <br><span>{{event.address}}</span>
+              <br>
+              <br><strong>GPS Coordinates</strong>
+              <br><span>latitude: {{event.lat}}</span>
+              <br><span>longitude: {{event.lng}}</span>
+              <br>
+            </agm-info-window>    
+          </agm-marker>
+  </agm-map>
+    <main [hidden]='!hide'  class="mw6 center br2 shadow-5 ba pa2 b--black-05 bg-near-white">
+      <article *ngFor="let event of events">
         <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
           <div class="dtc w3">
             <img src="http://mrmrs.github.io/images/0010.jpg" class="db w-100" />

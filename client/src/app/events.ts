@@ -17,8 +17,7 @@ export class Events {
     lat: number;
     lng: number;
     description:string;
-
-
     eventStart: String;
     eventEnd: String;
 }
+
