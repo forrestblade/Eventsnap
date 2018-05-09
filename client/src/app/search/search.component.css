@@ -1,3 +1,4 @@
+
 .outer-wrapper {
     height: 100%;
     width: 100%;
@@ -18,3 +19,5 @@ agm-map {
       .agm-map-container-inner { width: inherit; height: inherit; } 
       
       .agm-map-content { display:none; }
+
+

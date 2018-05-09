@@ -4,7 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NouisliderModule } from 'ng2-nouislider';
+
 import { AgmCoreModule,AgmMap, GoogleMapsAPIWrapper  } from '@agm/core';
+
+import { Ng2SearchPipeModule } from "ng2-search-filter";
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -43,8 +47,9 @@ import { AdminGuard } from './admin.guard';
     HttpClientModule,
     NouisliderModule,
     ReactiveFormsModule,
-    // AgmMap, 
+    AgmMap, 
     // GoogleMapsAPIWrapper, 
+    Ng2SearchPipeModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAxCC0Uet-dbqTGnbvojZ7SgFuQkx4hVcE',
       libraries: ['places']

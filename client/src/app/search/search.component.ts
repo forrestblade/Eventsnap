@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone, ElementRef, NgModule, HostListener } from '@
 import { EventService } from '../event.service';
 import { UserPlan } from '../userplan';
 import { Events } from '../events';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone'
 import { ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
 import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -90,7 +90,6 @@ export class SearchComponent implements OnInit {
   getEvents() {
     this.eventService.getEvents()
       .subscribe(data => this.events = data);
-     
   }
 
  
