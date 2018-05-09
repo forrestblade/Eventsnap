@@ -24,8 +24,8 @@ export class SearchComponent implements OnInit {
   
   public searchControl: FormControl;
   public zoom: number;
-  public lat: number = 33.971417;
-  public lng: number = -113.046298;
+  public lat: number = 33.4498;
+  public lng: number = -112.007;
   // @ViewChild(AgmMap) private agmMap: AgmMap;
   @ViewChild("search") public searchElementRef: ElementRef;
   constructor(public eventService: EventService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
