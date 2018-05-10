@@ -36,7 +36,6 @@ import { AdminGuard } from './admin.guard';
     PlanComponent,
     EventsComponent,
     AdminComponent,
-    
     // GoogleMapsAPIWrapper, 
     
   ],

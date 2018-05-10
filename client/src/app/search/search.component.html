@@ -32,7 +32,7 @@
    
   </div>
 
-  <div class="f1 w-75-ns w-100-s mt2-ns mb6-ns mt2-m tc gray ">
+  <div class="f1 w-75-ns w-100-s min-vh-100 mt2-ns mb6-ns mt2-m tc gray ">
     <div class="outer-wrapper">
        <agm-map #agmMap [disableDefaultUI]="false"  [latitude]="lat" [longitude]="lng" [zoom]="10" [hidden]="!show"  id="map">
     <!-- -->
@@ -43,10 +43,7 @@
               <br><strong>Address</strong>
               <br><span>{{event.address}}</span>
               <br>
-              <br><strong>GPS Coordinates</strong>
-              <br><span>latitude: {{event.lat}}</span>
-              <br><span>longitude: {{event.lng}}</span>
-              <br>
+              
             </agm-info-window>    
           </agm-marker>
   </agm-map>
@@ -61,8 +58,9 @@
           <div class="dtc v-top pl2">
             <h1 class="f6 f5-ns fw6 lh-title black mv0">{{event.name}}</h1>
             <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'M.d.y' }}
-              <br> {{event.eventStart}} to {{event.eventEnd}} </h2>
+              <br> {{event.start_time | date: 'shortTime'}} to {{event.end_time | date: 'shortTime'}} </h2>
             <dl class="mt2 f6">
+              <dt> {{event.description}} </dt>
               <dt class="clip">Price</dt>
               <dd *ngIf="event.price != 0" class="ml0">{{event.price | currency}}</dd>
               <dd *ngIf="event.price === 0" class="ml0">Free</dd>
