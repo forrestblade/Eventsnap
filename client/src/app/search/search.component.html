@@ -32,25 +32,56 @@
   
  </div>
 
- <div class="f1 w-75-ns w-100-s min-vh-100 mh5-ns mt5-ns tc gray ">
-   <div class="outer-wrapper">
-      <agm-map #agmMap [disableDefaultUI]="false"  [latitude]="lat" [longitude]="lng" [zoom]="10" [hidden]="!show"  id="map">
-   <!-- -->
-   <agm-marker *ngFor="let event of events| filter:term" [latitude]="event.lat" [longitude]="event.lng">
-           <agm-info-window>
-             <strong>{{event.name}}</strong>
-             <br>
-             <br><strong>Address</strong>
-             <br><span>{{event.address}}</span>
-             <br>
-             <br><strong>GPS Coordinates</strong>
-             <br><span>latitude: {{event.lat}}</span>
-             <br><span>longitude: {{event.lng}}</span>
-             <br>
-           </agm-info-window>    
-         </agm-marker>
- </agm-map>
-   </div>
+  <div class="f1 w-75-ns w-100-s min-vh-100 mt2-ns mb6-ns mt2-m tc gray ">
+    <div class="outer-wrapper">
+       <agm-map #agmMap [disableDefaultUI]="false"  [latitude]="lat" [longitude]="lng" [zoom]="10" [hidden]="!show"  id="map">
+    <!-- -->
+    <agm-marker *ngFor="let event of events| filter:term" [latitude]="event.lat" [longitude]="event.lng">
+            <agm-info-window>
+              <strong>{{event.name}}</strong>
+              <br>
+              <br><strong>Address</strong>
+              <br><span>{{event.address}}</span>
+              <br>
+              
+            </agm-info-window>    
+          </agm-marker>
+  </agm-map>
+    </div>
+ 
+    <main [hidden]='!hide' id="list"  class="mw6 center br2 shadow-5 ba pa2 b--black-05 bg-near-white">
+      <article *ngFor="let event of events | filter:term ">
+        <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
+          <div class="dtc w3">
+            <img src="http://mrmrs.github.io/images/0010.jpg" class="db w-100" />
+          </div>
+          <div class="dtc v-top pl2">
+            <h1 class="f6 f5-ns fw6 lh-title black mv0">{{event.name}}</h1>
+            <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'M.d.y' }}
+              <br> {{event.start_time | date: 'shortTime'}} to {{event.end_time | date: 'shortTime'}} </h2>
+            <dl class="mt2 f6">
+              <dt> {{event.description}} </dt>
+              <dt class="clip">Price</dt>
+              <dd *ngIf="event.price != 0" class="ml0">{{event.price | currency}}</dd>
+              <dd *ngIf="event.price === 0" class="ml0">Free</dd>
+              
+            </dl>
+            <!-- <dl class="mt2 f6">
+              <dt class="clip">Latitude</dt>
+              <dd class="ml0">{{event.lat}}</dd>
+            </dl>
+            <dl class="mt2 f6">
+              <dt class="clip">Longitude</dt>
+              <dd class="ml0">{{event.lng}}</dd>
+            </dl> -->
+            <dl class="mt2 f6">
+              <dt class="clip">Address</dt>
+              <dd class="ml0">{{event.address}}</dd>
+            </dl>
+          </div>
+        </a>
+      </article>
+    </main>
 
    <main [hidden]='!hide' id="list"  class="mw6 center br2 shadow-5 ba pa2 b--black-05 bg-near-white">
      <article *ngFor="let event of events | filter:term ">
