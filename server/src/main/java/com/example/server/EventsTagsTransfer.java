@@ -40,6 +40,7 @@ public class EventsTagsTransfer extends Events {
 	private float lat;
 	private float lng;
 	private ArrayList<Long> eventstags;
+	private String description;
 	
 	
 	public String getCity() {
@@ -167,6 +168,14 @@ public class EventsTagsTransfer extends Events {
 
 	public void setEventstags(ArrayList<Long> eventstags) {
 		this.eventstags = eventstags;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 

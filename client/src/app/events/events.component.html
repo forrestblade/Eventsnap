@@ -2,9 +2,9 @@
 
   <article class="center bg-white-80 mw5 mw6-ns br3 hidden ba b--black-10 mv6">
     <h1 class="f2 br3 br--top black-60 mv0 pv2 ph3">Create An Event</h1>
-    <article class="pa4 center avenir black-80">
+    <article class="pa3 center avenir black-80">
 
-      <form class="pa4">
+      <form class="pa2">
         <fieldset id="tags" class="bn">
 
           <label class="fw7 mb2">Pick some tags!</label>
@@ -24,32 +24,38 @@
         <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
           <legend class="ph0 mh0 fw6 clip">Create Event</legend>
           <!-- <div class="mt3"> -->
-          <div class="tc mt3 form-group">
+          <div class="tc mt1 form-group">
             <label class="db fw4 lh-copy f6" for="Location">Name</label>
             <input class="input-reset ba bg-solid-white w-100 measure form-control" type="text" name="name" [(ngModel)]="model.name"
               #name="ngModel" required>
           </div>
-          <div class="mt3 form-group">
+          <div class="mt1 form-group">
             <label class="db fw4 lh-copy f6" for="date">When?</label>
             <input class="input-reset tc ba bg-solid-white w-100 measure form-control" type="date" name="date" [(ngModel)]="model.date"
               #name="ngModel" required>
           </div>
-          <div class="mt3 form-group">
+          <div class="mt1 form-group">
             <label class="db fw4 lh-copy f6" for="Location">What's your start time?</label>
             <input class="input-reset tc ba bg-solid-white w-100 measure form-control" type="time" name="start_time" [(ngModel)]="model.start_time"
               #name="ngModel" required>
           </div>
-          <div class="mt3 form-group">
+          <div class="mt1 form-group">
             <label class="db fw4 lh-copy f6" for="Location">What's your end time?</label>
             <input class="input-reset tc ba bg-solid-white w-100 measure form-control" type="time" name="end_time" [(ngModel)]="model.end_time"
               #name="ngModel" required>
           </div>
-          <div class="mt3 form-group">
+          <div class="mt1 form-group">
             <label class="db fw4 lh-copy f6" for="price">How much?</label>
             <input class="input-reset ba bg-solid-white w-100 measure form-control" type="number" name="price" [(ngModel)]="model.price"
               #name="ngModel" required>
           </div>
-          <div class="mt3 form-group">
+          <div class="tc mt1 form-group">
+            <label class="db fw4 lh-copy f6" for="Location">Comment</label>
+            <textarea class="input-reset ba bg-solid-white w-100 measure form-control" type="textarea" name="description" [(ngModel)]="model.description"
+              #name="ngModel" required>
+              </textarea>
+          </div>
+          <div class="mt1 form-group">
             <label class="db fw4 lh-copy f6" for="Location">Where?</label>
             <input placeholder="search for location" class="input-reset tc ba bg-solid-white w-100 measure form-control" autocorrect="off"
               autocapitalize="off" spellcheck="off" type="text" #search [formControl]="searchControl">
@@ -57,7 +63,7 @@
           </div>
           
           <div class="mt3">
-            <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Create Event">
+            <input class="db f4 navy bg-animate shadow-5 bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4 center" type="submit" value="Create Event">
           </div>
 
         </fieldset>

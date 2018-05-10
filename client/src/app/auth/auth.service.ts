@@ -58,8 +58,6 @@ export class AuthService {
   }
 
   public isAdmin(): boolean{
- 
-  console.log(this.userProfile['http://localhost:4200/'])
         if (this.userProfile['http://localhost:4200/'] == "admin"){
           this.admin = true;
           return this.admin;

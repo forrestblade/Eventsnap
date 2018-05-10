@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor(public auth: AuthService) {
     auth.handleAuthentication();
-    window.onload = function () {
+    document.onload = function () {
 
       document.getElementById('hamburger').addEventListener('click', event => {
 
@@ -33,7 +33,6 @@ export class AppComponent {
     }
   }
   ngOnInit() {
-    this.auth.userProfile();
     this.auth.isAdmin();
   }
 }

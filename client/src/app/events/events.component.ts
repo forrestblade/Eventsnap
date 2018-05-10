@@ -108,6 +108,7 @@ export class EventsComponent implements OnInit {
             zip_code: address3[2],
             lat: place.geometry.location.lat(),
             lng: place.geometry.location.lng(),
+            description:this.model.description
           }
           console.log(eventLoc);
           this.placeResult = eventLoc;
