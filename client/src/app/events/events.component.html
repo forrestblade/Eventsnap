@@ -10,7 +10,7 @@
           <label class="fw7 mb2">Pick some tags!</label>
 
           <form (ngSubmit)="onSubmit()">
-            <div *ngFor="let tags of tags">
+            <div  *ngFor="let tags of tags">
               <label>
                 <input type="checkbox" name="tags" value="{{tags.id}}" [(ngModel)]="tags.checked" />
                 <span innerHTML="{{tags.name}}"></span>
