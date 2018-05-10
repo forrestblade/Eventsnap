@@ -4,14 +4,14 @@
     <h1 class="f2 br3 br--top black-60 mv0 pv2 ph3">Create a Plan</h1>
     <h2 class="f5 f4-m f3-l fw2 black-50 mt0 lh-copy">
       This is where users can create plans if they are logged in and submit them to the database for community use.</h2>
-    <article class="pa4 tc avenir black-80">
+    <article class="pa3 tc avenir black-80">
       <form action="/events" method="post" (ngSubmit)="onSubmit()" accept-charset="utf-8">
         <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
           <legend class="ph0 mh0 fw6 clip">Create Plan</legend>
-          <div class="mt3">
+          <div class="mt1">
 
 
-            <form class="pa4">
+            <form class="pa1">
               <fieldset id="tags" class="bn">
 
                 <label class="fw7 mb2">Pick some tags!</label>
@@ -31,22 +31,22 @@
 
           </div>
           
-         <div class="tc mt3 form-group">
+         <div class="tc mt1 form-group">
               <label class="db fw4 lh-copy f6" for="date">When?</label>
               <input class="input-reset tc ba bg-solid-white w-100 measure form-control" type="date" name="date" [(ngModel)]="model.date"
                 #name="ngModel" required>
           </div>
 
-          <div class="mt3 form-group">
+          <div class="mt1 form-group">
             <label class="db fw4 lh-copy f6" for="Location">Where?</label>
             <input class="input-reset ba bg-solid-white w-100 measure form-control" type="text" name="location">
           </div>
-          <div class="mt3 form-group">
+          <div class="mt1 form-group">
             <label class="db fw4 lh-copy f6" for="Location">What's your budget?</label>
             <input class="input-reset ba bg-solid-white w-100 measure form-control" type="number" name="budget" [(ngModel)]="model.budget"
               #name="ngModel" required>
           </div>
-          <div class="mt3 form-group">
+          <div class="mt1 form-group">
             <label class="db fw4 lh-copy f6" for="Location">What time?</label>
             <nouislider [connect]="true" [min]="0" [max]="24" [step]="0.5" type="time" name="time" id="time" [(ngModel)]="someRange"
               #name="ngModel" required></nouislider>
@@ -60,7 +60,7 @@
 
 
         <div class="mt3">
-          <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Let's get planning!">
+          <input class="db f4 navy bg-animate shadow-5 bg-washed-green hover-bg-mid-gray no-underline pv3 ph4 br4 center" type="submit" value="Let's get planning!">
         </div>
 
 
@@ -74,44 +74,47 @@
       <article class="hide-child relative ba b--black-20 mw5 center" >
         <img src="http://loremflickr.com/320/240/dog" class="db" alt="Photo of Jesse Grant" />
         <div class="pa2 bt b--black-20">
-          <a class="f6 db link washed-green hover-blue" href="#">{{eventPlan.name}}</a>
-          <p class="f6 moon-gray mv1">{{eventPlan.address}}</p>
-          <p class="f6 moon-gray mv1">Date:{{eventPlan.date}} Time: {{eventPlan.time}}</p>          
-          <p class="f6 moon-gray mv1">{{eventPlan.price}}</p>
+          <a class="f6 db link washed-green hover-blue" href="#">{{eventPlan1.name}}</a>
+          <p class="f6 moon-gray mv1">{{eventPlan1.address}}</p>
+          <p class="f6 moon-gray mv1">Date:{{eventPlan1.date}} Time: {{eventPlan1.start_time}}</p>          
+          <p class="f6 moon-gray mv1">${{eventPlan1.price}}</p>
           <a class="link tc ph3 pv1 db bg-animate bg-washed-green hover-bg-blue white f6 br1" href="#">Add to Plan</a>
        </div>
       <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
       </article>
     </section>
   </div> 
- <!--  <div class="fl w-third"> <section class="tc pa3 pa5-ns">
+  <div class="fl w-third"> 
+    <section class="tc pa3 pa5-ns">
       <article class="hide-child relative ba b--black-20 mw5 center">
         <img src="http://loremflickr.com/320/240/dog,puppy" class="db" alt="Photo of Jesse Grant" />
         <div class="pa2 bt b--black-20">
-          <a class="f6 db link washed-green hover-blue" href="#">Event Name 2</a>
-          <p class="f6 moon-gray mv1">Location 2</p>
-          <p class="f6 moon-gray mv1">start time + end time 2</p>                    
-          <p class="f6 moon-gray mv1">Price 2</p>
+          <a class="f6 db link washed-green hover-blue" href="#">{{eventPlan2.name}}</a>
+          <p class="f6 moon-gray mv1">{{eventPlan2.address}}</p>
+          <p class="f6 moon-gray mv1">Date:{{eventPlan2.date}} Time: {{eventPlan2.start_time}}</p>          
+          <p class="f6 moon-gray mv1">${{eventPlan2.price}}</p>
           <a class="link tc ph3 pv1 db bg-animate bg-washed-green hover-bg-blue white f6 br1" href="#">Add to Plan</a>
        </div>
       <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
       </article>
     </section>
   </div>
+
+  
   <div class="fl w-third"> <section class="tc pa3 pa5-ns">
       <article class="hide-child relative ba b--black-20 mw5 center">
         <img src="http://loremflickr.com/320/240/dog,corgi" class="db" alt="Photo of Jesse Grant" />
         <div class="pa2 bt b--black-20">
-          <a class="f6 db link washed-green hover-blue" href="#">Event Name 3</a>
-          <p class="f6 moon-gray mv1">Location 3</p>
-          <p class="f6 moon-gray mv1">start time + end time 3</p>                    
-          <p class="f6 moon-gray mv1">Price 3</p>
+          <a class="f6 db link washed-green hover-blue" href="#">{{eventPlan3.name}}</a>
+          <p class="f6 moon-gray mv1">{{eventPlan3.address}}</p>
+          <p class="f6 moon-gray mv1">Date:{{eventPlan3.date}} Time: {{eventPlan3.end_time}}</p>          
+          <p class="f6 moon-gray mv1">${{eventPlan3.price}}</p>
           <a class="link tc ph3 pv1 db bg-animate bg-washed-green hover-bg-blue white f6 br1" href="#">Add to Plan</a>
        </div>
       <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
       </article>
     </section>
-  </div> -->
+  </div>
      
 
-  <!-- </section> -->
+  
