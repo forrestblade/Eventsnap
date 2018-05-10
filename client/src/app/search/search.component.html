@@ -64,6 +64,19 @@
               <dt class="clip">Price</dt>
               <dd *ngIf="event.price != 0" class="ml0">{{event.price | currency}}</dd>
               <dd *ngIf="event.price === 0" class="ml0">Free</dd>
+              
+            </dl>
+            <!-- <dl class="mt2 f6">
+              <dt class="clip">Latitude</dt>
+              <dd class="ml0">{{event.lat}}</dd>
+            </dl>
+            <dl class="mt2 f6">
+              <dt class="clip">Longitude</dt>
+              <dd class="ml0">{{event.lng}}</dd>
+            </dl> -->
+            <dl class="mt2 f6">
+              <dt class="clip">Address</dt>
+              <dd class="ml0">{{event.address}}</dd>
             </dl>
           </div>
         </a>
