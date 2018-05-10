@@ -71,14 +71,14 @@
 
   <div class="fl w-third">
     <section class="tc pa3 pa5-ns">
-      <article class="hide-child relative ba b--black-20 mw5 center" >
-        <img src="http://loremflickr.com/320/240/dog" class="db" alt="Photo of Jesse Grant" />
+      <article class="hide-child shadow-5 br3 bg-transparent relative ba b--black-20 mw5 center" >
+        <img src="http://loremflickr.com/320/240/dog" class="db br3" alt="Photo of Jesse Grant" />
         <div class="pa2 bt b--black-20">
           <a class="f6 db link washed-green hover-blue" href="#">{{eventPlan1.name}}</a>
-          <p class="f6 moon-gray mv1">{{eventPlan1.address}}</p>
-          <p class="f6 moon-gray mv1">Date:{{eventPlan1.date}} Time: {{eventPlan1.time}}</p>          
-          <p class="f6 moon-gray mv1">{{eventPlan1.price}}</p>
-          <a class="link tc ph3 pv1 db bg-animate bg-washed-green hover-bg-blue white f6 br1" href="#">Add to Plan</a>
+          <p class="f6 moon-gray mv1">Address: {{eventPlan1.address}}</p>
+          <p class="f6 moon-gray mv1">Date:{{eventPlan1.date | date: 'M.d.y'}} <br>
+             Time: {{eventPlan1.startTimeEvent1 | date: 'shortTime'}}</p>          
+          <p class="f6 moon-gray mv1">{{eventPlan1.price | currency}}</p>
        </div>
       <a class="child absolute top-1 right-1 ba bw1 black-40 grow no-underline br-100 w1 h1 pa2 lh-solid b" href="#">×</a>
       </article>

@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@angular/cdk": "^6.0.1",
+    "@angular/cli": "^6.0.0",
     "@angular/flex-layout": "^5.0.0-beta.14",
     "@angular/platform-browser": "^6.0.0",
     "jquery": "^3.3.1"
