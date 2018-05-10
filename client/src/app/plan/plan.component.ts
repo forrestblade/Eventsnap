@@ -27,10 +27,15 @@ export class PlanComponent implements OnInit {
     public tooltipSlider = document.getElementById('slider-tooltips')
     public sliderTime_min;
     public sliderTime_max;
-   public eventPlan1: Array<Events>;
+    public dateEvent1;
+    public startTimeEvent1;
+    public endTimeEvent1;
+    public dateEvent2;
+    public startTimeEvent2;
+    public endTimeEvent2;
+    eventPlan1: Array<Events>;
     eventPlan2: Array<Events>;
     eventPlan3: Array<Events>;
-   
 
 
     convertToTimeMin(someRange){
@@ -110,71 +115,118 @@ export class PlanComponent implements OnInit {
       // this.eventService.getUserPlan()
       createEventPlan1() {
         var eventPlan0 = [];
+        var eventPlan00  = [];
+        var eventPlan000 = [];
        Object.entries(this.events).map(([event, val])=>{
       
         var startTimePhx = moment.tz(val.start_time.toString(), "America/Phoenix").format();
-
+ 
         var formattedTime = this.model.date + "T07:00:00.000+0000T" + startTimePhx;
         var stringEventTime =(val.date+"T"+ startTimePhx.toString());
          if (((val.price <= this.model.budget )) && (stringEventTime == formattedTime)) {
-           
-        //  
-        //  
            eventPlan0.push(val);
            console.log(stringEventTime)
            console.log(formattedTime)
+           console.log(eventPlan0);
             // console.log(eventPlan[Object.keys(eventPlan)[0]][0]);
          }
        })
         this.eventPlan1 = eventPlan0[0];
-       console.log(this.eventPlan1)
-       
-      }
-
-      createEventPlan2() {
-        var eventPlan00  = [];
-        console.log(eventPlan00);
-        for (var i in this.eventPlan1) {
-          console.log(eventPlan1[0].price)
-         }
-       Object.entries(this.events).map(([event1, val1])=>{
-         
-        console.log(this.eventPlan1[0].id);
-        console.log(val1.id);
-         if (((this.eventPlan1[0].id != val1.id) && (val1.price <= this.model.budget)))  {
+        //bound by scope... iterating through first event array to access variables and storing them.
+        for (var j=0; j <= eventPlan0.length; j++) {
+           console.log(eventPlan0[j].date);
+           this.dateEvent1 = eventPlan0[j].date;
+           this.startTimeEvent1 = eventPlan0[j].start_time;
+           this.endTimeEvent1 = eventPlan0[j].end_time;
+           console.log(this.dateEvent1);
+           //2020-10-20T07:00:00.000+0000
+           console.log(this.startTimeEvent1);
+           //1970-01-01T13:30:00.000+0000 no moment
+           console.log(this.endTimeEvent1);
+           //1970-01-02T01:30:00.000+0000 no moment
+ 
+          //iterating through events
+           for (var i in this.events) {
+            console.log(this.events[i].date)
+            //2020-10-20T07:00:00.000+0000
+            console.log(this.events[i].start_time)
+            //1970-01-01T13:30:00.000+0000
+            console.log(this.events[i].end_time)
+            //1970-01-02T01:30:00.000+0000
+  
+          var startTimePhx1 = moment.tz(this.events[i].start_time.toString(), "America/Phoenix").format();
+          var endTimePhx1 = moment.tz(this.events[i].start_time.toString(), "America/Phoenix").format();
+          
+          //formating the date and times
+          var formattedTime1 = this.dateEvent1.toString()  + this.endTimeEvent1.toString();
+          var stringEventTime1 = (this.events[i].date.toString() + this.events[i].start_time.toString())
+  
+          console.log(formattedTime1);
+          console.log(stringEventTime1);
+          //comparing price, time, and date...
+            if (( (this.events[i].price <= this.model.budget))&& (formattedTime1 == stringEventTime1 )) {
            
-         //&& (this.eventPlan1[0].end_time == val.start_time))
-        //  
-           eventPlan00.push(val1);
-          console.log(this.eventPlan1[0].end_time)
-          console.log(val1.start_time)
-            // console.log(eventPlan[Object.keys(eventPlan)[0]][0]);
-         }
-       })
-        this.eventPlan2 = eventPlan00[0];
-       console.log(this.eventPlan2)
-       
-      }
-      createEventPlan3() {
-        var eventPlan1 = [];
-       Object.entries(this.events).map(([event, val])=>{
-        var formattedTime = this.model.date + "T07:00:00.000+0000T1970-01-01T" + this.model.start_time;
-        var stringEventTime =(val.date+"T"+ val.start_time).toString();
-         if ((val.price <= this.model.budget))  {
-        //  && (stringEventTime == formattedTime))
-        //  
-           eventPlan1.push(val);
-           console.log(stringEventTime)
-           console.log(formattedTime)
-            // console.log(eventPlan[Object.keys(eventPlan)[0]][0]);
-         }
-       })
-        this.eventPlan1 = eventPlan1[0];
-       console.log(this.eventPlan1)
-       
-      }
-      
-    
+                    //consoling it out to keep track of values
+                    console.log(this.events[i]);
+                    eventPlan00.push(this.events[i]);
+                    console.log(eventPlan00);
+                    console.log(this.events[i].price);
+                    console.log(eventPlan00[0].end_time)
+                    console.log(this.events[i].start_time)
+                    
+                  }
+                 this.eventPlan2 = eventPlan00[0];
+                 console.log(eventPlan00[0]) 
+                 console.log(this.eventPlan2)
+           }}
+          console.log(this.eventPlan2);
+          //using previous event for event 3...
+          for (var k=0; k <= eventPlan00.length; k++) {
+            console.log(eventPlan0[k].date);
+            this.dateEvent2 = eventPlan00[k].date;
+            this.startTimeEvent2 = eventPlan00[k].start_time;
+            this.endTimeEvent2 = eventPlan00[k].end_time;
+            console.log(this.dateEvent2);
+            //2020-10-20T07:00:00.000+0000
+            console.log(this.startTimeEvent2);
+            //1970-01-01T13:30:00.000+0000 no moment
+            console.log(this.endTimeEvent2);
+            //1970-01-02T01:30:00.000+0000 no moment
+  
+          
+            for (var i in this.events) {
+             console.log(this.events[i].date)
+             //2020-10-20T07:00:00.000+0000
+             console.log(this.events[i].start_time)
+             //1970-01-01T13:30:00.000+0000
+             console.log(this.events[i].end_time)
+             //1970-01-02T01:30:00.000+0000
+   
+           var startTimePhx1 = moment.tz(this.events[i].start_time.toString(), "America/Phoenix").format();
+           var endTimePhx1 = moment.tz(this.events[i].start_time.toString(), "America/Phoenix").format();
+           // startTimePhx1.toString());
+           var formattedTime2 = this.dateEvent2.toString()  + this.endTimeEvent2.toString();
+           var stringEventTime2 = (this.events[i].date.toString() + this.events[i].start_time.toString())
+   
+           console.log(formattedTime2);
+           console.log(stringEventTime2);
+             if (( (this.events[i].price <= this.model.budget)) && (formattedTime2 == stringEventTime2 )) {
+                     
+                     console.log(this.events[i]);
+                     eventPlan00.push(this.events[i]);
+                     console.log(eventPlan000);
+                     console.log(this.events[i].price);
+                     console.log(eventPlan000[0].end_time)
+                     console.log(this.events[i].start_time)
+                   }
+                  this.eventPlan3 = eventPlan000[0];
+                  console.log(eventPlan000[0]) 
+                  console.log(this.eventPlan3)
+            }}
+           console.log(this.eventPlan3);
+        }
+
+
 
       onSubmit() {
         this.loading = true;
@@ -184,7 +236,7 @@ export class PlanComponent implements OnInit {
         this.eventService.addUserPlan(this.model).subscribe();
         this.getUserPlan();
         this.createEventPlan1();
-        this.createEventPlan2();
+        
         
         
       }
