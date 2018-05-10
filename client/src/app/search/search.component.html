@@ -1,36 +1,36 @@
 <div class="flex-ns flex-column-m bg-washed-blue h-100 cover ph7 w-100" style="background:url(https://images.pexels.com/photos/207589/pexels-photo-207589.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350) fixed;">
- <div class="f1 w-25-ns ma2 w-100-m mt6-ns mt2-m blue">
-   <div class="fixed">
-       <div class="flex pv2">
-           <button (click)="toggleMap()" class="f5 ba shadow-5 br3 br--left " id="mapView">
-             {{buttonName1}}
-           </button>
-           <button (click)="toggleList()" class="f5 ba shadow-5 br3 br--right">
-             {{buttonName2}}
-           </button>
-         </div>
-         <form class="pv4" action="/search" method="post" (ngSubmit)="onSubmit()">
-           <fieldset id="search" class="f6 br2 shadow-5 bg-near-white b--black-10">
-             <!-- <legend class="fw7 mb2">Search</legend> -->
-             <h2>Search</h2>
-             <div *ngFor="let tags of tags">
-               <label id="tagBox">
-                 <input type="checkbox" name="tags" value="{{tags.id}}" [(ngModel)]="tags.checked" />
-                 <span innerHTML="{{tags.name}}"></span>
-               </label>
-             </div>
-             <div class="mt3 w-90 form-group">
-               <label class="db fw4 lh-copy f6" for="date">Where would you like to go?</label>
-               <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" placeholder="Search by name, date, price, or location" type="text" name="date" [(ngModel)]="term">
-             </div>
-           </fieldset>
-           <div class="mt3 tc">
-           </div>
-     
-         </form>
-   </div>
-  
- </div>
+  <div class="f1 w-25-ns ma2 w-100-m mt6-ns mt2-m black-60 fw9">
+    <div class="fixed">
+        <div class="flex pv2">
+            <button (click)="toggleMap()" class="f5 ba shadow-5 br3 br--left " id="mapView">
+              {{buttonName1}}
+            </button>
+            <button (click)="toggleList()" class="f5 ba shadow-5 br3 br--right">
+              {{buttonName2}}
+            </button>
+          </div>
+          <form class="pv4" action="/search" method="post" (ngSubmit)="onSubmit()">
+            <fieldset id="search" class="f6 br2 shadow-5 bg-white-90 b--black-10">
+              <!-- <legend class="fw7 mb2">Search</legend> -->
+              <h2>Search</h2>
+              <div *ngFor="let tags of tags">
+                <label id="tagBox">
+                  <input type="checkbox" name="tags" value="{{tags.id}}" [(ngModel)]="tags.checked" />
+                  <span innerHTML="{{tags.name}}"></span>
+                </label>
+              </div>
+              <div class="mt3 w-90 form-group">
+                <label class="db fw4 lh-copy f6" for="date">Where would you like to go?</label>
+                <input class="pa2 input-reset ba bg-transparent w-100 measure form-control" placeholder="Search" type="text" name="date" [(ngModel)]="term">
+              </div>
+            </fieldset>
+            <div class="mt3 tc">
+            </div>
+      
+          </form>
+    </div>
+   
+  </div>
 
   <div class="f1 w-75-ns w-100-s min-vh-100 mt2-ns mb6-ns mt2-m tc gray ">
     <div class="outer-wrapper">
@@ -40,9 +40,15 @@
             <agm-info-window>
               <strong>{{event.name}}</strong>
               <br>
+              <br>
+              <h2> {{event.start_time | date: 'shortTime'}} to {{event.end_time | date: 'shortTime'}} </h2>
               <br><strong>Address</strong>
               <br><span>{{event.address}}</span>
               <br>
+              <dt> {{event.description}} </dt>
+              <dt class="clip">Price</dt>
+              <dd *ngIf="event.price != 0" class="ml0">{{event.price | currency}}</dd>
+              <dd *ngIf="event.price === 0" class="ml0">Free</dd>
               
             </agm-info-window>    
           </agm-marker>
@@ -53,27 +59,20 @@
       <article *ngFor="let event of events | filter:term ">
         <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
           <div class="dtc w3">
-            <img src="http://mrmrs.github.io/images/0010.jpg" class="db w-100" />
+            <img src="https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="db w-100" />
           </div>
           <div class="dtc v-top pl2">
             <h1 class="f6 f5-ns fw6 lh-title black mv0">{{event.name}}</h1>
             <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'M.d.y' }}
               <br> {{event.start_time | date: 'shortTime'}} to {{event.end_time | date: 'shortTime'}} </h2>
             <dl class="mt2 f6">
-              <dt> {{event.description}} </dt>
+              <dt class="black"> {{event.description}} </dt>
               <dt class="clip">Price</dt>
               <dd *ngIf="event.price != 0" class="ml0">{{event.price | currency}}</dd>
               <dd *ngIf="event.price === 0" class="ml0">Free</dd>
               
             </dl>
-            <!-- <dl class="mt2 f6">
-              <dt class="clip">Latitude</dt>
-              <dd class="ml0">{{event.lat}}</dd>
-            </dl>
-            <dl class="mt2 f6">
-              <dt class="clip">Longitude</dt>
-              <dd class="ml0">{{event.lng}}</dd>
-            </dl> -->
+        
             <dl class="mt2 f6">
               <dt class="clip">Address</dt>
               <dd class="ml0">{{event.address}}</dd>
@@ -82,25 +81,5 @@
         </a>
       </article>
     </main>
-
-   <main [hidden]='!hide' id="list"  class="mw6 center br2 shadow-5 ba pa2 b--black-05 bg-near-white">
-     <article *ngFor="let event of events | filter:term ">
-       <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
-         <div class="dtc w3">
-           <img src="http://mrmrs.github.io/images/0010.jpg" class="db w-100" />
-         </div>
-         <div class="dtc v-top pl2">
-           <h1 class="f6 f5-ns fw6 lh-title black mv0">{{event.name}}</h1>
-           <h2 class="f6 fw4 mt2 mb0 black-60">{{event.date | date: 'M.d.y' }}
-             <br> {{event.eventStart}} to {{event.eventEnd}} </h2>
-           <dl class="mt2 f6">
-             <dt class="clip">Price</dt>
-             <dd *ngIf="event.price != 0" class="ml0">{{event.price | currency}}</dd>
-             <dd *ngIf="event.price === 0" class="ml0">Free</dd>
-           </dl>
-         </div>
-       </a>
-     </article>
-   </main>
 
  </div>
