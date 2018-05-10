@@ -78,7 +78,8 @@
           <p class="f6 moon-gray mv1">Address: {{eventPlan1.address}}</p>
           <p class="f6 moon-gray mv1">Date:{{eventPlan1.date | date: 'M.d.y'}} <br>
             Time: {{eventPlan1.start_time | date: 'shortTime'}} to {{eventPlan1.end_time | date: 'shortTime'}}</p>          
-          <p class="f6 moon-gray mv1">{{eventPlan1.price | currency}}</p>
+          <p *ngIf="event.price != 0" class="f6 moon-gray mv1">{{eventPlan1.price | currency}}</p>
+          <dd *ngIf="event.price === 0" class="ml0">Free</dd>
        </div>
       </article>
     </section>
@@ -92,7 +93,9 @@
           <p class="f6 moon-gray mv1">Address: {{eventPlan2.address}}</p>
           <p class="f6 moon-gray mv1">Date:{{eventPlan2.date| date: 'M.d.y'}}
              <br> Time: {{eventPlan2.start_time | date: 'shortTime'}} to {{eventPlan2.end_time | date: 'shortTime'}}</p>          
-          <p class="f6 moon-gray mv1">{{eventPlan2.price | currency}}</p>
+          <p *ngIf="event.price != 0" class="f6 moon-gray mv1">{{eventPlan2.price | currency}}</p>
+          <dd *ngIf="event.price === 0" class="ml0">Free</dd>
+          
        </div>
       </article>
     </section>
@@ -107,7 +110,9 @@
           <p class="f6 moon-gray mv1">Address: {{eventPlan3.address}}</p>
           <p class="f6 moon-gray mv1">Date:{{eventPlan3.date | date: 'M.d.y'}}
              <br> Time: {{eventPlan3.start_time | date: 'shortTime'}} to {{eventPlan3.end_time | date: 'shortTime'}}</p>          
-          <p class="f6 moon-gray mv1">{{eventPlan3.price |currency}}</p>
+          <p *ngIf="event.price != 0" class="f6 moon-gray mv1">{{eventPlan3.price |currency}}</p>
+          <dd *ngIf="event.price === 0" class="ml0">Free</dd>
+          
        </div>
       </article>
     </section>
